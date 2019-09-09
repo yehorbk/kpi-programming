@@ -1,6 +1,6 @@
-"use strict"
+'use strict'
 
-let name = "Yehor";
+let name = 'Yehor';
 const YEAR = 2002;
 
 const greeting = name => {

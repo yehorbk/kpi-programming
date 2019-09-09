@@ -1,10 +1,10 @@
-"use strict"
+'use strict'
 
 const average = (a, b) => {
     return (a + b) / 2;
 }
 
-const squere = (x) => {
+const square = (x) => {
     return x * x;
 }
 
@@ -13,5 +13,5 @@ const cube = (x) => {
 }
 
 for (let i = 0; i < 10; i++) {
-    console.log(average(squere(i), cube(i)));
+    console.log(average(square(i), cube(i)));
 }
