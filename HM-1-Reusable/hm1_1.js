@@ -7,5 +7,6 @@ const greeting = name => {
     console.log(name);
 }
 
+greeting('Bob');
 greeting(name);
 greeting(YEAR);
