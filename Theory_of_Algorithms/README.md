@@ -1,10 +1,7 @@
 # Algorithms
-Repository of implemented algorithms and data-structures
+Implementetion of algorithms and data structures on different languages for KPI laboratory works.
 
-## About
-Implementetion of algorithms and data structures on different languages for my KPI lectures
-
-## Compile
+## Compile/Run Examples
 - C: `gcc ./quick_sort.c`
 - C++: `g++ ./insertion_sort.cpp`
 - C#: You should to create dotnet project and run `dotnet build`
