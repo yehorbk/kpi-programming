@@ -1,4 +1,4 @@
-# Algorithms
+# Theory of Algorithms
 Implementetion of algorithms and data structures on different languages for KPI laboratory works.
 
 ## Compile/Run Examples
