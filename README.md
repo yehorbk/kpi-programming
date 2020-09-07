@@ -6,8 +6,8 @@ This organization consists of students of the IP-94 (FICT KPI) group and is desi
 - Database: SQLite
 
 ## Members:
-- Yehor Bublyk
-- Artem Bokii
-- Oleg Makaritskiy
-- Julia Tkachenko
-- Yeva Vakhtina
+- [Yehor Bublyk](https://github.com/yehorbk)
+- [Artem Bokii](https://github.com/lightballer)
+- [Oleg Makaritskiy](https://github.com/olegmak02)
+- [Julia Tkachenko](https://github.com/nickname038)
+- [Yeva Vakhtina](https://github.com/eve-va)
