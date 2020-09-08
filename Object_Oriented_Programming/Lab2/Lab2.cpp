@@ -10,6 +10,7 @@
 
 #include "framework.h"
 #include "Lab2.h"
+#include "Scroll.h"
 
 #define MAX_LOADSTRING 100
 
@@ -98,6 +99,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         int wmId = LOWORD(wParam);
         switch (wmId)
         {
+        case IDM_WORK_1:
+            scrollInterface(hInst, hWnd);
+            break;
+        case IDM_WORK_2:
+            // TODO
+            break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
             break;

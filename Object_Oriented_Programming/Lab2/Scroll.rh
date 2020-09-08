@@ -1,3 +1,4 @@
 #pragma once
 
-#define IDD_SCROLL_DI 1000
+#define IDD_SCROLL 1000
+#define IDC_SCROLLBAR 1001

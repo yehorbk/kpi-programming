@@ -2,4 +2,4 @@
 
 #include "framework.h"
 
-extern int scrollInterface(HWND hWnd);
+extern int scrollInterface(HINSTANCE hInst, HWND hWnd);
