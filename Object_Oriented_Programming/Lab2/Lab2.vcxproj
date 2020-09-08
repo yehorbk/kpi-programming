@@ -140,15 +140,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="resource2.h" />
+    <ClInclude Include="Scroll.rh" />
     <ClInclude Include="Lab2.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="Scroll.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab2.cpp" />
+    <ClCompile Include="Scroll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab2.rc" />
+    <ResourceCompile Include="Scroll.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Lab2.ico" />
