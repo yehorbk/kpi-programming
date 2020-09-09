@@ -2,7 +2,6 @@
 // Включаемый файл, созданный в Microsoft Visual C++.
 // Используется Scroll.rc
 //
-#define IDC_SCROLLBAR1                  1001
 #define IDC_SCROLLBAR                   1001
 
 // Next default values for new objects

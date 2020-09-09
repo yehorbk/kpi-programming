@@ -24,9 +24,6 @@
     <ClInclude Include="Resource.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Lab2.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Scroll.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -54,11 +51,11 @@
     <ClInclude Include="StepActionType.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Lab1.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Lab2.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Scroll.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -68,11 +65,11 @@
     <ClCompile Include="SecondStep.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Lab1.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Lab2.rc">
-      <Filter>Файлы ресурсов</Filter>
-    </ResourceCompile>
     <ResourceCompile Include="Scroll.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
@@ -82,12 +79,15 @@
     <ResourceCompile Include="SecondStep.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
+    <ResourceCompile Include="Lab1.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="Lab2.ico">
+    <Image Include="Lab1.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
