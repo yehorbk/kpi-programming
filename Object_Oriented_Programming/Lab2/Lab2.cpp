@@ -11,7 +11,11 @@
 
 #include "framework.h"
 #include "Lab2.h"
+
 #include "Scroll.h"
+#include "FirstStep.h"
+#include "SecondStep.h"
+#include "StepActionType.h"
 
 #define MAX_LOADSTRING 100
 
@@ -27,6 +31,8 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 void                drawScrollValue(HDC hdc);
 void                callScrollDialog(HWND hWnd);
+void                callFirstStepDialog(HWND hWnd);
+void                callSecondStepDialog(HWND hWnd);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
@@ -106,7 +112,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             callScrollDialog(hWnd);
             break;
         case IDM_WORK_2:
-            // TODO
+            callFirstStepDialog(hWnd);
             break;
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -172,5 +178,27 @@ void callScrollDialog(HWND hWnd)
     if (scrlDlgResult == IDOK)
     {
         RedrawWindow(hWnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);
+    }
+}
+
+void callFirstStepDialog(HWND hWnd)
+{
+    int frstStpDlgResult = firstStepInterface(hInst, hWnd);
+    switch (frstStpDlgResult)
+    {
+    case STEP_NEXT:
+        callSecondStepDialog(hWnd);
+        break;
+    }
+}
+
+void callSecondStepDialog(HWND hWnd)
+{
+    int scndStpDlgResult = secondStepInterface(hInst, hWnd);
+    switch (scndStpDlgResult)
+    {
+    case STEP_BACK:
+        callFirstStepDialog(hWnd);
+        break;
     }
 }

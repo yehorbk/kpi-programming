@@ -24,7 +24,7 @@ int getScrollValue()
 	return scrollValue;
 }
 
-BOOL CALLBACK scrollCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
+static BOOL CALLBACK scrollCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
 {
 	switch (iMessage) {
 	case WM_INITDIALOG:

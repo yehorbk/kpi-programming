@@ -1,6 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
-#include "resource2.h"
+#include "resource3.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -27,7 +27,7 @@ LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
 
 1 TEXTINCLUDE 
 BEGIN
-    "resource2.h\0"
+    "resource3.h\0"
 END
 
 2 TEXTINCLUDE 
@@ -50,15 +50,13 @@ END
 // Dialog
 //
 
-1000 DIALOGEX 0, 0, 309, 176
+2000 DIALOGEX 0, 0, 309, 176
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Dialog"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "Так",IDOK,198,155,50,14
-    PUSHBUTTON      "Вiдмiна",IDCANCEL,252,155,50,14
-    LTEXT           "Статический",IDC_STATIC,133,81,45,8
-    SCROLLBAR       1001,18,113,274,11
+    DEFPUSHBUTTON   "Далi >",2001,198,155,50,14
+    PUSHBUTTON      "Вiдмiна",2002,252,155,50,14
 END
 
 
@@ -70,7 +68,7 @@ END
 #ifdef APSTUDIO_INVOKED
 GUIDELINES DESIGNINFO
 BEGIN
-    1000, DIALOG
+    2000, DIALOG
     BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 302
@@ -86,7 +84,7 @@ END
 // AFX_DIALOG_LAYOUT
 //
 
-1000 AFX_DIALOG_LAYOUT
+2000 AFX_DIALOG_LAYOUT
 BEGIN
     0
 END

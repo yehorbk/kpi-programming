@@ -1,0 +1,5 @@
+#pragma once
+
+#define IDD_FIRST_STEP 2000
+#define IDC_NEXT 2001
+#define IDC_CANCEL 2002
