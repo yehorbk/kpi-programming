@@ -1,5 +1,5 @@
 ﻿/*
-    PROJECT INFORMATION - Laboratory Work 2
+    PROJECT INFORMATION - Laboratory Work 1
     AUTHOR: YEHOR BUBLYK
     GROUP: IP-94
     NUMBER: 5
@@ -23,6 +23,7 @@
 HINSTANCE hInst;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
+int* scrollValue = new int(-1);
 
 // Functions declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -163,19 +164,19 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 
 void drawScrollValue(HDC hdc)
 {
-    int scrollPosition = getScrollValue();
-    if (scrollPosition != -1) {
-        int digits = log10(scrollPosition) + 1;
+    int position = *scrollValue;
+    if (position != -1) {
+        int digits = log10(position) + 1;
         char result[4];
-        _itoa_s(scrollPosition, result, 10);
+        _itoa_s(position, result, 10);
         TextOutA(hdc, 200, 200, LPCSTR(result), digits);
     }
 }
 
 void callScrollDialog(HWND hWnd) 
 {
-    int scrlDlgResult = scrollInterface(hInst, hWnd);
-    if (scrlDlgResult == IDOK)
+    int scrollDialogResult = scrollInterface(hInst, hWnd, scrollValue);
+    if (scrollDialogResult == IDOK)
     {
         RedrawWindow(hWnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);
     }
@@ -183,8 +184,8 @@ void callScrollDialog(HWND hWnd)
 
 void callFirstStepDialog(HWND hWnd)
 {
-    int frstStpDlgResult = firstStepInterface(hInst, hWnd);
-    switch (frstStpDlgResult)
+    int firstStepDialogResult = firstStepInterface(hInst, hWnd);
+    switch (firstStepDialogResult)
     {
     case STEP_NEXT:
         callSecondStepDialog(hWnd);
@@ -194,8 +195,8 @@ void callFirstStepDialog(HWND hWnd)
 
 void callSecondStepDialog(HWND hWnd)
 {
-    int scndStpDlgResult = secondStepInterface(hInst, hWnd);
-    switch (scndStpDlgResult)
+    int secondStepDialogResult = secondStepInterface(hInst, hWnd);
+    switch (secondStepDialogResult)
     {
     case STEP_BACK:
         callFirstStepDialog(hWnd);

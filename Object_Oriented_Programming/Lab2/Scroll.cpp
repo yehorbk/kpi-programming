@@ -2,26 +2,24 @@
 #include "Scroll.h"
 
 static HWND hScrl;
-static int scrollValue = -1;
+static int *scrollValue;
+static int scrollPosition;
 
 static BOOL CALLBACK scrollCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM);
+
 static void init(HWND hDlg);
 static void prepareScrollBar();
 static void scrollHandler(WPARAM wParam);
 
-int scrollInterface(HINSTANCE hInst, HWND hWnd)
+int scrollInterface(HINSTANCE hInst, HWND hWnd, int *value)
 {
+	scrollValue = value;
 	return DialogBox(
 		hInst,
 		MAKEINTRESOURCE(IDD_SCROLL),
 		hWnd,
 		scrollCallback,
 	);
-}
-
-int getScrollValue()
-{
-	return scrollValue;
 }
 
 static BOOL CALLBACK scrollCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
@@ -33,10 +31,10 @@ static BOOL CALLBACK scrollCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPA
 	case WM_COMMAND:
 		switch LOWORD(wParam) {
 		case IDOK:
+			*scrollValue = scrollPosition;
 			EndDialog(hDlg, LOWORD(wParam));
 			break;
 		case IDCANCEL:
-			scrollValue = -1;
 			EndDialog(hDlg, LOWORD(wParam));
 			break;
 		}
@@ -56,27 +54,27 @@ static void init(HWND hDlg)
 
 static void prepareScrollBar()
 {
-	int min = 1, max = 100, def = 50;
-	SetScrollRange(hScrl, SB_CTL, min, max, TRUE);
-	SetScrollPos(hScrl, SB_CTL, def, TRUE);
-	scrollValue = def;
+	const int MIN = 1, MAX = 100, DEFAULT = 50;
+	scrollPosition = *scrollValue == -1 ? DEFAULT : *scrollValue;
+	SetScrollRange(hScrl, SB_CTL, MIN, MAX, TRUE);
+	SetScrollPos(hScrl, SB_CTL, scrollPosition, TRUE);
 }
 
 static void scrollHandler(WPARAM wParam)
 {
-	scrollValue = GetScrollPos(hScrl, SB_CTL);
+	scrollPosition = GetScrollPos(hScrl, SB_CTL);
 	switch (LOWORD(wParam))
 	{
 	case SB_LINELEFT:
-		scrollValue--;
+		scrollPosition--;
 		break;
 	case SB_LINERIGHT:
-		scrollValue++;
+		scrollPosition++;
 		break;
 	case SB_THUMBPOSITION:
 	case SB_THUMBTRACK:
-		scrollValue = HIWORD(wParam);
+		scrollPosition = HIWORD(wParam);
 		break;
 	}
-	SetScrollPos(hScrl, SB_CTL, scrollValue, TRUE);
+	SetScrollPos(hScrl, SB_CTL, scrollPosition, TRUE);
 }

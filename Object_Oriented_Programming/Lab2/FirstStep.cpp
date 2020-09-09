@@ -15,17 +15,17 @@ int firstStepInterface(HINSTANCE hInst, HWND hWnd)
 	);
 }
 
-BOOL CALLBACK firstStepCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
+static BOOL CALLBACK firstStepCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
 {
 	switch (iMessage) {
 	case WM_INITDIALOG:
-		// TODO
 		break;
 	case WM_COMMAND:
 		switch LOWORD(wParam) {
 		case IDC_NEXT:
 			EndDialog(hDlg, STEP_NEXT);
 			break;
+		case IDCANCEL:
 		case IDC_CANCEL:
 			EndDialog(hDlg, STEP_CANCEL);
 			break;

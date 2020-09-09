@@ -2,6 +2,4 @@
 
 #include "framework.h"
 
-extern int scrollInterface(HINSTANCE hInst, HWND hWnd);
-
-extern int getScrollValue();
+extern int scrollInterface(HINSTANCE hInst, HWND hWnd, int *value);
