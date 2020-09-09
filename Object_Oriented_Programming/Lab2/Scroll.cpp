@@ -1,14 +1,13 @@
 #include "Scroll.rh"
 #include "Scroll.h"
 
-#include <string>
-
 static HWND hScrl;
+static int scrollValue = -1;
 
 static BOOL CALLBACK scrollCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM);
 static void init(HWND hDlg);
 static void prepareScrollBar();
-static void scrollHandler(HWND hWnd, WPARAM wParam);
+static void scrollHandler(WPARAM wParam);
 
 int scrollInterface(HINSTANCE hInst, HWND hWnd)
 {
@@ -18,6 +17,11 @@ int scrollInterface(HINSTANCE hInst, HWND hWnd)
 		hWnd,
 		scrollCallback,
 	);
+}
+
+int getScrollValue()
+{
+	return scrollValue;
 }
 
 BOOL CALLBACK scrollCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
@@ -32,6 +36,7 @@ BOOL CALLBACK scrollCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM)
 			EndDialog(hDlg, LOWORD(wParam));
 			break;
 		case IDCANCEL:
+			scrollValue = -1;
 			EndDialog(hDlg, LOWORD(wParam));
 			break;
 		}
@@ -51,25 +56,27 @@ static void init(HWND hDlg)
 
 static void prepareScrollBar()
 {
-	SetScrollRange(hScrl, SB_CTL, 0, 100, TRUE);
-	SetScrollPos(hScrl, SB_CTL, 50, TRUE);
+	int min = 1, max = 100, def = 50;
+	SetScrollRange(hScrl, SB_CTL, min, max, TRUE);
+	SetScrollPos(hScrl, SB_CTL, def, TRUE);
+	scrollValue = def;
 }
 
 static void scrollHandler(WPARAM wParam)
 {
-	int position = GetScrollPos(hScrl, SB_CTL);
+	scrollValue = GetScrollPos(hScrl, SB_CTL);
 	switch (LOWORD(wParam))
 	{
 	case SB_LINELEFT:
-		position--;
+		scrollValue--;
 		break;
 	case SB_LINERIGHT:
-		position++;
+		scrollValue++;
 		break;
 	case SB_THUMBPOSITION:
 	case SB_THUMBTRACK:
-		position = HIWORD(wParam);
+		scrollValue = HIWORD(wParam);
 		break;
 	}
-	SetScrollPos(hScrl, SB_CTL, position, TRUE);
+	SetScrollPos(hScrl, SB_CTL, scrollValue, TRUE);
 }

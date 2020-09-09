@@ -7,6 +7,7 @@
     VARIABLES: B1 = 1; B2 = 2
 */
 
+#include <string>
 
 #include "framework.h"
 #include "Lab2.h"
@@ -24,6 +25,8 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+void                drawScrollValue(HDC hdc);
+void                callScrollDialog(HWND hWnd);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
@@ -100,7 +103,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         switch (wmId)
         {
         case IDM_WORK_1:
-            scrollInterface(hInst, hWnd);
+            callScrollDialog(hWnd);
             break;
         case IDM_WORK_2:
             // TODO
@@ -120,6 +123,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
+        drawScrollValue(hdc);
         EndPaint(hWnd, &ps);
     }
     break;
@@ -149,4 +153,24 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     }
     return (INT_PTR)FALSE;
+}
+
+void drawScrollValue(HDC hdc)
+{
+    int scrollPosition = getScrollValue();
+    if (scrollPosition != -1) {
+        int digits = log10(scrollPosition) + 1;
+        char result[4];
+        _itoa_s(scrollPosition, result, 10);
+        TextOutA(hdc, 200, 200, LPCSTR(result), digits);
+    }
+}
+
+void callScrollDialog(HWND hWnd) 
+{
+    int scrlDlgResult = scrollInterface(hInst, hWnd);
+    if (scrlDlgResult == IDOK)
+    {
+        RedrawWindow(hWnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);
+    }
 }

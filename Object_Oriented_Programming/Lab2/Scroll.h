@@ -3,3 +3,5 @@
 #include "framework.h"
 
 extern int scrollInterface(HINSTANCE hInst, HWND hWnd);
+
+extern int getScrollValue();
