@@ -1,10 +1,26 @@
 ﻿/*
-    All important information about variant of task
-    in About window.
+    PROJECT INFORMATION - Laboratory Work 2
+    AUTHOR: YEHOR BUBLYK
+    GROUP: IP-94
+    NUMBER: 5
+    VARIABLES:
+    - статичний масив для Shape (5 mod 3 = 2): обсягом 105 об'єктiв;
+    - "гумовий" слiд (5 mod 4 = 1) - суцiльна лiнiя червоного кольору;
+    - прямокутник:
+        - вiд центру до одного з кутiв (5 mod 2 = 1);
+        - чорний контур з бiлим заповненням (5 mod 5 = 0);
+        - сiрий (5 mod 6 = 5);
+    - елiпс:
+        - по двом протилежним кутам охоплюючого прямокутника (5 mod 2 = 1);
+        - чорний контур без заповнення (5 mod 5 = 0);
+        - помаранчевий (5 mod 6 = 5);
+    - позначка поточного типу об'єкту: в заголовку вiкна (5 mod 2 = 1 ).
 */
 
-#include "framework.h"
+#include "Lab2.rh"
 #include "Lab2.h"
+
+#include "About.h"
 
 #define MAX_LOADSTRING 100
 
@@ -90,7 +106,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+                aboutInterface(hInst, hWnd);
+                break;
+            case IDM_POINT:
+                // TODO
+                break;
+            case IDM_LINE:
+                // TODO
+                break;
+            case IDM_RECT:
+                // TODO
+                break;
+            case IDM_ELLIPSE:
+                // TODO
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
@@ -115,23 +143,4 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
-}
-
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
-
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
 }

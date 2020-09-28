@@ -139,20 +139,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="About.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lab2.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="About.cpp" />
     <ClCompile Include="Lab2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="About.rc" />
     <ResourceCompile Include="Lab2.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Lab2.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="About.rh" />
+    <None Include="Lab2.rh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

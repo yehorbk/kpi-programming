@@ -1,0 +1,6 @@
+#pragma once
+
+#define IDM_POINT 1001
+#define IDM_LINE 1002
+#define IDM_RECT 1003
+#define IDM_ELLIPSE 1004
