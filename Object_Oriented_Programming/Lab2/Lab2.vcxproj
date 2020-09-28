@@ -140,15 +140,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="About.h" />
+    <ClInclude Include="editor.h" />
+    <ClInclude Include="ellipse_shape.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lab2.h" />
+    <ClInclude Include="line_shape.h" />
+    <ClInclude Include="point_shape.h" />
+    <ClInclude Include="rect_shape.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="shape.h" />
+    <ClInclude Include="shape_editor.h" />
+    <ClInclude Include="shape_object_builder.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
+    <ClCompile Include="editor.cpp" />
+    <ClCompile Include="ellipse_shape.cpp" />
     <ClCompile Include="Lab2.cpp" />
+    <ClCompile Include="line_shape.cpp" />
+    <ClCompile Include="point_shape.cpp" />
+    <ClCompile Include="rect_shape.cpp" />
+    <ClCompile Include="shape.cpp" />
+    <ClCompile Include="shape_editor.cpp" />
+    <ClCompile Include="shape_object_builder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="About.rc" />
