@@ -39,9 +39,6 @@
     <ClInclude Include="Lab2.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="About.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="resource1.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -69,12 +66,12 @@
     <ClInclude Include="shape_object_builder.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="about.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab2.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="About.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="shape.cpp">
@@ -101,12 +98,15 @@
     <ClCompile Include="shape_object_builder.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="about.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab2.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
-    <ResourceCompile Include="About.rc">
+    <ResourceCompile Include="about.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -122,7 +122,7 @@
     <None Include="Lab2.rh">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="About.rh">
+    <None Include="about.rh">
       <Filter>Файлы ресурсов</Filter>
     </None>
   </ItemGroup>

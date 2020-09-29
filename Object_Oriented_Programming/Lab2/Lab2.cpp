@@ -109,15 +109,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 aboutInterface(hInst, hWnd);
                 break;
             case IDM_POINT:
+                SetWindowText(hWnd, LPCWSTR("Point"));
                 // TODO
                 break;
             case IDM_LINE:
+                SetWindowText(hWnd, LPCWSTR("Line"));
                 // TODO
                 break;
             case IDM_RECT:
+                
                 // TODO
                 break;
             case IDM_ELLIPSE:
+                
                 // TODO
                 break;
             case IDM_EXIT:

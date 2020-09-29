@@ -5,6 +5,14 @@
 
 class ShapeEditor : public Editor
 {
+protected:
+	POINT point;
+	HDC hdc;
+	short x1;
+	short y2;
+	short x2;
+	short y2;
+
 public:
 	ShapeEditor(void);
 	void OnLBdown(HWND);
