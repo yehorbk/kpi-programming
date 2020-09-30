@@ -69,6 +69,18 @@
     <ClInclude Include="about.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="point_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="line_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="rect_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="ellipse_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab2.cpp">
@@ -89,9 +101,6 @@
     <ClCompile Include="ellipse_shape.cpp">
       <Filter>Исходные файлы\figures</Filter>
     </ClCompile>
-    <ClCompile Include="editor.cpp">
-      <Filter>Исходные файлы\editors</Filter>
-    </ClCompile>
     <ClCompile Include="shape_editor.cpp">
       <Filter>Исходные файлы\editors</Filter>
     </ClCompile>
@@ -100,6 +109,18 @@
     </ClCompile>
     <ClCompile Include="about.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="point_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="line_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="rect_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="ellipse_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

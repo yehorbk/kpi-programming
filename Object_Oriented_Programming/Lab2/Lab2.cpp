@@ -21,6 +21,7 @@
 #include "Lab2.h"
 
 #include "About.h"
+#include "shape_object_builder.h"
 
 #define MAX_LOADSTRING 100
 
@@ -29,11 +30,16 @@ HINSTANCE hInst;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
+ShapeObjectBuilder* shapeObjectBuilder;
+
 // Functions Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+static void changeEditor(HWND, void (*)(), const char*);
+static void updateWindowTitle(HWND, const char*);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -100,6 +106,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_CREATE:
+        shapeObjectBuilder = new ShapeObjectBuilder(hWnd);
+        break;
+    case WM_LBUTTONDOWN:
+        shapeObjectBuilder->OnLBdown();
+        break;
+    case WM_LBUTTONUP:
+        shapeObjectBuilder->OnLBup();
+        break;
+    case WM_MOUSEMOVE:
+        shapeObjectBuilder->OnMouseMove();
+        break;
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -109,20 +127,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 aboutInterface(hInst, hWnd);
                 break;
             case IDM_POINT:
-                SetWindowText(hWnd, LPCWSTR("Point"));
-                // TODO
+                SetWindowTextA(hWnd, LPCSTR("Point"));
+                shapeObjectBuilder->StartPointEditor();
                 break;
             case IDM_LINE:
-                SetWindowText(hWnd, LPCWSTR("Line"));
-                // TODO
+                SetWindowTextA(hWnd, LPCSTR("Line"));
+                shapeObjectBuilder->StartLineEditor();
                 break;
             case IDM_RECT:
-                
-                // TODO
+                SetWindowTextA(hWnd, LPCSTR("Rect"));
+                shapeObjectBuilder->StartRectEditor();
                 break;
             case IDM_ELLIPSE:
-                
-                // TODO
+                SetWindowTextA(hWnd, LPCSTR("Ellipse"));
+                shapeObjectBuilder->StartEllipseEditor();
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
@@ -136,7 +154,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO
+            shapeObjectBuilder->OnPaint();
             EndPaint(hWnd, &ps);
         }
         break;
@@ -147,4 +165,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+static void changeEditor(HWND hWnd, void (*editorStarter)(), const char* editorTitle)
+{
+    editorStarter();
+    updateWindowTitle(hWnd, editorTitle);
+}
+
+static void updateWindowTitle(HWND hWnd, const char* title)
+{
+    char baseTitle[] = "Hello";
+    char separator[] = " - ";
+    SetWindowTextA(hWnd, LPCSTR(baseTitle + *separator + *title));
 }

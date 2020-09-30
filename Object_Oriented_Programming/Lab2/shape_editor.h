@@ -6,18 +6,15 @@
 class ShapeEditor : public Editor
 {
 protected:
-	POINT point;
-	HDC hdc;
+	HWND hWnd;
 	short x1;
-	short y2;
+	short y1;
 	short x2;
 	short y2;
 
 public:
-	ShapeEditor(void);
-	void OnLBdown(HWND);
-	void OnLBup(HWND);
-	void OnMouseMove(HWND);
-	void OnPaint(HWND);
-	void OnInitMenuPopup(HWND, WPARAM);
+	ShapeEditor(HWND hWnd);
+	HDC openDrawer();
+	void closeDrawer(HDC hdc);
+	POINT getMousePosition();
 };

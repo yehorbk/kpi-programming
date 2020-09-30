@@ -1,27 +1,24 @@
 #include "shape_editor.h"
 
-ShapeEditor::ShapeEditor()
+ShapeEditor::ShapeEditor(HWND hWnd)
 {
-	
+	this->hWnd = hWnd;
 }
 
-void ShapeEditor::OnLBdown(HWND hWnd)
+HDC ShapeEditor::openDrawer()
 {
-
+	return GetDC(this->hWnd);
 }
 
-void ShapeEditor::OnLBup(HWND hWnd)
+void ShapeEditor::closeDrawer(HDC hdc)
 {
-
+	ReleaseDC(this->hWnd, hdc);
 }
 
-void ShapeEditor::OnMouseMove(HWND hWnd)
+POINT ShapeEditor::getMousePosition()
 {
-
+	POINT result;
+	GetCursorPos(&result);
+	ScreenToClient(this->hWnd, &result);
+	return result;
 }
-
-void ShapeEditor::OnPaint(HWND hWnd)
-{
-
-}
-

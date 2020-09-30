@@ -141,11 +141,15 @@
   <ItemGroup>
     <ClInclude Include="about.h" />
     <ClInclude Include="editor.h" />
+    <ClInclude Include="ellipse_editor.h" />
     <ClInclude Include="ellipse_shape.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lab2.h" />
+    <ClInclude Include="line_editor.h" />
     <ClInclude Include="line_shape.h" />
+    <ClInclude Include="point_editor.h" />
     <ClInclude Include="point_shape.h" />
+    <ClInclude Include="rect_editor.h" />
     <ClInclude Include="rect_shape.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="resource1.h" />
@@ -156,11 +160,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="about.cpp" />
-    <ClCompile Include="editor.cpp" />
+    <ClCompile Include="ellipse_editor.cpp" />
     <ClCompile Include="ellipse_shape.cpp" />
     <ClCompile Include="Lab2.cpp" />
+    <ClCompile Include="line_editor.cpp" />
     <ClCompile Include="line_shape.cpp" />
+    <ClCompile Include="point_editor.cpp" />
     <ClCompile Include="point_shape.cpp" />
+    <ClCompile Include="rect_editor.cpp" />
     <ClCompile Include="rect_shape.cpp" />
     <ClCompile Include="shape.cpp" />
     <ClCompile Include="shape_editor.cpp" />

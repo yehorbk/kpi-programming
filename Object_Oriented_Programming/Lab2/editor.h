@@ -5,8 +5,8 @@
 class Editor
 {
 public:
-	virtual void OnLBdown(HWND) = 0;
-	virtual void OnLBup(HWND) = 0;
-	virtual void OnMouseMove(HWND) = 0;
-	virtual void OnPaint(HWND) = 0;
+	virtual void OnLBdown() = 0;
+	virtual void OnLBup() = 0;
+	virtual void OnMouseMove() = 0;
+	virtual void OnPaint() = 0;
 };

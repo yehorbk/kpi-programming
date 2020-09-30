@@ -1,12 +1,16 @@
 #pragma once
 
-#include "editor.h"
+#include "shape_editor.h"
 
-class PointEditor : public Editor
+class PointEditor : public ShapeEditor
 {
+private:
+	HDC hdc;
+
 public:
-	void OnLBdown(HWND hWnd);
-	void OnLBup(HWND hWnd);
-	void OnMouseMove(HWND hWnd);
-	void OnPaint(HWND hWnd);
+	PointEditor(HWND);
+	void OnLBdown();
+	void OnLBup();
+	void OnMouseMove();
+	void OnPaint();
 };

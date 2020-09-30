@@ -1,22 +1,23 @@
 #pragma once
 
 #include "framework.h"
-#include "editor.h"
+#include "shape_editor.h"
 
 class ShapeObjectBuilder
 {
 private:
-	Editor* editor;
+	HWND hWnd;
+	ShapeEditor* shapeEditor;
 
 public:
-	ShapeObjectBuilder(void);
+	ShapeObjectBuilder(HWND);
 	~ShapeObjectBuilder();
 	void StartPointEditor();
 	void StartLineEditor();
 	void StartRectEditor();
 	void StartEllipseEditor();
-	void OnLBdown(HWND);
-	void OnLBup(HWND);
-	void OnMouseMove(HWND);
-	void OnPaint(HWND);
+	void OnLBdown();
+	void OnLBup();
+	void OnMouseMove();
+	void OnPaint();
 };

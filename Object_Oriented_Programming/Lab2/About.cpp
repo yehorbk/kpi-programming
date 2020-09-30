@@ -1,7 +1,7 @@
 #include "About.rh"
 #include "About.h"
 
-static BOOL CALLBACK aboutCallback(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM);
+static BOOL CALLBACK aboutCallback(HWND, UINT, WPARAM, LPARAM);
 
 int aboutInterface(HINSTANCE hInst, HWND hWnd)
 {
