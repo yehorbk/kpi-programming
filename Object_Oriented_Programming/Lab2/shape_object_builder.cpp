@@ -16,22 +16,26 @@ ShapeObjectBuilder::~ShapeObjectBuilder() {
 
 void ShapeObjectBuilder::StartPointEditor()
 {
-	this->shapeEditor = new PointEditor(this->hWnd);
+	PointEditor* pointEditor = new PointEditor(this->hWnd);
+	this->setUpEditor(pointEditor);
 }
 
 void ShapeObjectBuilder::StartLineEditor()
 {
-	this->shapeEditor = new LineEditor(this->hWnd);
+	LineEditor* lineEditor = new LineEditor(this->hWnd);
+	this->setUpEditor(lineEditor);
 }
 
 void ShapeObjectBuilder::StartRectEditor()
 {
-	this->shapeEditor = new RectEditor(this->hWnd);
+	RectEditor* rectEditor = new RectEditor(this->hWnd);
+	this->setUpEditor(rectEditor);
 }
 
 void ShapeObjectBuilder::StartEllipseEditor()
 {
-	this->shapeEditor = new EllipseEditor(this->hWnd);
+	EllipseEditor* ellipseEditor = new EllipseEditor(this->hWnd);
+	this->setUpEditor(ellipseEditor);
 }
 
 void ShapeObjectBuilder::OnLBdown()
@@ -64,4 +68,14 @@ void ShapeObjectBuilder::OnPaint()
 	{
 		this->shapeEditor->OnPaint();
 	}
+}
+
+void ShapeObjectBuilder::setUpEditor(ShapeEditor* _shapeEditor)
+{
+	if (this->shapeEditor)
+	{
+		_shapeEditor->init(this->shapeEditor->getShapes(),
+			this->shapeEditor->getCounter());
+	}
+	this->shapeEditor = _shapeEditor;
 }

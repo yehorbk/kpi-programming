@@ -1,7 +1,7 @@
 #include "point_editor.h"
 #include "point_shape.h"
 
-PointEditor::PointEditor(HWND hWnd) : ShapeEditor(hWnd) {}
+PointEditor::PointEditor(HWND _hWnd) : ShapeEditor(_hWnd) {}
 
 void PointEditor::OnLBdown()
 {
@@ -19,9 +19,4 @@ void PointEditor::OnMouseMove()
 	POINT pt = this->getMousePosition();
 	pointShape.Set(pt.x, pt.y, pt.x, pt.y);
 	pointShape.Show(hdc);
-}
-
-void PointEditor::OnPaint()
-{
-
 }

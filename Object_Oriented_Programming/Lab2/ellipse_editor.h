@@ -9,5 +9,4 @@ public:
 	void OnLBdown();
 	void OnLBup();
 	void OnMouseMove();
-	void OnPaint();
 };

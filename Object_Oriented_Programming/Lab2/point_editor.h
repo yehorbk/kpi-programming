@@ -8,9 +8,8 @@ private:
 	HDC hdc;
 
 public:
-	PointEditor(HWND);
+	PointEditor(HWND _hWnd);
 	void OnLBdown();
 	void OnLBup();
 	void OnMouseMove();
-	void OnPaint();
 };

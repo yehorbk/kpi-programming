@@ -8,6 +8,7 @@ class ShapeObjectBuilder
 private:
 	HWND hWnd;
 	ShapeEditor* shapeEditor;
+	void setUpEditor(ShapeEditor* _shapeEditor);
 
 public:
 	ShapeObjectBuilder(HWND);
