@@ -10,8 +10,14 @@ ShapeObjectBuilder::ShapeObjectBuilder(HWND _hWnd) {
 }
 
 ShapeObjectBuilder::~ShapeObjectBuilder() {
-	delete(this->hWnd);
-	delete(this->shapeEditor);
+	delete this->hWnd;
+	Shape** shapes = this->shapeEditor->getShapes();
+	for (int i = 0; i < this->shapeEditor->getCounter(); i++)
+	{
+		delete shapes[i];
+	}
+	delete shapes;
+	delete this->shapeEditor;
 }
 
 void ShapeObjectBuilder::StartPointEditor()

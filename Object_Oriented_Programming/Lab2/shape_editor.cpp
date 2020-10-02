@@ -9,14 +9,6 @@ ShapeEditor::ShapeEditor(HWND _hWnd)
 	this->isEdit = false;
 }
 
-ShapeEditor::~ShapeEditor() // TODO
-{
-	/*for (int i = 0; i < this->getShapesSize(); i++)
-	{
-		delete this->pcshape[i];
-	}*/
-}
-
 void ShapeEditor::OnLBdown()
 {
 	POINT pt = this->getMousePosition();
@@ -59,11 +51,12 @@ bool ShapeEditor::appendShape(Shape* shape)
 	return false;
 }
 
-bool ShapeEditor::removeLastShape() // TODO
+bool ShapeEditor::removeLastShape()
 {
 	if (this->counter > 0)
 	{
 		this->pcshape[--this->counter] = NULL;
+		delete this->pcshape[this->counter];
 		this->redrawWindow();
 		return true;
 	}

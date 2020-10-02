@@ -27,7 +27,6 @@ protected:
 
 public:
 	ShapeEditor(HWND _hWnd);
-	~ShapeEditor();
 	void OnLBdown();
 	void OnPaint();
 	void init(Shape** _pcshape, int _counter);
