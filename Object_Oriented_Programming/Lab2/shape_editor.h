@@ -18,20 +18,21 @@ protected:
 	short x2;
 	short y2;
 	bool isEdit;
-
-public:
-	ShapeEditor(HWND _hWnd);
-	void OnLBdown();
-	void OnPaint();
-	void init(Shape** _pcshape, int _counter);
-	bool appendShape(Shape* shape);
-	bool removeLastShape();
 	POINT getMousePosition();
 	HDC openDrawer();
 	void closeDrawer(HDC hdc);
 	HPEN updatePen(HDC hdc, COLORREF color);
 	HPEN updatePen(HDC hdc, HPEN hpen);
 	void redrawWindow();
+
+public:
+	ShapeEditor(HWND _hWnd);
+	~ShapeEditor();
+	void OnLBdown();
+	void OnPaint();
+	void init(Shape** _pcshape, int _counter);
+	bool appendShape(Shape* shape);
+	bool removeLastShape();
 	Shape** getShapes();
 	int getCounter();
 };

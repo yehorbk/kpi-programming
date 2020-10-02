@@ -7,8 +7,10 @@ void LineEditor::OnLBup()
 {
 	this->isEdit = false;
 	POINT pt = this->getMousePosition();
+	this->x2 = pt.x;
+	this->y2 = pt.y;
 	LineShape* lineShape = new LineShape();
-	(*lineShape).Set(this->x1, this->y1, pt.x, pt.y);
+	(*lineShape).Set(this->x1, this->y1, this->x2, this->y2);
 	this->appendShape(lineShape);
 	this->redrawWindow();
 }

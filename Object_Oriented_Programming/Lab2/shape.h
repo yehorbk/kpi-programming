@@ -5,10 +5,10 @@
 class Shape
 {
 protected:
-	short x1;
-	short y1;
-	short x2;
-	short y2;
+	short x1 = -1;
+	short y1 = -1;
+	short x2 = -1;
+	short y2 = -1;
 
 public:
 	virtual void Show(HDC) = 0;

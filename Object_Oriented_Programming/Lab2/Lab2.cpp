@@ -9,20 +9,16 @@
     - прямокутник:
         - вiд центру до одного з кутiв (5 mod 2 = 1);
         - чорний контур з бiлим заповненням (5 mod 5 = 0);
-        - сiрий (5 mod 6 = 5); // Не потрiбно, тому що прямокутник з бiлим заповненням
     - елiпс:
         - по двом протилежним кутам охоплюючого прямокутника (5 mod 2 = 1);
         - чорний контур без заповнення (5 mod 5 = 0);
-        - помаранчевий (5 mod 6 = 5); // Не потрiбно, тому що елiпс без заповнення
     - позначка поточного типу об'єкту: в заголовку вiкна (5 mod 2 = 1 ).
 */
-
-#include "Shlwapi.h"
 
 #include "Lab2.rh"
 #include "Lab2.h"
 
-#include "About.h"
+#include "about.h"
 #include "shape_object_builder.h"
 #include "tool.h"
 
@@ -127,8 +123,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             int wmId = LOWORD(wParam);
             switch (wmId)
             {
-            case IDM_ABOUT:
-                aboutInterface(hInst, hWnd);
+            case IDM_EXIT:
+                DestroyWindow(hWnd);
                 break;
             case IDM_POINT:
                 changeTool(hWnd, Tool::POINT);
@@ -149,8 +145,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_UNDO:
                 shapeObjectBuilder->undo();
                 break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
+            case IDM_ABOUT:
+                aboutInterface(hInst, hWnd);
                 break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);

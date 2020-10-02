@@ -19,7 +19,7 @@ void EllipseEditor::OnMouseMove()
 {
 	if (!this->isEdit)
 	{
-		return;
+		return ;
 	}
 	POINT pt = this->getMousePosition();
 	HDC hdc = this->openDrawer();

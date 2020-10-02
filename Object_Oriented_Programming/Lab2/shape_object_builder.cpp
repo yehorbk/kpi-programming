@@ -84,6 +84,7 @@ void ShapeObjectBuilder::setUpEditor(ShapeEditor* _shapeEditor)
 	{
 		_shapeEditor->init(this->shapeEditor->getShapes(),
 			this->shapeEditor->getCounter());
+		delete this->shapeEditor;
 	}
 	this->shapeEditor = _shapeEditor;
 }
