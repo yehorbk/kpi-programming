@@ -157,6 +157,7 @@
     <ClInclude Include="shape_editor.h" />
     <ClInclude Include="shape_object_builder.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="tool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="about.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="shape.cpp" />
     <ClCompile Include="shape_editor.cpp" />
     <ClCompile Include="shape_object_builder.cpp" />
+    <ClCompile Include="tool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="about.rc" />

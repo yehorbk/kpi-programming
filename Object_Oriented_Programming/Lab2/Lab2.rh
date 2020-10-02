@@ -4,3 +4,5 @@
 #define IDM_LINE 1002
 #define IDM_RECT 1003
 #define IDM_ELLIPSE 1004
+
+#define IDM_UNDO 1011

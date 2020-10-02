@@ -9,19 +9,22 @@
     - прямокутник:
         - вiд центру до одного з кутiв (5 mod 2 = 1);
         - чорний контур з бiлим заповненням (5 mod 5 = 0);
-        - сiрий (5 mod 6 = 5);
+        - сiрий (5 mod 6 = 5); // Не потрiбно, тому що прямокутник з бiлим заповненням
     - елiпс:
         - по двом протилежним кутам охоплюючого прямокутника (5 mod 2 = 1);
         - чорний контур без заповнення (5 mod 5 = 0);
-        - помаранчевий (5 mod 6 = 5);
+        - помаранчевий (5 mod 6 = 5); // Не потрiбно, тому що елiпс без заповнення
     - позначка поточного типу об'єкту: в заголовку вiкна (5 mod 2 = 1 ).
 */
+
+#include "Shlwapi.h"
 
 #include "Lab2.rh"
 #include "Lab2.h"
 
 #include "About.h"
 #include "shape_object_builder.h"
+#include "tool.h"
 
 #define MAX_LOADSTRING 100
 
@@ -38,8 +41,9 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-static void changeEditor(HWND, void (*)(), const char*);
-static void updateWindowTitle(HWND, const char*);
+static void changeTool(HWND hWnd, Tool tool);
+static void updateWindowTitle(HWND hWnd, LPCSTR title);
+static void updateMenuItem(HWND hWnd, int id);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -127,20 +131,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 aboutInterface(hInst, hWnd);
                 break;
             case IDM_POINT:
-                SetWindowTextA(hWnd, LPCSTR("Point"));
+                changeTool(hWnd, Tool::POINT);
                 shapeObjectBuilder->StartPointEditor();
                 break;
             case IDM_LINE:
-                SetWindowTextA(hWnd, LPCSTR("Line"));
+                changeTool(hWnd, Tool::LINE);
                 shapeObjectBuilder->StartLineEditor();
                 break;
             case IDM_RECT:
-                SetWindowTextA(hWnd, LPCSTR("Rect"));
+                changeTool(hWnd, Tool::RECT);
                 shapeObjectBuilder->StartRectEditor();
                 break;
             case IDM_ELLIPSE:
-                SetWindowTextA(hWnd, LPCSTR("Ellipse"));
+                changeTool(hWnd, Tool::ELLIPSE);
                 shapeObjectBuilder->StartEllipseEditor();
+                break;
+            case IDM_UNDO:
+                shapeObjectBuilder->undo();
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
@@ -167,15 +174,27 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-static void changeEditor(HWND hWnd, void (*editorStarter)(), const char* editorTitle)
+static void changeTool(HWND hWnd, Tool tool)
 {
-    editorStarter();
-    updateWindowTitle(hWnd, editorTitle);
+    updateWindowTitle(hWnd, tool.getTitle());
+    updateMenuItem(hWnd, tool.getMenuItemId());
 }
 
-static void updateWindowTitle(HWND hWnd, const char* title)
+static void updateWindowTitle(HWND hWnd, LPCSTR title)
 {
-    char baseTitle[] = "Hello";
-    char separator[] = " - ";
-    SetWindowTextA(hWnd, LPCSTR(baseTitle + *separator + *title));
+    SetWindowTextA(hWnd, title);
+}
+
+static void updateMenuItem(HWND hWnd, int id)
+{
+    HMENU hMenu = GetMenu(hWnd);
+    HMENU hSubMenu = GetSubMenu(hMenu, 1);
+    CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+    CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+    CheckMenuItem(hSubMenu, IDM_RECT, MF_UNCHECKED);
+    CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+    if (id != -1)
+    {
+        CheckMenuItem(hSubMenu, id, MF_CHECKED);
+    }
 }

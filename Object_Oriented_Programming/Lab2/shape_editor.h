@@ -21,6 +21,7 @@ protected:
 
 public:
 	ShapeEditor(HWND _hWnd);
+	void OnLBdown();
 	void OnPaint();
 	void init(Shape** _pcshape, int _counter);
 	bool appendShape(Shape* shape);
@@ -28,6 +29,8 @@ public:
 	POINT getMousePosition();
 	HDC openDrawer();
 	void closeDrawer(HDC hdc);
+	HPEN updatePen(HDC hdc, COLORREF color);
+	HPEN updatePen(HDC hdc, HPEN hpen);
 	void redrawWindow();
 	Shape** getShapes();
 	int getCounter();

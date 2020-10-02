@@ -12,5 +12,5 @@ protected:
 
 public:
 	virtual void Show(HDC) = 0;
-	void Set(short _x1, short _y1, short _x2, short _y2);
+	Shape* Set(short _x1, short _y1, short _x2, short _y2);
 };

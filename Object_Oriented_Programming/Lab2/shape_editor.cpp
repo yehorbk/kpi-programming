@@ -12,6 +12,16 @@ int ShapeEditor::getShapesSize()
 	return sizeof(this->pcshape) / sizeof(*this->pcshape);
 }
 
+void ShapeEditor::OnLBdown()
+{
+	POINT pt = this->getMousePosition();
+	this->x1 = pt.x;
+	this->y1 = pt.y;
+	this->x2 = pt.x;
+	this->y2 = pt.y;
+	this->isEdit = true;
+}
+
 void ShapeEditor::OnPaint()
 {
 	HDC hdc = this->openDrawer();
@@ -46,9 +56,10 @@ bool ShapeEditor::appendShape(Shape* shape)
 
 bool ShapeEditor::removeLastShape()
 {
-	if (this->getShapesSize() > 0)
+	if (this->counter > 0)
 	{
-		delete(this->pcshape[this->counter--]);
+		this->pcshape[--this->counter] = NULL;
+		this->redrawWindow();
 		return true;
 	}
 	return false;
@@ -70,6 +81,17 @@ HDC ShapeEditor::openDrawer()
 void ShapeEditor::closeDrawer(HDC hdc)
 {
 	ReleaseDC(this->hWnd, hdc);
+}
+
+HPEN ShapeEditor::updatePen(HDC hdc, COLORREF color)
+{
+	HPEN newPen = CreatePen(PS_SOLID, 1, color);
+	return (HPEN)SelectObject(hdc, newPen);
+}
+
+HPEN ShapeEditor::updatePen(HDC hdc, HPEN hpen)
+{
+	return (HPEN)SelectObject(hdc, hpen);
 }
 
 void ShapeEditor::redrawWindow()

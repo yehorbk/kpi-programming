@@ -21,4 +21,5 @@ public:
 	void OnLBup();
 	void OnMouseMove();
 	void OnPaint();
+	void undo();
 };

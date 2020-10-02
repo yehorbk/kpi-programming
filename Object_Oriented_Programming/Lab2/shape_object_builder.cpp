@@ -70,6 +70,14 @@ void ShapeObjectBuilder::OnPaint()
 	}
 }
 
+void ShapeObjectBuilder::undo()
+{
+	if (this->shapeEditor)
+	{
+		this->shapeEditor->removeLastShape();
+	}
+}
+
 void ShapeObjectBuilder::setUpEditor(ShapeEditor* _shapeEditor)
 {
 	if (this->shapeEditor)

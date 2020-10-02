@@ -6,7 +6,6 @@ class EllipseEditor : public ShapeEditor
 {
 public:
 	EllipseEditor(HWND _hWnd);
-	void OnLBdown();
 	void OnLBup();
 	void OnMouseMove();
 };

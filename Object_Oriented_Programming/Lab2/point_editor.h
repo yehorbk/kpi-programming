@@ -9,7 +9,6 @@ private:
 
 public:
 	PointEditor(HWND _hWnd);
-	void OnLBdown();
 	void OnLBup();
 	void OnMouseMove();
 };
