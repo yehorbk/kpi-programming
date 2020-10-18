@@ -23,7 +23,7 @@ void EllipseEditor::OnMouseMove()
 	}
 	POINT pt = this->getMousePosition();
 	HDC hdc = this->openDrawer();
-	HPEN oldPen = this->updatePen(hdc, RGB(255, 0, 0));
+	HPEN oldPen = this->updatePen(hdc, RGB(0, 0, 255));
 	SetROP2(hdc, R2_NOTXORPEN);
 	EllipseShape().Set(this->x1, this->y1, this->x2, this->y2)->Show(hdc);
 	this->x2 = pt.x;

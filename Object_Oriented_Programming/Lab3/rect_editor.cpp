@@ -25,7 +25,7 @@ void RectEditor::OnMouseMove()
 	}
 	POINT pt = this->getMousePosition();
 	HDC hdc = this->openDrawer();
-	HPEN oldPen = this->updatePen(hdc, RGB(255, 0, 0));
+	HPEN oldPen = this->updatePen(hdc, RGB(0, 0, 255));
 	SetROP2(hdc, R2_NOTXORPEN);
 	int x = 2 * this->x1 - this->x2;
 	int y = 2 * this->y1 - this->y2;
