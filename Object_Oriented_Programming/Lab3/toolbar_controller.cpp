@@ -1,4 +1,5 @@
 #include "toolbar_controller.h"
+#include <atlbase.h>
 
 ToolbarController::ToolbarController(HWND hWnd)
 {
@@ -23,7 +24,7 @@ ToolbarController::ToolbarController(HWND hWnd)
 	tbb[3].fsStyle = TBSTYLE_BUTTON;
 	tbb[3].idCommand = ID_TOOL_ELLIPSE;
 	this->instance = CreateToolbarEx(this->parent,
-		WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP,
+		WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
 		IDC_TOOLBAR, 1, HINST_COMMCTRL, IDB_STD_SMALL_COLOR,
 		tbb, 4, 0, 0, 0, 0, sizeof(TBBUTTON));
 }
@@ -45,29 +46,31 @@ bool ToolbarController::OnButtonPress(Tool tool)
 
 void ToolbarController::OnNotify(WPARAM wParam, LPARAM lParam)
 {
+	USES_CONVERSION;
 	LPNMHDR pnmh = (LPNMHDR)lParam;
-	LPSTR pText;
+	LPCWSTR pText = L"";
 	if (pnmh->code == TTN_NEEDTEXT)
 	{
 		LPTOOLTIPTEXT lpttt = (LPTOOLTIPTEXT)lParam;
 		switch (lpttt->hdr.idFrom)
 		{
 		case ID_TOOL_POINT:
-			pText = LPSTR(Tool(Tool::POINT).getTitle());
+			pText = A2W(Tool(Tool::POINT).getTitle());
 			break;
 		case ID_TOOL_LINE:
-			pText = LPSTR(Tool(Tool::LINE).getTitle());
+			pText = A2W(Tool(Tool::LINE).getTitle());
 			break;
 		case ID_TOOL_RECT:
-			pText = LPSTR(Tool(Tool::RECT).getTitle());
+			pText = A2W(Tool(Tool::RECT).getTitle());
 			break;
 		case ID_TOOL_ELLIPSE:
-			pText = LPSTR(Tool(Tool::ELLIPSE).getTitle());
+			pText = A2W(Tool(Tool::ELLIPSE).getTitle());
 			break;
 		default:
-			pText = LPSTR("ўось невiдоме");
+			pText = L"ўось невiдоме";
+			break;
 		}
-		lstrcpy(lpttt->szText, LPCWSTR(pText));
+		lstrcpy(lpttt->szText, pText);
 	}
 }
 

@@ -11,12 +11,15 @@ ShapeObjectBuilder::ShapeObjectBuilder(HWND _hWnd) {
 }
 
 ShapeObjectBuilder::~ShapeObjectBuilder() {
-	Shape** shapes = this->shapeEditor->getShapes();
-	for (int i = 0; i < this->shapeEditor->getCounter(); i++)
+	if (this->shapeEditor)
 	{
-		delete shapes[i];
+		Shape** shapes = this->shapeEditor->getShapes();
+		for (int i = 0; i < this->shapeEditor->getCounter(); i++)
+		{
+			delete shapes[i];
+		}
+		delete shapes;
 	}
-	delete shapes;
 	delete this->shapeEditor;
 }
 

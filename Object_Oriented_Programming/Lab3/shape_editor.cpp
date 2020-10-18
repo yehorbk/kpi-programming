@@ -9,11 +9,6 @@ ShapeEditor::ShapeEditor(HWND _hWnd)
 	this->isEdit = false;
 }
 
-ShapeEditor::~ShapeEditor()
-{
-	//delete this->pcshape;
-}
-
 void ShapeEditor::OnLBdown()
 {
 	POINT pt = this->getMousePosition();
