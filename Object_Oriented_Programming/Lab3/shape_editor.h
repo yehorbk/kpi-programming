@@ -3,6 +3,7 @@
 #include "framework.h"
 #include "editor.h"
 #include "shape.h"
+#include "rect_shape.h"
 
 class ShapeEditor : public Editor
 {
