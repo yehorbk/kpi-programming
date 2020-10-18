@@ -84,6 +84,9 @@
     <ClInclude Include="Lab3.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="toolbar_controller.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shape.cpp">
@@ -128,6 +131,9 @@
     <ClCompile Include="Lab3.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="toolbar_controller.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="about.rc">
@@ -151,6 +157,9 @@
     </None>
     <None Include="ClassDiagram.cd" />
     <None Include="Lab3.rh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="toolbar.rh">
       <Filter>Файлы ресурсов</Filter>
     </None>
   </ItemGroup>

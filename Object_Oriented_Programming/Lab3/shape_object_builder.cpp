@@ -7,10 +7,10 @@
 ShapeObjectBuilder::ShapeObjectBuilder(HWND _hWnd) {
 	this->hWnd = _hWnd;
 	this->shapeEditor = NULL;
+	this->isEditorEnabled = FALSE;
 }
 
 ShapeObjectBuilder::~ShapeObjectBuilder() {
-	delete this->hWnd;
 	Shape** shapes = this->shapeEditor->getShapes();
 	for (int i = 0; i < this->shapeEditor->getCounter(); i++)
 	{
@@ -44,9 +44,19 @@ void ShapeObjectBuilder::StartEllipseEditor()
 	this->setUpEditor(ellipseEditor);
 }
 
+void ShapeObjectBuilder::enableEditor()
+{
+	this->isEditorEnabled = TRUE;
+}
+
+void ShapeObjectBuilder::disableEditor()
+{
+	this->isEditorEnabled = FALSE;
+}
+
 void ShapeObjectBuilder::OnLBdown()
 {
-	if (this->shapeEditor)
+	if (this->shapeEditor && this->isEditorEnabled)
 	{
 		this->shapeEditor->OnLBdown();
 	}
@@ -54,7 +64,7 @@ void ShapeObjectBuilder::OnLBdown()
 
 void ShapeObjectBuilder::OnLBup()
 {
-	if (this->shapeEditor)
+	if (this->shapeEditor && this->isEditorEnabled)
 	{
 		this->shapeEditor->OnLBup();
 	}
@@ -62,7 +72,7 @@ void ShapeObjectBuilder::OnLBup()
 
 void ShapeObjectBuilder::OnMouseMove()
 {
-	if (this->shapeEditor)
+	if (this->shapeEditor && this->isEditorEnabled)
 	{
 		this->shapeEditor->OnMouseMove();
 	}
@@ -70,7 +80,7 @@ void ShapeObjectBuilder::OnMouseMove()
 
 void ShapeObjectBuilder::OnPaint()
 {
-	if (this->shapeEditor)
+	if (this->shapeEditor && this->isEditorEnabled)
 	{
 		this->shapeEditor->OnPaint();
 	}
@@ -78,7 +88,7 @@ void ShapeObjectBuilder::OnPaint()
 
 void ShapeObjectBuilder::undo()
 {
-	if (this->shapeEditor)
+	if (this->shapeEditor && this->isEditorEnabled)
 	{
 		this->shapeEditor->removeLastShape();
 	}
@@ -93,4 +103,5 @@ void ShapeObjectBuilder::setUpEditor(ShapeEditor* _shapeEditor)
 		delete this->shapeEditor;
 	}
 	this->shapeEditor = _shapeEditor;
+	this->enableEditor();
 }

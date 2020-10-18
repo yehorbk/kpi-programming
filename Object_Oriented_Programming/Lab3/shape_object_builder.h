@@ -8,6 +8,7 @@ class ShapeObjectBuilder
 private:
 	HWND hWnd;
 	ShapeEditor* shapeEditor;
+	bool isEditorEnabled;
 	void setUpEditor(ShapeEditor* _shapeEditor);
 
 public:
@@ -17,6 +18,8 @@ public:
 	void StartLineEditor();
 	void StartRectEditor();
 	void StartEllipseEditor();
+	void enableEditor();
+	void disableEditor();
 	void OnLBdown();
 	void OnLBup();
 	void OnMouseMove();

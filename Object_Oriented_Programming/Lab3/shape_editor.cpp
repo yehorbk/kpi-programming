@@ -11,7 +11,7 @@ ShapeEditor::ShapeEditor(HWND _hWnd)
 
 ShapeEditor::~ShapeEditor()
 {
-	delete this->pcshape;
+	//delete this->pcshape;
 }
 
 void ShapeEditor::OnLBdown()

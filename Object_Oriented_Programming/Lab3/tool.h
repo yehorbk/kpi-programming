@@ -13,9 +13,11 @@ public:
 private:
 	LPCSTR title;
 	int menuItemId;
-	Tool(LPCSTR _title, int _menuItemId);
+	int toolbarItemId;
+	Tool(LPCSTR _title, int _menuItemId, int _toolbarItemuId);
 
 public:
 	LPCSTR getTitle();
 	int getMenuItemId();
+	int getToolbarItemId();
 };

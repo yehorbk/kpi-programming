@@ -19,6 +19,7 @@
 #include "Lab3.rh"
 #include "Lab3.h"
 
+#include "toolbar_controller.h"
 #include "about.h"
 #include "shape_object_builder.h"
 #include "tool.h"
@@ -30,6 +31,7 @@ HINSTANCE hInst;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
+ToolbarController* toolbarController;
 ShapeObjectBuilder* shapeObjectBuilder;
 
 // Functions Declaration
@@ -41,6 +43,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 static void changeTool(HWND hWnd, Tool tool);
 static void updateWindowTitle(HWND hWnd, LPCSTR title);
 static void updateMenuItem(HWND hWnd, int id);
+static void disableEdition(HWND hWnd);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -108,6 +111,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_CREATE:
+        
+        toolbarController = new ToolbarController(hWnd);
         shapeObjectBuilder = new ShapeObjectBuilder(hWnd);
         break;
     case WM_LBUTTONDOWN:
@@ -127,21 +132,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
+            case ID_TOOL_POINT:
             case IDM_POINT:
-                changeTool(hWnd, Tool::POINT);
                 shapeObjectBuilder->StartPointEditor();
+                changeTool(hWnd, Tool::POINT);
                 break;
+            case ID_TOOL_LINE:
             case IDM_LINE:
-                changeTool(hWnd, Tool::LINE);
                 shapeObjectBuilder->StartLineEditor();
+                changeTool(hWnd, Tool::LINE);
                 break;
+            case ID_TOOL_RECT:
             case IDM_RECT:
-                changeTool(hWnd, Tool::RECT);
                 shapeObjectBuilder->StartRectEditor();
+                changeTool(hWnd, Tool::RECT);
                 break;
+            case ID_TOOL_ELLIPSE:
             case IDM_ELLIPSE:
-                changeTool(hWnd, Tool::ELLIPSE);
                 shapeObjectBuilder->StartEllipseEditor();
+                changeTool(hWnd, Tool::ELLIPSE);
                 break;
             case IDM_UNDO:
                 shapeObjectBuilder->undo();
@@ -153,6 +162,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
+        break;
+    case WM_SIZE:
+        toolbarController->OnSize();
+        break;
+    case WM_NOTIFY:
+        toolbarController->OnNotify(wParam, lParam);
         break;
     case WM_PAINT:
         {
@@ -174,13 +189,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 static void changeTool(HWND hWnd, Tool tool)
 {
-    updateWindowTitle(hWnd, tool.getTitle());
-    updateMenuItem(hWnd, tool.getMenuItemId());
+    if (toolbarController->OnButtonPress(tool))
+    {
+        shapeObjectBuilder->enableEditor();
+        updateWindowTitle(hWnd, tool.getTitle());
+        updateMenuItem(hWnd, tool.getMenuItemId());
+    }
+    else
+    {
+        shapeObjectBuilder->disableEditor();
+        disableEdition(hWnd);
+    }
 }
 
 static void updateWindowTitle(HWND hWnd, LPCSTR title)
 {
-    SetWindowTextA(hWnd, title);
+    SetWindowTextA(hWnd, title ? title : "Lab3");
 }
 
 static void updateMenuItem(HWND hWnd, int id)
@@ -195,4 +219,10 @@ static void updateMenuItem(HWND hWnd, int id)
     {
         CheckMenuItem(hSubMenu, id, MF_CHECKED);
     }
+}
+
+static void disableEdition(HWND hWnd)
+{
+    updateWindowTitle(hWnd, NULL);
+    updateMenuItem(hWnd, -1);
 }
