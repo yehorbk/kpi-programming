@@ -154,6 +154,7 @@
     <ClInclude Include="rect_shape.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="shape.h" />
     <ClInclude Include="shape_editor.h" />
     <ClInclude Include="shape_object_builder.h" />
@@ -181,8 +182,10 @@
   <ItemGroup>
     <ResourceCompile Include="about.rc" />
     <ResourceCompile Include="Lab3.rc" />
+    <ResourceCompile Include="toolbar.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="bitmap1.bmp" />
     <Image Include="Lab3.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

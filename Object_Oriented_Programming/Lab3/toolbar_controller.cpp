@@ -7,26 +7,26 @@ ToolbarController::ToolbarController(HWND hWnd)
 	this->parent = hWnd;
 	TBBUTTON tbb[4];
 	ZeroMemory(tbb, sizeof(tbb));
-	tbb[0].iBitmap = STD_FILENEW;
+	tbb[0].iBitmap = 0;
 	tbb[0].fsState = TBSTATE_ENABLED;
 	tbb[0].fsStyle = TBSTYLE_BUTTON;
 	tbb[0].idCommand = ID_TOOL_POINT;
-	tbb[1].iBitmap = STD_FILEOPEN;
+	tbb[1].iBitmap = 1;
 	tbb[1].fsState = TBSTATE_ENABLED;
 	tbb[1].fsStyle = TBSTYLE_BUTTON;
 	tbb[1].idCommand = ID_TOOL_LINE;
-	tbb[2].iBitmap = STD_FILESAVE;
+	tbb[2].iBitmap = 2;
 	tbb[2].fsState = TBSTATE_ENABLED;
 	tbb[2].fsStyle = TBSTYLE_BUTTON;
 	tbb[2].idCommand = ID_TOOL_RECT;
-	tbb[3].iBitmap = STD_CUT;
+	tbb[3].iBitmap = 3;
 	tbb[3].fsState = TBSTATE_ENABLED;
 	tbb[3].fsStyle = TBSTYLE_BUTTON;
 	tbb[3].idCommand = ID_TOOL_ELLIPSE;
 	this->instance = CreateToolbarEx(this->parent,
 		WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
-		IDC_TOOLBAR, 1, HINST_COMMCTRL, IDB_STD_SMALL_COLOR,
-		tbb, 4, 0, 0, 0, 0, sizeof(TBBUTTON));
+		IDC_TOOLBAR, 4, GetModuleHandle(NULL), IDB_TOOLBAR,
+		tbb, 4, 24, 24, 24, 24, sizeof(TBBUTTON));
 }
 
 bool ToolbarController::OnButtonPress(Tool tool)

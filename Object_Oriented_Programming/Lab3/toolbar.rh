@@ -6,3 +6,5 @@
 #define ID_TOOL_LINE 6002
 #define ID_TOOL_RECT 6003
 #define ID_TOOL_ELLIPSE 6004
+
+#define IDB_TOOLBAR 6020

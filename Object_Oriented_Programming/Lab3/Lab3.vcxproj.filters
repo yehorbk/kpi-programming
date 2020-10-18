@@ -87,6 +87,9 @@
     <ClInclude Include="toolbar_controller.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shape.cpp">
@@ -142,12 +145,18 @@
     <ResourceCompile Include="Lab3.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
+    <ResourceCompile Include="toolbar.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="Lab3.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="bitmap1.bmp">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
