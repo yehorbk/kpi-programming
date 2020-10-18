@@ -2,11 +2,16 @@
 
 ShapeEditor::ShapeEditor(HWND _hWnd)
 {
-	*this->pcshape = {};
+	this->pcshape = new Shape*[this->getShapesSize()];
 	this->counter = 0;
 	this->hWnd = _hWnd;
 	this->x1 = this->x2 = this->y1 = this->y2 = -1;
 	this->isEdit = false;
+}
+
+ShapeEditor::~ShapeEditor()
+{
+	delete this->pcshape;
 }
 
 void ShapeEditor::OnLBdown()
@@ -22,7 +27,7 @@ void ShapeEditor::OnLBdown()
 void ShapeEditor::OnPaint()
 {
 	HDC hdc = this->openDrawer();
-	for (int i = 0; i < this->getShapesSize(); i++)
+	for (int i = 0; i < this->counter; i++)
 	{
 		if (this->pcshape[i])
 		{
@@ -35,7 +40,7 @@ void ShapeEditor::OnPaint()
 void ShapeEditor::init(Shape** _pcshape, int _counter)
 {
 	this->counter = _counter;
-	for (int i = 0; i < this->getShapesSize(); i++)
+	for (int i = 0; i < this->counter; i++)
 	{
 		this->pcshape[i] = _pcshape[i];
 	}
@@ -109,5 +114,5 @@ void ShapeEditor::redrawWindow()
 
 int ShapeEditor::getShapesSize()
 {
-	return sizeof(this->pcshape) / sizeof(*this->pcshape);
+	return 106;
 }
