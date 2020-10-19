@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ) resources
+// Русский (Россия) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
 LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
@@ -52,13 +52,13 @@ END
 
 2000 DIALOGEX 0, 0, 170, 62
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "IпїЅпїЅпїЅпїЅпїЅпїЅпїЅiпїЅ пїЅпїЅпїЅ Lab3"
+CAPTION "Iнформацiя про Lab3"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    ICON            128,IDC_STATIC,14,14,20,20
-    LTEXT           "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ2, пїЅпїЅпїЅiпїЅпїЅпїЅ пїЅ5",IDC_STATIC,42,14,114,8,SS_NOPREFIX
-    LTEXT           "(c) пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ IпїЅ-94",IDC_STATIC,42,26,114,8
-    DEFPUSHBUTTON   "пїЅпїЅ",IDOK,113,41,50,14,WS_GROUP
+    ICON            128,IDC_STATIC,14,14,21,20
+    LTEXT           "Лабораторна №3, варiант №5",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "(с) Бублик Єгор IП-94",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "ОК",IDOK,113,41,50,14,WS_GROUP
 END
 
 
@@ -80,7 +80,18 @@ BEGIN
 END
 #endif    // APSTUDIO_INVOKED
 
-#endif    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ) resources
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+2000 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // Русский (Россия) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

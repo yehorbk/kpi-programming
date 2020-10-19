@@ -13,7 +13,6 @@ private:
 	HWND instance;
 	HWND parent;
 	int selectedToolId;
-	void generateButtons();
 	void resetAllButtons();
 
 public:

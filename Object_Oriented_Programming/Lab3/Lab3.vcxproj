@@ -185,7 +185,7 @@
     <ResourceCompile Include="toolbar.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bitmap1.bmp" />
+    <Image Include="toolbar_icons.bmp" />
     <Image Include="Lab3.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

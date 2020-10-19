@@ -55,8 +55,8 @@ bool ShapeEditor::removeLastShape()
 {
 	if (this->counter > 0)
 	{
-		this->pcshape[--this->counter] = NULL;
-		delete this->pcshape[this->counter];
+		delete this->pcshape[--this->counter];
+		this->pcshape[this->counter] = NULL;
 		this->redrawWindow();
 		return true;
 	}

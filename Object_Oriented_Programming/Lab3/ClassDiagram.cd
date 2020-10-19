@@ -80,15 +80,22 @@
   <Class Name="ShapeObjectBuilder">
     <Position X="9.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAgQAEAAAAEAAAAAAAYAAAABQAAAAQEAgCAAAAAEA=</HashCode>
+      <HashCode>AACAgQAEAAAAEAQAAIAAYAAAABQAAAAQkAgCAAAAAEA=</HashCode>
       <FileName>shape_object_builder.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tool">
-    <Position X="9.75" Y="5.25" Width="1.5" />
+    <Position X="9.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAQAAAAMAAAAAAAAEAAgEAAAEAAAAAAAgAAAA=</HashCode>
+      <HashCode>AAAAAACAQAAAAMAAAAAAAAEAAgEABEEAAAAAAAgAAAA=</HashCode>
       <FileName>tool.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToolbarController">
+    <Position X="9.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQAAAAAAEAQABAAAAAAAAAAABAAAAAAAABgAAAIAA=</HashCode>
+      <FileName>toolbar_controller.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -50,7 +50,7 @@ END
 // Bitmap
 //
 
-6020                    BITMAP                  "bitmap1.bmp"
+6020                    BITMAP                  "toolbar_icons.bmp"
 
 #endif    // Русский (Россия) resources
 /////////////////////////////////////////////////////////////////////////////

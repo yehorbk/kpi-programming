@@ -83,7 +83,7 @@ void ShapeObjectBuilder::OnMouseMove()
 
 void ShapeObjectBuilder::OnPaint()
 {
-	if (this->shapeEditor && this->isEditorEnabled)
+	if (this->shapeEditor)
 	{
 		this->shapeEditor->OnPaint();
 	}
@@ -91,7 +91,7 @@ void ShapeObjectBuilder::OnPaint()
 
 void ShapeObjectBuilder::undo()
 {
-	if (this->shapeEditor && this->isEditorEnabled)
+	if (this->shapeEditor)
 	{
 		this->shapeEditor->removeLastShape();
 	}

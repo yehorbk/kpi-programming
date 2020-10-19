@@ -111,7 +111,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_CREATE:
-        
         toolbarController = new ToolbarController(hWnd);
         shapeObjectBuilder = new ShapeObjectBuilder(hWnd);
         break;
