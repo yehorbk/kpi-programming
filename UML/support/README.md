@@ -18,6 +18,21 @@
 
 ### Звернення до служби підтримки
 
+#### Учасники: Користувач, Служба підтримки.
+
+#### Передумови: У користувача з'явилося питання щодо роботи Системи.
+
+#### Результат: Питання користувача вирішено.
+
+1.	Користувач натискає спеціальну кнопку "Служба підтримки" у модулі "Обліковий запис";
+2.	Заповнює поля "Тема" та "Опис проблеми" у вікні що з'явилося;
+3.	Натискає кнопку "Відправити";
+4.	Служба підтримки отримує повідомлення користувача;
+5.	Вирішує проблему користувача;
+6.	Надсилає відповідь Користувачу на електронну пошту;
+7.	Користувач отримує електронного листа з відповіддю на своє питання;
+
+
 ![Звернення до служби підтримки](http://www.plantuml.com/plantuml/svg/bLHDRjfW4Dtx59-owQPAwQQBG52kaZIEMec6Yj1DnG9iAMcbA4XHHAHA8Mrp0OT28NPiNs7cHdtpP58L4wCkG9_Dc_SpCnzx9ztzJlVJXvRNye-wxfs_V-XtFAznr3xkkhVjLhkpMwlLtCdxp_xkwpVDna5JRYIIkKmasccyEcWwkSPvfdr9POPFgaCdKycS3YJHK7xBlIoSv3gIgGQ0BUHHObbiLshSwPb4O4W11xXG-YQP4UW0HA4vqBENJduywKJ_hNDBvpEKX81du5ngtJc9ot8cCN-XGmDAWjy75ZS7A92eIAzVGSGEz76u1oYGXTaa4yGUDxdw3j0SaecU6wy6XQVRVtIUymThsjUHVk4yiktgQOxPPIHdhnySs4vP61c9F53Qy_pZmwVbwAqRHC_Z9daxQyVaI1ZOIubnkeAEv6Z-AJGY2uf88IBHIoun7hOsJ7RB0SIfJTch4Ih6mE8aCHDP7fc3FpVXhRgPk-OZy-e5VF0XqI6AVt8s4NZHP9An3f1YaWa1XV24CgcEEF3oMb3jPYNrIi1BoqJwo4eD2fTURqFodb6FbsyqNCQOa2u324uhjuJcBfUBOWmhAJMigaGiE1emB6DH-Qy7FL-x1KQQMg8PHM8co6WqP09O0RZ-x8gLSvUfyFtBvf48YtbZImPXyO9UR0ydaBfQkSNrYZLlVwnxUxWG-DVy0m00)
 
 [UML-діаграма](https://github.com/nickname038/kpi-db-subgroup/blob/patch-1/UML/support/Diagrams/UC2.pu)
