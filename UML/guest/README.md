@@ -52,8 +52,8 @@
 1. Система надсилає лист із кодом підтвердження на вказану поштову адресу
 1. Гість отримує код та вводить його у поле для коду
 1. Гість заповнює інформацію про заклад: назва, розташування, власник, документи
-1. Система записує дані до бази та відправляє запит до Служби Підтримки
-1. Служба підтримки перевіряє інформацію
+1. Система записує дані до бази та відправляє запит до адміністратора
+1. Адміністратор перевіряє інформацію
 1. Гість отримує можливості представника
 
 ![UC3](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC3.pu)
@@ -65,15 +65,15 @@
 
 **Передумови**. Гість має створений обліковий запис користувача або представника
 
-**Результат**. Гість авторизується у Системі
+**Результат**. Гість авторизований у Системі
 
 1. Гість натискає на кнопку "Обліковий запис" у головному меню
 1. Гість натискає на кнопку "Авторизація"
 1. Гість заповнює поштову адресу та пароль
 1. Система перевіряє отримані дані із даними в базі
-1. Гість авторизован у Системі як користувач або представник
+1. Гість авторизований у Системі як користувач або представник
 
-![UC2](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC4.pu)
+![UC4](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC4.pu)
 
 [UML код](https://github.com/kpi-db-subgroup/kpi-db-subgroup/blob/master/UML/guest/Diagrams/UC4.pu)
 
@@ -82,14 +82,15 @@
 
 **Передумови**. Гість має створений обліковий запис Google або Facebook
 
-**Результат**. Гість авторизується у Системі
+**Результат**. Гість авторизований у Системі
 
 1. Гість натискає на кнопку "Обліковий запис" у головному меню
 1. Гість натискає на кнопку "Авторизація"
 1. Гість обирає авторизацію за допомогою Google або Facebook
 1. Гість авторизується на сторінці авторизації Google або Facebook
+1. Система записує дані до бази
 1. Гість має можливості користувача Системи
 
-![UC2](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC5.pu)
+![UC5](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC5.pu)
 
 [UML код](https://github.com/kpi-db-subgroup/kpi-db-subgroup/blob/master/UML/guest/Diagrams/UC5.pu)
