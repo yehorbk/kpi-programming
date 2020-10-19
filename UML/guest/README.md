@@ -13,6 +13,10 @@
 1. Гість отримує результати пошуку
 1. Публікація знайдена, гість може проглядати фото та читати коментарі
 
+![UC1](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC1.pu)
+
+[UML код](https://github.com/kpi-db-subgroup/kpi-db-subgroup/blob/master/UML/guest/Diagrams/UC1.pu)
+
 ## Реєстрація користувача
 #### Користувач, що знаходиться у гостьовому режимі має змогу створити обліковий запис користувача
 
@@ -29,6 +33,10 @@
 1. Гість заповнює інформацію про себе: біографія, рік народження, адреса, фото та пароль
 1. Система записує дані до бази
 1. Гість отримує можливості користувача
+
+![UC2](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC2.pu)
+
+[UML код](https://github.com/kpi-db-subgroup/kpi-db-subgroup/blob/master/UML/guest/Diagrams/UC2.pu)
 
 ## Реєстрація представника
 #### Користувач, що знаходиться у гостьовому режимі має змогу створити обліковий запис представника
@@ -48,6 +56,10 @@
 1. Служба підтримки перевіряє інформацію
 1. Гість отримує можливості представника
 
+![UC3](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC3.pu)
+
+[UML код](https://github.com/kpi-db-subgroup/kpi-db-subgroup/blob/master/UML/guest/Diagrams/UC3.pu)
+
 ## Авторизація користувача та представника за допомогою пошти
 #### Користувач, що знаходиться у гостьовому режимі має змогу авторизуватися за допомогою свого облікового запису користувача або представника.
 
@@ -61,6 +73,10 @@
 1. Система перевіряє отримані дані із даними в базі
 1. Гість авторизован у Системі як користувач або представник
 
+![UC2](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC4.pu)
+
+[UML код](https://github.com/kpi-db-subgroup/kpi-db-subgroup/blob/master/UML/guest/Diagrams/UC4.pu)
+
 ## Авторизація користувача за допомогою облікового запису Google чи Facebook
 #### Користувач, що знаходиться у гостьовому режимі має змогу авторизуватися за допомогою свого облікового запису Google або Facebook.
 
@@ -73,3 +89,7 @@
 1. Гість обирає авторизацію за допомогою Google або Facebook
 1. Гість авторизується на сторінці авторизації Google або Facebook
 1. Гість має можливості користувача Системи
+
+![UC2](http://www.plantuml.com/plantuml/proxy?idx=0&src=https://raw.githubusercontent.com/kpi-db-subgroup/kpi-db-subgroup/master/UML/guest/Diagrams/UC5.pu)
+
+[UML код](https://github.com/kpi-db-subgroup/kpi-db-subgroup/blob/master/UML/guest/Diagrams/UC5.pu)
