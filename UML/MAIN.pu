@@ -1,0 +1,74 @@
+@startuml
+right header
+<font size=24 color=black>Package: <b>Main
+end header
+
+title
+<font size=18 color=black>Trip Lite
+<font size=16 color=black>Діаграма прецедентів
+end title
+
+actor "Гість" as Guest
+actor "Користувач" as User
+actor "Служба підтримки" as Support
+actor "Адміністратор" as Admin
+
+' UCes for Guest:
+usecase "<b>UC_1</b>\nПошук публікацій" as UC1_Guest
+usecase "<b>UC_2</b>\nРеєстрація користувача" as UC2_Guest
+usecase "<b>UC_3</b>\nРеєстрація представника" as UC3_Guest
+usecase "<b>UC_4</b>\nАвторизація користувача та\nпредставника за допомогою\nпошти" as UC4_Guest
+usecase "<b>UC_5</b>\nАвторизація користувача за\nдопомогою облікового запису\nGoogle чи Facebook" as UC5_Guest
+
+' UCes for User:
+usecase "<b>UC_1</b>\nРедагування облікового\nзапису" as UC1_User
+usecase "<b>UC_2</b>\nЗбереження публікації" as UC2_User
+usecase "<b>UC_3</b>\nБронювання" as UC3_User
+usecase "<b>UC_4</b>\nКоментування" as UC4_User
+usecase "<b>UC_5</b>\nРейтингова оцінка\nзакладу/місця" as UC5_User
+usecase "<b>UC_6</b>\nСтворення публікації" as UC6_User
+usecase "<b>UC_7</b>\nРедагування публікації" as UC7_User
+
+' UCes for Support:
+usecase "<b>UC_1</b>\nМодерація контенту" as UC1_Support
+usecase "<b>UC_2</b>\nОтримання звернень \nвід користувачів" as UC2_Support
+
+' UCes for Admin:
+usecase "<b>UC_1</b>\nБлокування користувачів" as UC1_Admin
+usecase "<b>UC_2</b>\nВидалення публікацій та\nкоментарів" as UC2_Admin
+usecase "<b>UC_3</b>\nВерифікація облікових записів\nпредставкників закладів" as UC3_Admin
+
+' Actors connections
+User -u-|> Guest
+Support -u-|> User
+Admin -u-|> User
+
+
+' UCes connectios
+Guest -u-> UC1_Guest
+Guest -u-> UC2_Guest
+Guest -u-> UC3_Guest
+Guest -u-> UC4_Guest
+Guest -u-> UC5_Guest
+
+User -u-> UC1_User
+User -u-> UC2_User
+User -d-> UC3_User
+User -d-> UC4_User
+User -d-> UC5_User
+User -d-> UC6_User
+User -d-> UC7_User
+
+Support -u-> UC1_Support
+Support -u-> UC2_Support
+
+Admin -d--> UC1_Admin
+Admin -d--> UC2_Admin
+Admin -d--> UC3_Admin
+
+right footer
+Четверта підгрупа. Модель прецендентів
+НТУУ КПІ ім.І.Сікорського
+Киів-2020
+end footer
+@enduml
