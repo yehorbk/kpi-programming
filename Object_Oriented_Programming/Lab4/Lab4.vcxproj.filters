@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\editors">
+      <UniqueIdentifier>{3507a832-d4fb-4fe9-a944-00da10590001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\editors">
+      <UniqueIdentifier>{b96b23cc-c202-446d-959b-8a6b7304b6e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\shapes">
+      <UniqueIdentifier>{efad3fae-578b-4427-84a2-3c5a5d8058e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\shapes">
+      <UniqueIdentifier>{d9558aee-5f5e-444e-bf15-ef68ae387e63}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ellipse_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="line_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="point_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="rect_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_object_builder.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="about.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="point_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="line_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="rect_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="ellipse_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="tool.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab3.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="toolbar_controller.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="point_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="line_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="rect_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="ellipse_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_object_builder.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="about.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="point_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="line_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="rect_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="ellipse_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="tool.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab3.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="toolbar_controller.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="about.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="Lab3.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="toolbar.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="Lab3.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="toolbar_icons.bmp">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="about.rh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+    <None Include="Lab3.rh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="toolbar.rh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+  </ItemGroup>
+</Project>
