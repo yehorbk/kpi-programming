@@ -52,13 +52,10 @@ note left #aaffaa
 end note
 
 |Адміністратор|
-: Перевіряє інформацію;
+: Отримує запит;
 note right #aaffaa
 <font color=red><b> Можливо EX_04
 end note
-
-|Гість|
-: Отримує можливості користувача;
 stop;
 
 right footer
