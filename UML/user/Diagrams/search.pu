@@ -1,5 +1,4 @@
-@startuml 
-
+@startuml
 left header
 <font color=000 size=18><b>Package:</b> User
 <font color=000 size=16><b>ID:</b> UC4
@@ -24,14 +23,14 @@ start
 : Переходить на головну сторінку;
 
 : Вводить запит у поле пошуку, за необхідності налаштовує фільтри;
-note left
-Можливо ЕХ_00
-end note
 
 |Система|
 : Оброблює запит;
 note right
 Можливо ЕХ_01
+end note
+note right
+Можливо ЕХ_00
 end note
 
 : Повертає публікації, що відповідають запиту;
