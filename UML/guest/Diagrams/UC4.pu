@@ -21,14 +21,13 @@ start
 : Натискає на кнопку "Обліковий запис" у головному меню;
 : Натискає на кнопку "Авторизація";
 : Заповнює поштову адресу та пароль;
-note left #aaffaa
-<font color=red><b> Можливо EX_00
-<font color=red><b> Можливо EX_01
-end note
+
 
 |Система|
 : Перевіряє отримані дані із даними в базі;
 note right #aaffaa
+<font color=red><b> Можливо EX_00
+<font color=red><b> Можливо EX_01
 <font color=red><b> Можливо EX_02
 end note
 
