@@ -22,14 +22,13 @@ start
 : Обирає авторизацію за допомогою Google або Facebook;
 : Авторизується на сторінці авторизації Google або Facebook;
 
-note left #aaffaa
-<font color=red><b> Можливо EX_00
-end note
-
 |Система|
 : Записує дані до бази;
 note right #aaffaa
 <font color=red><b> Можливо EX_01
+end note
+note right #aaffaa
+<font color=red><b> Можливо EX_00
 end note
 
 |Гість|
