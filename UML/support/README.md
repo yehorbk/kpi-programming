@@ -24,15 +24,14 @@
 
 #### Результат: Питання користувача вирішено.
 
-1.	Користувач натискає спеціальну кнопку "Служба підтримки" у модулі "Обліковий запис";
-2.	Заповнює поля "Тема" та "Опис проблеми" у вікні що з'явилося;
-3.	Натискає кнопку "Відправити";
-4.	Служба підтримки отримує повідомлення користувача;
-5.	Вирішує проблему користувача;
-6.	Надсилає відповідь Користувачу на електронну пошту;
-7.	Користувач отримує електронного листа з відповіддю на своє питання;
+1.	Користувач відправляє запит з інформацією (тема, опис проблеми)
+ до служби підтримки;
+2.	Служба підтримки отримує запит користувача;
+3.	Вирішує проблему користувача;
+4.	Надсилає відповідь Користувачу на електронну пошту;
+5.	Користувач отримує електронного листа з відповіддю на своє питання;
 
 
-![Звернення до служби підтримки](http://www.plantuml.com/plantuml/svg/bLHDRjfW4Dtx59-owQPAwQQBG52kaZIEMec6Yj1DnG9iAMcbA4XHHAHA8Mrp0OT28NPiNs7cHdtpP58L4wCkG9_Dc_SpCnzx9ztzJlVJXvRNye-wxfs_V-XtFAznr3xkkhVjLhkpMwlLtCdxp_xkwpVDna5JRYIIkKmasccyEcWwkSPvfdr9POPFgaCdKycS3YJHK7xBlIoSv3gIgGQ0BUHHObbiLshSwPb4O4W11xXG-YQP4UW0HA4vqBENJduywKJ_hNDBvpEKX81du5ngtJc9ot8cCN-XGmDAWjy75ZS7A92eIAzVGSGEz76u1oYGXTaa4yGUDxdw3j0SaecU6wy6XQVRVtIUymThsjUHVk4yiktgQOxPPIHdhnySs4vP61c9F53Qy_pZmwVbwAqRHC_Z9daxQyVaI1ZOIubnkeAEv6Z-AJGY2uf88IBHIoun7hOsJ7RB0SIfJTch4Ih6mE8aCHDP7fc3FpVXhRgPk-OZy-e5VF0XqI6AVt8s4NZHP9An3f1YaWa1XV24CgcEEF3oMb3jPYNrIi1BoqJwo4eD2fTURqFodb6FbsyqNCQOa2u324uhjuJcBfUBOWmhAJMigaGiE1emB6DH-Qy7FL-x1KQQMg8PHM8co6WqP09O0RZ-x8gLSvUfyFtBvf48YtbZImPXyO9UR0ydaBfQkSNrYZLlVwnxUxWG-DVy0m00)
+![Звернення до служби підтримки](http://www.plantuml.com/plantuml/svg/bLJ1RjD04BtlL-mDa5095mvr6lLNMkeAf52Zr5nG3d6CMf2gMa9HaP1eGVs1nTJ4ZUFb5sR-YBTZ9rAmO-2GQ9LzRzwRDxFPFmqFHk6RLqCrz8z3_S8_EF97IlMFWvDGFm-6mMYlr-lfqvTl_RsdpmRzmm5z8KDpIidizfyS3ZHzmZdZ2PMKuLDoekcEhEQ82exf9tsdNDCllg8xdWAMqv8MbEzqQjpoEHbKA047k5RwJDOLu0Y5OkU0pnzh-hRMCV-jSoFECr1Ym2sbQwrR3NP3padC7t3YW5IGnLq2KO2cPEhk-GDPIG1a2rSMTpbiLfKWjloRgwy0pI5Py8MhozFQqys6pZP_iCOJlkBtCW-xqptDQqaPdKlMznhLpeHeN16w5scb_9EZzNACsmOnLh99QhTrJ73b1eFnJE0_HMS9pn0bcIey73K09RyJxXASCxGmuqlziCxCODHMq14IhxCjgZWVgN_QESzvxrwNiMlWUlKBnviksoFt7EVZAdNXR1hak8k9zmGFaIoK0NSL5VXouelMI5tHqlMGYSX2F5lP3To03Ii0UrldrUoqMGhVFv0h5HLPrhzX41OlAo_e8eNKx8yduNNiJF3QK_lOBlm5_GO0)
 
 [UML-діаграма](https://github.com/nickname038/kpi-db-subgroup/blob/patch-1/UML/support/Diagrams/UC2.pu)
