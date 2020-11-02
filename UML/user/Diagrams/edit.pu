@@ -1,5 +1,4 @@
-@startuml 
-
+@startuml
 left header
 <font color=000 size=18><b>Package:</b> User
 <font color=000 size=16><b>ID:</b> UC3
@@ -25,12 +24,12 @@ start
 : Переходить в обліковий запис;
 
 : Натискає кнопку «Редагувати»;
-note left
-Можливо ЕХ_00
-end note
 
 |Система|
 : Надсилає запит про дані користувача до бази;
+note right
+Можливо ЕХ_00
+end note
 note right
 Можливо ЕХ_01
 end note
@@ -39,17 +38,18 @@ end note
 
 |Користувач|
 : Вводить нові дані;
-note left
-Можливо ЕХ_02
-end note
 
 : Натискає «Зберегти»;
-note left
-Можливо ЕХ_00
-end note
 
 |Система|
 : Оновлює дані;
+note right
+Можливо ЕХ_02
+end note
+note right
+Можливо ЕХ_00
+end note
+
 
 |Користувач|
 : Отримує повідомлення про успішне оновлення облікового запису;
