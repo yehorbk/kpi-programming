@@ -10,6 +10,7 @@ end title
 
 actor "Гість" as Guest
 actor "Користувач" as User
+actor "Представник" as Agent
 actor "Служба підтримки" as Support
 actor "Адміністратор" as Admin
 
@@ -26,8 +27,10 @@ usecase "<b>UC_2</b>\nЗбереження публікації" as UC2_User
 usecase "<b>UC_3</b>\nБронювання" as UC3_User
 usecase "<b>UC_4</b>\nКоментування" as UC4_User
 usecase "<b>UC_5</b>\nРейтингова оцінка\nзакладу/місця" as UC5_User
-usecase "<b>UC_6</b>\nСтворення публікації" as UC6_User
-usecase "<b>UC_7</b>\nРедагування публікації" as UC7_User
+
+' Uces for Agent:
+usecase "<b>UC_1</b>\nСтворення публікації" as UC1_Agent
+usecase "<b>UC_2</b>\nРедагування публікації" as UC2_Agent
 
 ' UCes for Support:
 usecase "<b>UC_1</b>\nМодерація контенту" as UC1_Support
@@ -39,10 +42,10 @@ usecase "<b>UC_2</b>\nВидалення публікацій та\nкомент
 usecase "<b>UC_3</b>\nВерифікація облікових записів\nпредставкників закладів" as UC3_Admin
 
 ' Actors connections
+Agent -l-|> User
 User -u-|> Guest
-Support -u-|> User
+Support -r-|> User
 Admin -u-|> User
-
 
 ' UCes connectios
 Guest -u-> UC1_Guest
@@ -53,14 +56,15 @@ Guest -u-> UC5_Guest
 
 User -u-> UC1_User
 User -u-> UC2_User
-User -d-> UC3_User
+User -u-> UC3_User
 User -d-> UC4_User
 User -d-> UC5_User
-User -d-> UC6_User
-User -d-> UC7_User
+
+Agent -d-> UC1_Agent
+Agent -d-> UC2_Agent
 
 Support -u-> UC1_Support
-Support -u-> UC2_Support
+Support -d-> UC2_Support
 
 Admin -d--> UC1_Admin
 Admin -d--> UC2_Admin

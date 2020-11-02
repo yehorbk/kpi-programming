@@ -1,5 +1,4 @@
-@startuml 
-
+@startuml
 left header
 <font color=000 size=18><b>Package:</b> User
 <font color=000 size=16><b>ID:</b> UC6
@@ -23,12 +22,13 @@ skinparam Note {
 |Користувач|
 start
 : Натискає кнопку «Забронювати»;
-note left
-Можливо ЕХ_00
-end note
+
 
 |Система|
 : Отримує дані про послугу, яку намагається забронювати користувач;
+note right
+Можливо ЕХ_00
+end note
 note right
 Можливо ЕХ_01
 end note
@@ -37,9 +37,6 @@ end note
 
 |Користувач|
 : Вводить запитувані дані;
-note left
-Можливо ЕХ_02
-end note
 
 |Система|
 : Обробляє дані;
@@ -47,6 +44,9 @@ end note
 : Оновлює дані про послугу, яку бронював користувач;
 note right
 Можливо ЕХ_01
+end note
+note right
+Можливо ЕХ_02
 end note
 
 : Надсилає повідомлення про вдале бронювання;
