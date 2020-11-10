@@ -148,6 +148,7 @@
     <ClInclude Include="Lab4.h" />
     <ClInclude Include="line_editor.h" />
     <ClInclude Include="line_shape.h" />
+    <ClInclude Include="main_editor.h" />
     <ClInclude Include="point_editor.h" />
     <ClInclude Include="point_shape.h" />
     <ClInclude Include="rect_editor.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Lab4.cpp" />
     <ClCompile Include="line_editor.cpp" />
     <ClCompile Include="line_shape.cpp" />
+    <ClCompile Include="main_editor.cpp" />
     <ClCompile Include="point_editor.cpp" />
     <ClCompile Include="point_shape.cpp" />
     <ClCompile Include="rect_editor.cpp" />

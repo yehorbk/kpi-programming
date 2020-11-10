@@ -5,6 +5,7 @@
     NUMBER: 5
     VARIABLES:
     - глобальний статичний об'єкт класу MyEditor
+    - гумовий слiд пунктирною лiнiєю
 */
 
 #include "Lab4.rh"
@@ -13,6 +14,7 @@
 #include "toolbar_controller.h"
 #include "about.h"
 #include "shape_object_builder.h"
+#include "main_editor.h"
 #include "tool.h"
 
 #define MAX_LOADSTRING 100
@@ -23,7 +25,8 @@ WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
 ToolbarController* toolbarController;
-ShapeObjectBuilder* shapeObjectBuilder;
+ShapeObjectBuilder* shapeObjectBuilder; // TODO: remove it 
+MainEditor* mainEditor;
 
 // Functions Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -104,15 +107,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
         toolbarController = new ToolbarController(hWnd);
         shapeObjectBuilder = new ShapeObjectBuilder(hWnd);
+        mainEditor = new MainEditor(hWnd);
         break;
     case WM_LBUTTONDOWN:
-        shapeObjectBuilder->OnLBdown();
+        // shapeObjectBuilder->OnLBdown();
+        mainEditor->OnLBdown();
         break;
     case WM_LBUTTONUP:
-        shapeObjectBuilder->OnLBup();
+        // shapeObjectBuilder->OnLBup();
+        mainEditor->OnLBup();
         break;
     case WM_MOUSEMOVE:
-        shapeObjectBuilder->OnMouseMove();
+        // shapeObjectBuilder->OnMouseMove(); // TODO: remove, deprecated
+        mainEditor->OnMouseMove();
         break;
     case WM_COMMAND:
         {
@@ -124,26 +131,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case ID_TOOL_POINT:
             case IDM_POINT:
-                shapeObjectBuilder->StartPointEditor();
+                shapeObjectBuilder->StartPointEditor(); // TODO: remove, deprecated
+                // mainEditor->Start();
                 changeTool(hWnd, Tool::POINT);
                 break;
             case ID_TOOL_LINE:
             case IDM_LINE:
-                shapeObjectBuilder->StartLineEditor();
+                shapeObjectBuilder->StartLineEditor(); // TODO: remove, deprecated
                 changeTool(hWnd, Tool::LINE);
                 break;
             case ID_TOOL_RECT:
             case IDM_RECT:
-                shapeObjectBuilder->StartRectEditor();
+                shapeObjectBuilder->StartRectEditor(); // TODO: remove, deprecated
                 changeTool(hWnd, Tool::RECT);
                 break;
             case ID_TOOL_ELLIPSE:
             case IDM_ELLIPSE:
-                shapeObjectBuilder->StartEllipseEditor();
+                shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
                 changeTool(hWnd, Tool::ELLIPSE);
                 break;
             case IDM_UNDO:
-                shapeObjectBuilder->undo();
+                // shapeObjectBuilder->undo(); // TODO: remove, deprecated
+                mainEditor->undo();
                 break;
             case IDM_ABOUT:
                 aboutInterface(hInst, hWnd);
@@ -163,12 +172,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            shapeObjectBuilder->OnPaint();
+            // shapeObjectBuilder->OnPaint(); // TODO: remove, deprecated
+            mainEditor->OnPaint();
             EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:
-        delete shapeObjectBuilder;
+        delete shapeObjectBuilder; // TODO: remove, deprecated
+        delete mainEditor;
         PostQuitMessage(0);
         break;
     default:
@@ -181,13 +192,15 @@ static void changeTool(HWND hWnd, Tool tool)
 {
     if (toolbarController->OnButtonPress(tool))
     {
-        shapeObjectBuilder->enableEditor();
+        // shapeObjectBuilder->enableEditor(); // TODO: remove, deprecated
+        mainEditor->enableEditor();
         updateWindowTitle(hWnd, tool.getTitle());
         updateMenuItem(hWnd, tool.getMenuItemId());
     }
     else
     {
-        shapeObjectBuilder->disableEditor();
+        // shapeObjectBuilder->disableEditor(); // TODO: remove, deprecated
+        mainEditor->disableEditor();
         disableEdition(hWnd);
     }
 }

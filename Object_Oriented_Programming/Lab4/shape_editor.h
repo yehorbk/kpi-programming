@@ -29,6 +29,8 @@ protected:
 public:
 	ShapeEditor(HWND _hWnd);
 	void OnLBdown();
+	void OnLBup();
+	void OnMouseMove();
 	void OnPaint();
 	void init(Shape** _pcshape, int _counter);
 	bool appendShape(Shape* shape);

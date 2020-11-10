@@ -19,6 +19,21 @@ void ShapeEditor::OnLBdown()
 	this->isEdit = true;
 }
 
+void ShapeEditor::OnLBup()
+{
+	POINT pt = this->getMousePosition();
+	this->x2 = pt.x;
+	this->y2 = pt.y;
+	this->isEdit = false;
+}
+
+void ShapeEditor::OnMouseMove()
+{
+	POINT pt = this->getMousePosition();
+	this->x2 = pt.x;
+	this->y2 = pt.y;
+}
+
 void ShapeEditor::OnPaint()
 {
 	HDC hdc = this->openDrawer();

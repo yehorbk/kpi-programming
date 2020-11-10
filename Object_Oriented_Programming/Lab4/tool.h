@@ -1,6 +1,9 @@
 #pragma once
 
 #include "framework.h"
+#include "shape_editor.h"
+
+using Factory = ShapeEditor(*)(HWND);
 
 class Tool
 {
@@ -14,7 +17,8 @@ private:
 	LPCSTR title;
 	int menuItemId;
 	int toolbarItemId;
-	Tool(LPCSTR _title, int _menuItemId, int _toolbarItemuId);
+	Factory factory;
+	Tool(LPCSTR _title, int _menuItemId, int _toolbarItemuId, Factory _factory);
 
 public:
 	LPCSTR getTitle();

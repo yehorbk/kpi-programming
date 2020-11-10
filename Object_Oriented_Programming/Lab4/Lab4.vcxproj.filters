@@ -81,13 +81,16 @@
     <ClInclude Include="tool.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Lab3.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="toolbar_controller.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="resource2.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab4.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="main_editor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -131,10 +134,13 @@
     <ClCompile Include="tool.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Lab3.cpp">
+    <ClCompile Include="toolbar_controller.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="toolbar_controller.cpp">
+    <ClCompile Include="Lab4.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="main_editor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -142,10 +148,10 @@
     <ResourceCompile Include="about.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
-    <ResourceCompile Include="Lab3.rc">
+    <ResourceCompile Include="toolbar.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
-    <ResourceCompile Include="toolbar.rc">
+    <ResourceCompile Include="Lab4.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -153,10 +159,10 @@
     <Image Include="small.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="Lab3.ico">
+    <Image Include="toolbar_icons.bmp">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="toolbar_icons.bmp">
+    <Image Include="Lab4.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
@@ -165,11 +171,9 @@
       <Filter>Файлы ресурсов</Filter>
     </None>
     <None Include="ClassDiagram.cd" />
-    <None Include="Lab3.rh">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
     <None Include="toolbar.rh">
       <Filter>Файлы ресурсов</Filter>
     </None>
+    <None Include="Lab4.rh" />
   </ItemGroup>
 </Project>
