@@ -106,7 +106,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
         toolbarController = new ToolbarController(hWnd);
-        shapeObjectBuilder = new ShapeObjectBuilder(hWnd);
+        // shapeObjectBuilder = new ShapeObjectBuilder(hWnd); // TODO: remove, deprecated
         mainEditor = new MainEditor(hWnd);
         break;
     case WM_LBUTTONDOWN:
@@ -153,6 +153,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 mainEditor->Start(Tool::ELLIPSE);
                 changeTool(hWnd, Tool::ELLIPSE);
                 break;
+            case ID_TOOL_OLINEO:
+            case IDM_OLINEO:
+                // shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
+                mainEditor->Start(Tool::ELLIPSE);
+                changeTool(hWnd, Tool::OLINEO);
+                break;
+            case ID_TOOL_CUBE:
+            case IDM_CUBE:
+                // shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
+                mainEditor->Start(Tool::ELLIPSE);
+                changeTool(hWnd, Tool::CUBE);
+                break;
             case IDM_UNDO:
                 // shapeObjectBuilder->undo(); // TODO: remove, deprecated
                 mainEditor->undo();
@@ -181,7 +193,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_DESTROY:
-        delete shapeObjectBuilder; // TODO: remove, deprecated
+        // delete shapeObjectBuilder; // TODO: remove, deprecated
         delete mainEditor;
         PostQuitMessage(0);
         break;
@@ -221,6 +233,8 @@ static void updateMenuItem(HWND hWnd, int id)
     CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
     CheckMenuItem(hSubMenu, IDM_RECT, MF_UNCHECKED);
     CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+    CheckMenuItem(hSubMenu, IDM_OLINEO, MF_UNCHECKED);
+    CheckMenuItem(hSubMenu, IDM_CUBE, MF_UNCHECKED);
     if (id != -1)
     {
         CheckMenuItem(hSubMenu, id, MF_CHECKED);

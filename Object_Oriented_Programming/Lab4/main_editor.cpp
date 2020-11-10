@@ -3,6 +3,8 @@
 MainEditor::MainEditor(HWND _hWnd)
 {
 	this->hWnd = _hWnd;
+	this->shapeEditor = NULL;
+	this->isEditorEnabled = FALSE;
 }
 
 MainEditor::~MainEditor()

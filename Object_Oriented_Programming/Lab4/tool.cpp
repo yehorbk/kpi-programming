@@ -42,3 +42,7 @@ const Tool Tool::RECT = Tool("–ежим вводу пр€мокутникiв", 1003, 6003,
 	[](HWND hWnd) -> ShapeEditor* { return new RectEditor(hWnd); });
 const Tool Tool::ELLIPSE = Tool("–ежим вводу елiпсiв", 1004, 6004,
 	[](HWND hWnd) -> ShapeEditor* { return new EllipseEditor(hWnd); });
+const Tool Tool::OLINEO = Tool("–ежим вводу лiнiй з кружочками на кiнц€х", 1005, 6005,
+	[](HWND hWnd) -> ShapeEditor* { return new EllipseEditor(hWnd); });
+const Tool Tool::CUBE = Tool("–ежим вводу кубiв", 1006, 6006,
+	[](HWND hWnd) -> ShapeEditor* { return new EllipseEditor(hWnd); });

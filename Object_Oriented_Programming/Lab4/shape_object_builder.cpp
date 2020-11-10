@@ -1,4 +1,5 @@
 #include "shape_object_builder.h"
+
 #include "point_editor.h"
 #include "line_editor.h"
 #include "rect_editor.h"

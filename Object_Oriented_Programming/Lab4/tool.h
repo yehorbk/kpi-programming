@@ -12,6 +12,8 @@ public:
 	static const Tool LINE;
 	static const Tool RECT;
 	static const Tool ELLIPSE;
+	static const Tool OLINEO;
+	static const Tool CUBE;
 
 private:
 	LPCSTR title;

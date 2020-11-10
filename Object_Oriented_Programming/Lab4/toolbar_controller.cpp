@@ -5,7 +5,7 @@ ToolbarController::ToolbarController(HWND hWnd)
 {
 	this->selectedToolId = -1;
 	this->parent = hWnd;
-	TBBUTTON tbb[4];
+	TBBUTTON tbb[6];
 	ZeroMemory(tbb, sizeof(tbb));
 	tbb[0].iBitmap = 0;
 	tbb[0].fsState = TBSTATE_ENABLED;
@@ -23,10 +23,18 @@ ToolbarController::ToolbarController(HWND hWnd)
 	tbb[3].fsState = TBSTATE_ENABLED;
 	tbb[3].fsStyle = TBSTYLE_BUTTON;
 	tbb[3].idCommand = ID_TOOL_ELLIPSE;
+	tbb[4].iBitmap = 4;
+	tbb[4].fsState = TBSTATE_ENABLED;
+	tbb[4].fsStyle = TBSTYLE_BUTTON;
+	tbb[4].idCommand = ID_TOOL_OLINEO;
+	tbb[5].iBitmap = 5;
+	tbb[5].fsState = TBSTATE_ENABLED;
+	tbb[5].fsStyle = TBSTYLE_BUTTON;
+	tbb[5].idCommand = ID_TOOL_CUBE;
 	this->instance = CreateToolbarEx(this->parent,
 		WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
-		IDC_TOOLBAR, 4, GetModuleHandle(NULL), IDB_TOOLBAR,
-		tbb, 4, 24, 24, 24, 24, sizeof(TBBUTTON));
+		IDC_TOOLBAR, 6, GetModuleHandle(NULL), IDB_TOOLBAR,
+		tbb, 6, 24, 24, 24, 24, sizeof(TBBUTTON));
 }
 
 bool ToolbarController::OnButtonPress(Tool tool)
@@ -66,6 +74,12 @@ void ToolbarController::OnNotify(WPARAM wParam, LPARAM lParam)
 		case ID_TOOL_ELLIPSE:
 			pText = A2W(Tool(Tool::ELLIPSE).getTitle());
 			break;
+		case ID_TOOL_OLINEO:
+			pText = A2W(Tool(Tool::OLINEO).getTitle());
+			break;
+		case ID_TOOL_CUBE:
+			pText = A2W(Tool(Tool::CUBE).getTitle());
+			break;
 		default:
 			pText = L"ўось невiдоме";
 			break;
@@ -88,4 +102,6 @@ void ToolbarController::resetAllButtons()
 	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::LINE).getToolbarItemId(), FALSE);
 	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::RECT).getToolbarItemId(), FALSE);
 	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::ELLIPSE).getToolbarItemId(), FALSE);
+	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::OLINEO).getToolbarItemId(), FALSE);
+	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::CUBE).getToolbarItemId(), FALSE);
 }
