@@ -1,6 +1,7 @@
 #pragma once
 
 #include "framework.h"
+#include "tool.h"
 #include "shape.h"
 #include "shape_editor.h"
 
@@ -16,7 +17,7 @@ private:
 public:
 	MainEditor(HWND);
 	~MainEditor();
-	void Start(Shape*);
+	void Start(Tool tool);
 	void enableEditor();
 	void disableEditor();
 	void OnLBdown();

@@ -131,23 +131,26 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case ID_TOOL_POINT:
             case IDM_POINT:
-                shapeObjectBuilder->StartPointEditor(); // TODO: remove, deprecated
-                // mainEditor->Start();
+                // shapeObjectBuilder->StartPointEditor(); // TODO: remove, deprecated
+                mainEditor->Start(Tool::POINT);
                 changeTool(hWnd, Tool::POINT);
                 break;
             case ID_TOOL_LINE:
             case IDM_LINE:
-                shapeObjectBuilder->StartLineEditor(); // TODO: remove, deprecated
+                // shapeObjectBuilder->StartLineEditor(); // TODO: remove, deprecated
+                mainEditor->Start(Tool::LINE);
                 changeTool(hWnd, Tool::LINE);
                 break;
             case ID_TOOL_RECT:
             case IDM_RECT:
-                shapeObjectBuilder->StartRectEditor(); // TODO: remove, deprecated
+                // shapeObjectBuilder->StartRectEditor(); // TODO: remove, deprecated
+                mainEditor->Start(Tool::RECT);
                 changeTool(hWnd, Tool::RECT);
                 break;
             case ID_TOOL_ELLIPSE:
             case IDM_ELLIPSE:
-                shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
+                // shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
+                mainEditor->Start(Tool::ELLIPSE);
                 changeTool(hWnd, Tool::ELLIPSE);
                 break;
             case IDM_UNDO:

@@ -1,15 +1,5 @@
 #include "main_editor.h"
 
-#include "point_editor.h"
-#include "line_editor.h"
-#include "rect_editor.h"
-#include "ellipse_editor.h"
-
-#include "point_shape.h"
-#include "line_shape.h"
-#include "rect_shape.h"
-#include "ellipse_shape.h"
-
 MainEditor::MainEditor(HWND _hWnd)
 {
 	this->hWnd = _hWnd;
@@ -29,9 +19,10 @@ MainEditor::~MainEditor()
 	delete this->shapeEditor;
 }
 
-void MainEditor::Start(Shape* shape)
+void MainEditor::Start(Tool tool)
 {
-
+	ShapeEditor* shapeEditor = tool.getEditor(this->hWnd);
+	this->setUpEditor(shapeEditor);
 }
 
 void MainEditor::enableEditor()

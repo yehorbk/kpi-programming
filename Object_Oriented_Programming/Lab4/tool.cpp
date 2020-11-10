@@ -29,11 +29,16 @@ int Tool::getToolbarItemId()
 	return this->toolbarItemId;
 }
 
+ShapeEditor* Tool::getEditor(HWND hWnd)
+{
+	return this->factory(hWnd);
+}
+
 const Tool Tool::POINT = Tool("Режим вводу пiкселiв", 1001, 6001,
-	[](HWND hWnd) -> ShapeEditor { return PointEditor(hWnd); });
+	[](HWND hWnd) -> ShapeEditor* { return new PointEditor(hWnd); });
 const Tool Tool::LINE = Tool("Режим вводу лiнiй", 1002, 6002,
-	[](HWND hWnd) -> ShapeEditor { return LineEditor(hWnd); });
+	[](HWND hWnd) -> ShapeEditor* { return new LineEditor(hWnd); });
 const Tool Tool::RECT = Tool("Режим вводу прямокутникiв", 1003, 6003,
-	[](HWND hWnd) -> ShapeEditor { return RectEditor(hWnd); });
+	[](HWND hWnd) -> ShapeEditor* { return new RectEditor(hWnd); });
 const Tool Tool::ELLIPSE = Tool("Режим вводу елiпсiв", 1004, 6004,
-	[](HWND hWnd) -> ShapeEditor { return EllipseEditor(hWnd); });
+	[](HWND hWnd) -> ShapeEditor* { return new EllipseEditor(hWnd); });

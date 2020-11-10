@@ -3,7 +3,7 @@
 #include "framework.h"
 #include "shape_editor.h"
 
-using Factory = ShapeEditor(*)(HWND);
+using Factory = ShapeEditor*(*)(HWND);
 
 class Tool
 {
@@ -24,4 +24,5 @@ public:
 	LPCSTR getTitle();
 	int getMenuItemId();
 	int getToolbarItemId();
+	ShapeEditor* getEditor(HWND hWnd);
 };
