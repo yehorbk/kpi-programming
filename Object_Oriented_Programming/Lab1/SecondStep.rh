@@ -1,0 +1,6 @@
+#pragma once
+
+#define IDD_SECOND_STEP 3000
+#define IDC_BACK 3001
+#define IDC_NEXT 3002
+#define IDC_CANCEL 3003
