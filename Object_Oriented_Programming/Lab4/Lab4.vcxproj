@@ -162,7 +162,6 @@
     <ClInclude Include="resource2.h" />
     <ClInclude Include="shape.h" />
     <ClInclude Include="shape_editor.h" />
-    <ClInclude Include="shape_object_builder.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="tool.h" />
     <ClInclude Include="toolbar_controller.h" />
@@ -185,7 +184,6 @@
     <ClCompile Include="rect_shape.cpp" />
     <ClCompile Include="shape.cpp" />
     <ClCompile Include="shape_editor.cpp" />
-    <ClCompile Include="shape_object_builder.cpp" />
     <ClCompile Include="tool.cpp" />
     <ClCompile Include="toolbar_controller.cpp" />
   </ItemGroup>

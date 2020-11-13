@@ -13,7 +13,6 @@
 
 #include "toolbar_controller.h"
 #include "about.h"
-#include "shape_object_builder.h"
 #include "main_editor.h"
 #include "tool.h"
 

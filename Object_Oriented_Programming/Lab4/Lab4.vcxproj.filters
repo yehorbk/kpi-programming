@@ -60,9 +60,6 @@
     <ClInclude Include="shape_editor.h">
       <Filter>Файлы заголовков\editors</Filter>
     </ClInclude>
-    <ClInclude Include="shape_object_builder.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="about.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -124,9 +121,6 @@
     </ClCompile>
     <ClCompile Include="shape_editor.cpp">
       <Filter>Исходные файлы\editors</Filter>
-    </ClCompile>
-    <ClCompile Include="shape_object_builder.cpp">
-      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="about.cpp">
       <Filter>Исходные файлы</Filter>
