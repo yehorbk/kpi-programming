@@ -25,8 +25,7 @@ WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
 ToolbarController* toolbarController;
-ShapeObjectBuilder* shapeObjectBuilder; // TODO: remove it 
-MainEditor* mainEditor;
+MainEditor mainEditor;
 
 // Functions Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -106,20 +105,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
         toolbarController = new ToolbarController(hWnd);
-        // shapeObjectBuilder = new ShapeObjectBuilder(hWnd); // TODO: remove, deprecated
-        mainEditor = new MainEditor(hWnd);
+        mainEditor.setHwnd(hWnd);
         break;
     case WM_LBUTTONDOWN:
-        // shapeObjectBuilder->OnLBdown();
-        mainEditor->OnLBdown();
+        mainEditor.OnLBdown();
         break;
     case WM_LBUTTONUP:
-        // shapeObjectBuilder->OnLBup();
-        mainEditor->OnLBup();
+        mainEditor.OnLBup();
         break;
     case WM_MOUSEMOVE:
-        // shapeObjectBuilder->OnMouseMove(); // TODO: remove, deprecated
-        mainEditor->OnMouseMove();
+        mainEditor.OnMouseMove();
         break;
     case WM_COMMAND:
         {
@@ -131,43 +126,36 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case ID_TOOL_POINT:
             case IDM_POINT:
-                // shapeObjectBuilder->StartPointEditor(); // TODO: remove, deprecated
-                mainEditor->Start(Tool::POINT);
+                mainEditor.Start(Tool::POINT);
                 changeTool(hWnd, Tool::POINT);
                 break;
             case ID_TOOL_LINE:
             case IDM_LINE:
-                // shapeObjectBuilder->StartLineEditor(); // TODO: remove, deprecated
-                mainEditor->Start(Tool::LINE);
+                mainEditor.Start(Tool::LINE);
                 changeTool(hWnd, Tool::LINE);
                 break;
             case ID_TOOL_RECT:
             case IDM_RECT:
-                // shapeObjectBuilder->StartRectEditor(); // TODO: remove, deprecated
-                mainEditor->Start(Tool::RECT);
+                mainEditor.Start(Tool::RECT);
                 changeTool(hWnd, Tool::RECT);
                 break;
             case ID_TOOL_ELLIPSE:
             case IDM_ELLIPSE:
-                // shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
-                mainEditor->Start(Tool::ELLIPSE);
+                mainEditor.Start(Tool::ELLIPSE);
                 changeTool(hWnd, Tool::ELLIPSE);
                 break;
             case ID_TOOL_OLINEO:
             case IDM_OLINEO:
-                // shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
-                mainEditor->Start(Tool::OLINEO);
+                mainEditor.Start(Tool::OLINEO);
                 changeTool(hWnd, Tool::OLINEO);
                 break;
             case ID_TOOL_CUBE:
             case IDM_CUBE:
-                // shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
-                mainEditor->Start(Tool::CUBE);
+                mainEditor.Start(Tool::CUBE);
                 changeTool(hWnd, Tool::CUBE);
                 break;
             case IDM_UNDO:
-                // shapeObjectBuilder->undo(); // TODO: remove, deprecated
-                mainEditor->undo();
+                mainEditor.undo();
                 break;
             case IDM_ABOUT:
                 aboutInterface(hInst, hWnd);
@@ -187,14 +175,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // shapeObjectBuilder->OnPaint(); // TODO: remove, deprecated
-            mainEditor->OnPaint();
+            mainEditor.OnPaint();
             EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:
-        // delete shapeObjectBuilder; // TODO: remove, deprecated
-        delete mainEditor;
         PostQuitMessage(0);
         break;
     default:
@@ -207,22 +192,20 @@ static void changeTool(HWND hWnd, Tool tool)
 {
     if (toolbarController->OnButtonPress(tool))
     {
-        // shapeObjectBuilder->enableEditor(); // TODO: remove, deprecated
-        mainEditor->enableEditor();
+        mainEditor.enableEditor();
         updateWindowTitle(hWnd, tool.getTitle());
         updateMenuItem(hWnd, tool.getMenuItemId());
     }
     else
     {
-        // shapeObjectBuilder->disableEditor(); // TODO: remove, deprecated
-        mainEditor->disableEditor();
+        mainEditor.disableEditor();
         disableEdition(hWnd);
     }
 }
 
 static void updateWindowTitle(HWND hWnd, LPCSTR title)
 {
-    SetWindowTextA(hWnd, title ? title : "Lab3");
+    SetWindowTextA(hWnd, title ? title : "Lab4");
 }
 
 static void updateMenuItem(HWND hWnd, int id)

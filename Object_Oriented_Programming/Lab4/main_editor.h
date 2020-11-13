@@ -9,14 +9,14 @@ class MainEditor
 {
 private:
 	HWND hWnd;
-	Shape** pshape;
 	ShapeEditor* shapeEditor;
 	bool isEditorEnabled;
 	void setUpEditor(ShapeEditor* _shapeEditor);
 
 public:
-	MainEditor(HWND);
+	MainEditor();
 	~MainEditor();
+	void setHwnd(HWND);
 	void Start(Tool tool);
 	void enableEditor();
 	void disableEditor();

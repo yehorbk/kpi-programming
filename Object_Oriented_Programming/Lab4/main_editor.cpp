@@ -1,8 +1,8 @@
 #include "main_editor.h"
 
-MainEditor::MainEditor(HWND _hWnd)
+MainEditor::MainEditor()
 {
-	this->hWnd = _hWnd;
+	this->hWnd = NULL;
 	this->shapeEditor = NULL;
 	this->isEditorEnabled = FALSE;
 }
@@ -21,10 +21,18 @@ MainEditor::~MainEditor()
 	delete this->shapeEditor;
 }
 
+void MainEditor::setHwnd(HWND _hWnd)
+{
+	this->hWnd = _hWnd;
+}
+
 void MainEditor::Start(Tool tool)
 {
-	ShapeEditor* shapeEditor = tool.getEditor(this->hWnd);
-	this->setUpEditor(shapeEditor);
+	if (this->hWnd)
+	{
+		ShapeEditor* shapeEditor = tool.getEditor(this->hWnd);
+		this->setUpEditor(shapeEditor);
+	}
 }
 
 void MainEditor::enableEditor()

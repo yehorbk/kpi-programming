@@ -108,7 +108,7 @@ void ShapeEditor::closeDrawer(HDC hdc)
 
 HPEN ShapeEditor::updatePen(HDC hdc, COLORREF color)
 {
-	HPEN newPen = CreatePen(PS_SOLID, 1, color);
+	HPEN newPen = CreatePen(PS_DOT, 1, color);
 	return (HPEN)SelectObject(hdc, newPen);
 }
 
