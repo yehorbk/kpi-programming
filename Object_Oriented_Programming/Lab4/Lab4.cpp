@@ -156,7 +156,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case ID_TOOL_OLINEO:
             case IDM_OLINEO:
                 // shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
-                mainEditor->Start(Tool::ELLIPSE);
+                mainEditor->Start(Tool::OLINEO);
                 changeTool(hWnd, Tool::OLINEO);
                 break;
             case ID_TOOL_CUBE:

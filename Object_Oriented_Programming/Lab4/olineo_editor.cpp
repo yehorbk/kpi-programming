@@ -9,9 +9,9 @@ void OLineOEditor::OnLBup()
 	POINT pt = this->getMousePosition();
 	this->x2 = pt.x;
 	this->y2 = pt.y;
-	LineShape* lineShape = new LineShape();
-	(*lineShape).Set(this->x1, this->y1, this->x2, this->y2);
-	this->appendShape(lineShape);
+	OLineOShape* olineoShape = new OLineOShape();
+	(*olineoShape).Shape::Set(this->x1, this->y1, this->x2, this->y2);
+	this->appendShape(dynamic_cast<LineShape*>(olineoShape));
 	this->redrawWindow();
 }
 
@@ -25,10 +25,14 @@ void OLineOEditor::OnMouseMove()
 	HDC hdc = this->openDrawer();
 	HPEN oldPen = this->updatePen(hdc, RGB(0, 0, 255));
 	SetROP2(hdc, R2_NOTXORPEN);
-	LineShape().Set(this->x1, this->y1, this->x2, this->y2)->Show(hdc);
+	OLineOShape olineoShape = OLineOShape();
+	olineoShape.Shape::Set(this->x1, this->y1, this->x2, this->y2);
+	olineoShape.Show(hdc);
 	this->x2 = pt.x;
 	this->y2 = pt.y;
-	LineShape().Set(this->x1, this->y1, this->x2, this->y2)->Show(hdc);
+	olineoShape = OLineOShape();
+	olineoShape.Shape::Set(this->x1, this->y1, this->x2, this->y2);
+	olineoShape.Show(hdc);
 	DeleteObject(this->updatePen(hdc, oldPen));
 	this->closeDrawer(hdc);
 }

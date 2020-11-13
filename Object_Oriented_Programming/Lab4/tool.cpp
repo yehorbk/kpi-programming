@@ -5,7 +5,7 @@
 #include "line_editor.h"
 #include "rect_editor.h"
 #include "ellipse_editor.h"
-
+#include "olineo_editor.h"
 #include "cube_editor.h"
 
 Tool::Tool(LPCSTR _title, int _menuItemId, int _toolbarItemId, Factory _factory)
@@ -45,6 +45,6 @@ const Tool Tool::RECT = Tool("–ежим вводу пр€мокутникiв", 1003, 6003,
 const Tool Tool::ELLIPSE = Tool("–ежим вводу елiпсiв", 1004, 6004,
 	[](HWND hWnd) -> ShapeEditor* { return new EllipseEditor(hWnd); });
 const Tool Tool::OLINEO = Tool("–ежим вводу лiнiй з кружочками на кiнц€х", 1005, 6005,
-	[](HWND hWnd) -> ShapeEditor* { return new EllipseEditor(hWnd); });
+	[](HWND hWnd) -> ShapeEditor* { return new OLineOEditor(hWnd); });
 const Tool Tool::CUBE = Tool("–ежим вводу кубiв", 1006, 6006,
 	[](HWND hWnd) -> ShapeEditor* { return new CubeEditor(hWnd); });
