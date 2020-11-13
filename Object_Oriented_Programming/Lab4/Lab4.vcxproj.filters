@@ -93,6 +93,18 @@
     <ClInclude Include="main_editor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="olineo_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="cube_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="olineo_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="cube_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shape.cpp">
@@ -142,6 +154,18 @@
     </ClCompile>
     <ClCompile Include="main_editor.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="olineo_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="cube_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="olineo_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="cube_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

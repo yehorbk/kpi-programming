@@ -6,6 +6,8 @@
 #include "rect_editor.h"
 #include "ellipse_editor.h"
 
+#include "cube_editor.h"
+
 Tool::Tool(LPCSTR _title, int _menuItemId, int _toolbarItemId, Factory _factory)
 {
 	this->title = _title;
@@ -45,4 +47,4 @@ const Tool Tool::ELLIPSE = Tool("–ежим вводу елiпсiв", 1004, 6004,
 const Tool Tool::OLINEO = Tool("–ежим вводу лiнiй з кружочками на кiнц€х", 1005, 6005,
 	[](HWND hWnd) -> ShapeEditor* { return new EllipseEditor(hWnd); });
 const Tool Tool::CUBE = Tool("–ежим вводу кубiв", 1006, 6006,
-	[](HWND hWnd) -> ShapeEditor* { return new EllipseEditor(hWnd); });
+	[](HWND hWnd) -> ShapeEditor* { return new CubeEditor(hWnd); });

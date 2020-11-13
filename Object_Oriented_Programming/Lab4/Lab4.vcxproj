@@ -141,6 +141,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="about.h" />
+    <ClInclude Include="cube_editor.h" />
+    <ClInclude Include="cube_shape.h" />
     <ClInclude Include="editor.h" />
     <ClInclude Include="ellipse_editor.h" />
     <ClInclude Include="ellipse_shape.h" />
@@ -149,6 +151,8 @@
     <ClInclude Include="line_editor.h" />
     <ClInclude Include="line_shape.h" />
     <ClInclude Include="main_editor.h" />
+    <ClInclude Include="olineo_editor.h" />
+    <ClInclude Include="olineo_shape.h" />
     <ClInclude Include="point_editor.h" />
     <ClInclude Include="point_shape.h" />
     <ClInclude Include="rect_editor.h" />
@@ -165,12 +169,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="about.cpp" />
+    <ClCompile Include="cube_editor.cpp" />
+    <ClCompile Include="cube_shape.cpp" />
     <ClCompile Include="ellipse_editor.cpp" />
     <ClCompile Include="ellipse_shape.cpp" />
     <ClCompile Include="Lab4.cpp" />
     <ClCompile Include="line_editor.cpp" />
     <ClCompile Include="line_shape.cpp" />
     <ClCompile Include="main_editor.cpp" />
+    <ClCompile Include="olineo_editor.cpp" />
+    <ClCompile Include="olineo_shape.cpp" />
     <ClCompile Include="point_editor.cpp" />
     <ClCompile Include="point_shape.cpp" />
     <ClCompile Include="rect_editor.cpp" />

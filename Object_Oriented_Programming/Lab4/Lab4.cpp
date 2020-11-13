@@ -162,7 +162,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case ID_TOOL_CUBE:
             case IDM_CUBE:
                 // shapeObjectBuilder->StartEllipseEditor(); // TODO: remove, deprecated
-                mainEditor->Start(Tool::ELLIPSE);
+                mainEditor->Start(Tool::CUBE);
                 changeTool(hWnd, Tool::CUBE);
                 break;
             case IDM_UNDO:
