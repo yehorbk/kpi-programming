@@ -1,0 +1,84 @@
+users:
+id INT(11) AUTO_INCREMENT PRIMARY_KEY
+name VARCHAR(512)
+email VARCHAR(512) UNIQUE
+bio VARCHAR(8192) 
+date_of_birth DATE
+address VARCHAR(512)
+photo VARCHAR(512) // path to file
+password VARCHAR(256)
+type VARCHAR(256)
+is_banned BOOL DEFAULT=false
+organization_id INT(11) FOREIGN_KEY
+
+
+organizations:
+id INT(11) AUTO_INCREMENT PRIMARY_KEY
+name VARCHAR(512) UNIQUE
+address VARCHAR(512)
+owner VARCHAR(512)
+document VARCHAR(512) // path to file
+
+
+categories:
+id INT(11) AUTO_INCREMENT PRIMARY_KEY
+name VARCHAR(256)
+
+
+places:
+id INT(11) AUTO_INCREMENT PRIMARY_KEY
+name VARCHAR(512)
+photo VARCHAR(512) // path to file
+description VARCHAR(8192)
+phone VARCHAR(64)
+working_time VARCHAR(512)
+address VARCHAR(512)
+services VARCHAR(1028)
+places_count INT(4)
+booking_service VARCHAR(512)
+creation_date DATE
+is_verified BOOL
+category_id INT(11) FOREIGN_KEY
+organization_id INT(11) FOREIGN_KEY
+
+
+comments:
+id INT(11) AUTO_INCREMENT PRIMARY_KEY
+message VARCHAR(2048)
+user_id INT(11) FOREIGN_KEY
+place_id INT(11) FOREIGN_KEY
+comment_id INT(11) FOREIGN_KEY
+is_deleted BOOL DEFAULT=false
+
+
+rating:
+id INT(11) AUTO_INCREMENT PRIMARY_KEY
+count INT(1)
+user_id INT(11) FOREIGN_KEY
+place_id INT(11) FOREIGN_KEY
+
+
+favourites:
+id INT(11) AUTO_INCREMENT PRIMARY_KEY
+user_id INT(11) FOREIGN_KEY
+place_id INT(11) FOREIGN_KEY
+
+
+support_requests:
+id INT(11) AUTO_INCREMENT PRIMARY_KEY
+title VARCHAR(256)
+description VARCHAR(8192)
+user_id INT(11) FOREIGN_KEY
+
+
+user-organization: one-to-one
+places-categories: many-to-one
+places-organizations: many-to-one
+comments-user: many-to-one
+comments-places: many-to-one
+comments-comments: many-to-one
+rating-users: many-to-one
+rating-places: many-to-one
+favourites-users: many-to-one
+favourites-places: many-to-one
+support_requests-users: many-to-one
