@@ -1,12 +1,5 @@
 #include "main_editor.h"
 
-MainEditor::MainEditor()
-{
-	this->hWnd = NULL;
-	this->shapeEditor = NULL;
-	this->isEditorEnabled = FALSE;
-}
-
 MainEditor::~MainEditor()
 {
 	if (this->shapeEditor)

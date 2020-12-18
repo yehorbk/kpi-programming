@@ -25,6 +25,12 @@
     <Filter Include="Исходные файлы\shapes">
       <UniqueIdentifier>{d9558aee-5f5e-444e-bf15-ef68ae387e63}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\core">
+      <UniqueIdentifier>{3ad0b368-a05b-49fd-a531-ef3d4334fa42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\core">
+      <UniqueIdentifier>{a5483a5c-0c38-4552-bbdf-fdb536567e2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -75,9 +81,6 @@
     <ClInclude Include="ellipse_editor.h">
       <Filter>Файлы заголовков\editors</Filter>
     </ClInclude>
-    <ClInclude Include="tool.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="toolbar_controller.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -101,6 +104,12 @@
     </ClInclude>
     <ClInclude Include="Lab5.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="tool.h">
+      <Filter>Файлы заголовков\core</Filter>
+    </ClInclude>
+    <ClInclude Include="iserializable.h">
+      <Filter>Файлы заголовков\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +146,6 @@
     <ClCompile Include="ellipse_editor.cpp">
       <Filter>Исходные файлы\editors</Filter>
     </ClCompile>
-    <ClCompile Include="tool.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="toolbar_controller.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -160,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="Lab5.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="tool.cpp">
+      <Filter>Исходные файлы\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

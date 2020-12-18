@@ -23,7 +23,7 @@ WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
 ToolbarController* toolbarController;
-MainEditor mainEditor;
+MainEditor& mainEditor = mainEditor.getInstance();
 
 // Functions Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
