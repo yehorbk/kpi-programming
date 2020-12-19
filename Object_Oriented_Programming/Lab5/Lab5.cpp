@@ -11,6 +11,7 @@
 #include "Lab5.h"
 
 #include "toolbar_controller.h"
+#include "table_controller.h"
 #include "about.h"
 #include "main_editor.h"
 #include "tool.h"
@@ -23,6 +24,7 @@ WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
 ToolbarController* toolbarController;
+TableController tableController;
 MainEditor& mainEditor = mainEditor.getInstance();
 
 // Functions Declaration
@@ -103,6 +105,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
         toolbarController = new ToolbarController(hWnd);
+        tableController.init(hInst, hWnd);
         mainEditor.setHwnd(hWnd);
         break;
     case WM_LBUTTONDOWN:
@@ -155,6 +158,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_UNDO:
                 mainEditor.undo();
                 break;
+            case IDM_TABLE:
+                tableController.show();
+                break;
             case IDM_ABOUT:
                 aboutInterface(hInst, hWnd);
                 break;
@@ -203,7 +209,7 @@ static void changeTool(HWND hWnd, Tool tool)
 
 static void updateWindowTitle(HWND hWnd, LPCSTR title)
 {
-    SetWindowTextA(hWnd, title ? title : "Lab4");
+    SetWindowTextA(hWnd, title ? title : "Lab5");
 }
 
 static void updateMenuItem(HWND hWnd, int id)

@@ -1,0 +1,4 @@
+#pragma once
+
+#define IDD_TABLE 8000
+#define IDC_LIST 8001

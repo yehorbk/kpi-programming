@@ -1,9 +1,9 @@
-#pragma once
+#pragma once	
 
 #include "framework.h"
 #include "iserializable.h"
 
-class Shape // : public ISerializable
+class Shape // : public ISerializable<Shape>
 {
 protected:
 	short x1 = -1;
@@ -14,6 +14,6 @@ protected:
 public:
 	virtual void Show(HDC) = 0;
 	Shape* Set(short _x1, short _y1, short _x2, short _y2);
-	// char* serialize();
-	// char* deserialize();
+	// const char* serialize();
+	// static Shape* deserialize(char* data);
 };

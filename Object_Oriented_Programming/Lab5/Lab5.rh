@@ -8,3 +8,4 @@
 #define IDM_CUBE 1006
 
 #define IDM_UNDO 1011
+#define IDM_TABLE 1012

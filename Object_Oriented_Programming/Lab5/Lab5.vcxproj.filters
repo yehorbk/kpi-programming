@@ -31,6 +31,24 @@
     <Filter Include="Исходные файлы\core">
       <UniqueIdentifier>{a5483a5c-0c38-4552-bbdf-fdb536567e2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы ресурсов\about">
+      <UniqueIdentifier>{e8406775-6cb5-4a04-a595-c8eb11b0efd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\about">
+      <UniqueIdentifier>{689c9e54-e2c0-4e56-aeb9-8be6f69a153c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\about">
+      <UniqueIdentifier>{26174a56-d96f-406d-919a-968a6a9fff38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\table">
+      <UniqueIdentifier>{888535a4-c12f-4c4a-a203-ed0bb5d95cc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\table">
+      <UniqueIdentifier>{0d603ce9-6a45-481e-8846-95cf264898a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\table">
+      <UniqueIdentifier>{be4414c7-ce1e-438d-b3a1-9d2c1fc7a15b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -65,9 +83,6 @@
     </ClInclude>
     <ClInclude Include="shape_editor.h">
       <Filter>Файлы заголовков\editors</Filter>
-    </ClInclude>
-    <ClInclude Include="about.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="point_editor.h">
       <Filter>Файлы заголовков\editors</Filter>
@@ -111,6 +126,18 @@
     <ClInclude Include="iserializable.h">
       <Filter>Файлы заголовков\core</Filter>
     </ClInclude>
+    <ClInclude Include="about.h">
+      <Filter>Файлы заголовков\about</Filter>
+    </ClInclude>
+    <ClInclude Include="resource3.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="table_controller.h">
+      <Filter>Файлы заголовков\table</Filter>
+    </ClInclude>
+    <ClInclude Include="table.h">
+      <Filter>Файлы заголовков\table</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shape.cpp">
@@ -130,9 +157,6 @@
     </ClCompile>
     <ClCompile Include="shape_editor.cpp">
       <Filter>Исходные файлы\editors</Filter>
-    </ClCompile>
-    <ClCompile Include="about.cpp">
-      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="point_editor.cpp">
       <Filter>Исходные файлы\editors</Filter>
@@ -170,16 +194,28 @@
     <ClCompile Include="tool.cpp">
       <Filter>Исходные файлы\core</Filter>
     </ClCompile>
+    <ClCompile Include="table_controller.cpp">
+      <Filter>Исходные файлы\table</Filter>
+    </ClCompile>
+    <ClCompile Include="about.cpp">
+      <Filter>Исходные файлы\about</Filter>
+    </ClCompile>
+    <ClCompile Include="table.cpp">
+      <Filter>Исходные файлы\table</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="about.rc">
-      <Filter>Файлы ресурсов</Filter>
-    </ResourceCompile>
     <ResourceCompile Include="toolbar.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
     <ResourceCompile Include="Lab5.rc">
       <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="about.rc">
+      <Filter>Файлы ресурсов\about</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="table.rc">
+      <Filter>Файлы ресурсов\table</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,15 +230,18 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="about.rh">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
     <None Include="ClassDiagram.cd" />
     <None Include="toolbar.rh">
       <Filter>Файлы ресурсов</Filter>
     </None>
     <None Include="Lab5.rh">
       <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="about.rh">
+      <Filter>Файлы ресурсов\about</Filter>
+    </None>
+    <None Include="table.rh">
+      <Filter>Файлы ресурсов\table</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -1,7 +1,9 @@
 #pragma once
 
+template <typename T>
 class ISerializable
 {
-	virtual char* serialize() = 0;
-	virtual char* deserialize() = 0;
+public:
+    virtual const char* serialize() = 0;
+    virtual T* deserialize() = 0;
 };
