@@ -113,6 +113,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_LBUTTONUP:
         mainEditor.OnLBup();
+        tableController.add("name=Коло, x1=1, x2=2, y1=3, y2=4");
         break;
     case WM_MOUSEMOVE:
         mainEditor.OnMouseMove();
@@ -122,6 +123,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             int wmId = LOWORD(wParam);
             switch (wmId)
             {
+            case IDM_EXPORT:
+                mainEditor.exportProject();
+                break;
+            case IDM_IMPORT:
+                mainEditor.importProject();
+                break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
@@ -157,6 +164,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case IDM_UNDO:
                 mainEditor.undo();
+                tableController.removeLast();
+                break;
+            case IDM_CLEAR:
+                mainEditor.clearAll();
+                tableController.clearAll();
                 break;
             case IDM_TABLE:
                 tableController.show();

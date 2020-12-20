@@ -6,11 +6,12 @@ class TableController
 {
 private:
 	HWND hWnd;
+	HWND hWndList;
 public:
 	TableController();
-	// ~TableController();
-	void init(HINSTANCE hInst, HWND parentHWND);
+	void init(HINSTANCE hInst, HWND hWndParent);
 	void show();
-	// void add();
-	// void delete();
+	void add(const char* message);
+	void removeLast();
+	void clearAll();
 };

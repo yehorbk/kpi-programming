@@ -8,4 +8,9 @@
 #define IDM_CUBE 1006
 
 #define IDM_UNDO 1011
-#define IDM_TABLE 1012
+#define IDM_CLEAR 1012
+
+#define IDM_EXPORT 1022
+#define IDM_IMPORT 1023
+
+#define IDM_TABLE 1030

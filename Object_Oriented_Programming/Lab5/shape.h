@@ -3,7 +3,7 @@
 #include "framework.h"
 #include "iserializable.h"
 
-class Shape // : public ISerializable<Shape>
+class Shape //: public ISerializable<Shape>
 {
 protected:
 	short x1 = -1;

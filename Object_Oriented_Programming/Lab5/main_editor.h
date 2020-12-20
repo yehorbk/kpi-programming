@@ -5,17 +5,19 @@
 #include "shape.h"
 #include "shape_editor.h"
 
-class MainEditor 
+class MainEditor
 {
 private:
 	HWND hWnd;
 	ShapeEditor* shapeEditor;
 	bool isEditorEnabled;
+	const char* projectFileName;
 	MainEditor()
 	{
 		this->hWnd = NULL;
 		this->shapeEditor = NULL;
 		this->isEditorEnabled = FALSE;
+		this->projectFileName = "editor-objects.txt";
 	};
 	MainEditor(const MainEditor&);
 	MainEditor& operator=(MainEditor&);
@@ -36,5 +38,8 @@ public:
 	void OnLBup();
 	void OnMouseMove();
 	void OnPaint();
+	void exportProject();
+	void importProject();
 	void undo();
+	void clearAll();
 };

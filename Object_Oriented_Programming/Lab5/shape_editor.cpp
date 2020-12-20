@@ -54,6 +54,7 @@ void ShapeEditor::init(Shape** _pcshape, int _counter)
 	{
 		this->pcshape[i] = _pcshape[i];
 	}
+	this->redrawWindow();
 }
 
 bool ShapeEditor::appendShape(Shape* shape)

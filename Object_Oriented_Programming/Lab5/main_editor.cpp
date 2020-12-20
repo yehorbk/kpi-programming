@@ -1,4 +1,5 @@
 #include "main_editor.h"
+#include "stdio.h"
 
 MainEditor::~MainEditor()
 {
@@ -70,11 +71,44 @@ void MainEditor::OnPaint()
 	}
 }
 
+void MainEditor::exportProject()
+{
+	if (this->shapeEditor)
+	{
+		Shape** shapes = this->shapeEditor->getShapes(); // TODO
+		FILE* fp;
+		fopen_s(&fp, this->projectFileName, "w+");
+		if (fp != NULL)
+		{
+			fprintf(fp, "name=Коло, x1=10, x2=20, y1=30, y2=40");
+			fclose(fp);
+		}
+	}
+}
+
+void MainEditor::importProject()
+{
+
+}
+
 void MainEditor::undo()
 {
 	if (this->shapeEditor)
 	{
 		this->shapeEditor->removeLastShape();
+	}
+}
+
+void MainEditor::clearAll()
+{
+	if (this->shapeEditor)
+	{
+		Shape** shapes = this->shapeEditor->getShapes();
+		for (int i = 0; i < this->shapeEditor->getCounter(); i++)
+		{
+			delete shapes[i];
+		}
+		this->shapeEditor->init(shapes, 0);
 	}
 }
 
