@@ -6,5 +6,6 @@
 class OLineOShape : public LineShape, public EllipseShape
 {
 public:
+	const char* getName();
 	void Show(HDC hdc);
 };

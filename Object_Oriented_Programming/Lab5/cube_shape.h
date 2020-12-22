@@ -6,5 +6,6 @@
 class CubeShape : public RectShape, public LineShape
 {
 public:
+	const char* getName();
 	void Show(HDC hdc);
 };

@@ -10,3 +10,9 @@ void RectShape::Show(HDC hdc)
 	SelectObject(hdc, hBrushOld);
 	DeleteObject(hBrush);
 }
+
+const char* RectShape::getName()
+{
+	return "Прямокутник";
+}
+

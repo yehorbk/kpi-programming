@@ -22,3 +22,8 @@ void CubeShape::Show(HDC hdc)
 	MoveToEx(hdc, (*this).Shape::x1 - differenceX, (*this).Shape::y2, NULL);
 	LineTo(hdc, (*this).Shape::x2, (*this).Shape::y2);
 }
+
+const char* CubeShape::getName()
+{
+	return " Û·";
+}

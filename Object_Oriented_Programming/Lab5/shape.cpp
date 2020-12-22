@@ -15,6 +15,7 @@ Shape* Shape::Set(short _x1, short _y1, short _x2, short _y2)
 const char* Shape::serialize()
 {
 	std::string result =
+		"name=" + std::string(this->getName()) + ", " +
 		"x1=" + std::to_string(this->x1) + ", " +
 		"y1=" + std::to_string(this->y1) + ", " +
 		"x2=" + std::to_string(this->x2) + ", " +
