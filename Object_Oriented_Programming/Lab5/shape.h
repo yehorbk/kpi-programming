@@ -3,7 +3,7 @@
 #include "framework.h"
 #include "iserializable.h"
 
-class Shape //: public ISerializable<Shape>
+class Shape : public ISerializable<Shape>
 {
 protected:
 	short x1 = -1;
@@ -13,7 +13,6 @@ protected:
 
 public:
 	virtual void Show(HDC) = 0;
+	const char* serialize();
 	Shape* Set(short _x1, short _y1, short _x2, short _y2);
-	// const char* serialize();
-	// static Shape* deserialize(char* data);
 };

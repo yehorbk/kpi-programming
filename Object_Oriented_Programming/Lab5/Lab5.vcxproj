@@ -141,6 +141,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="about.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="counter_state.h" />
     <ClInclude Include="cube_editor.h" />
     <ClInclude Include="cube_shape.h" />
     <ClInclude Include="editor.h" />
@@ -164,6 +166,7 @@
     <ClInclude Include="resource3.h" />
     <ClInclude Include="shape.h" />
     <ClInclude Include="shape_editor.h" />
+    <ClInclude Include="shape_serialization_adapter.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="table_controller.h" />
     <ClInclude Include="targetver.h" />
@@ -172,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="about.cpp" />
+    <ClCompile Include="common.cpp" />
     <ClCompile Include="cube_editor.cpp" />
     <ClCompile Include="cube_shape.cpp" />
     <ClCompile Include="ellipse_editor.cpp" />
@@ -188,6 +192,7 @@
     <ClCompile Include="rect_shape.cpp" />
     <ClCompile Include="shape.cpp" />
     <ClCompile Include="shape_editor.cpp" />
+    <ClCompile Include="shape_serialization_adapter.cpp" />
     <ClCompile Include="table.cpp" />
     <ClCompile Include="table_controller.cpp" />
     <ClCompile Include="tool.cpp" />

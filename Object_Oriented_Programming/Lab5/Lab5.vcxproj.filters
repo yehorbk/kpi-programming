@@ -138,6 +138,15 @@
     <ClInclude Include="table.h">
       <Filter>Файлы заголовков\table</Filter>
     </ClInclude>
+    <ClInclude Include="shape_serialization_adapter.h">
+      <Filter>Файлы заголовков\core</Filter>
+    </ClInclude>
+    <ClInclude Include="counter_state.h">
+      <Filter>Файлы заголовков\table</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Файлы заголовков\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shape.cpp">
@@ -202,6 +211,12 @@
     </ClCompile>
     <ClCompile Include="table.cpp">
       <Filter>Исходные файлы\table</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_serialization_adapter.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>Исходные файлы\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

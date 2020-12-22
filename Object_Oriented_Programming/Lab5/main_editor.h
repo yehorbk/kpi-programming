@@ -42,4 +42,5 @@ public:
 	void importProject();
 	void undo();
 	void clearAll();
+	const char* getLastSerialized();
 };

@@ -2,3 +2,5 @@
 
 #define IDD_TABLE 8000
 #define IDC_LIST 8001
+#define IDC_COUNTER_TITLE 8002
+#define IDC_COUNTER 8003

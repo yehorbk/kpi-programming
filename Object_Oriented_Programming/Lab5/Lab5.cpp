@@ -37,6 +37,7 @@ static void changeTool(HWND hWnd, Tool tool);
 static void updateWindowTitle(HWND hWnd, LPCSTR title);
 static void updateMenuItem(HWND hWnd, int id);
 static void disableEdition(HWND hWnd);
+static void appendToTable();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -113,7 +114,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_LBUTTONUP:
         mainEditor.OnLBup();
-        tableController.add("name=Коло, x1=1, x2=2, y1=3, y2=4");
+        appendToTable();
         break;
     case WM_MOUSEMOVE:
         mainEditor.OnMouseMove();
@@ -244,4 +245,13 @@ static void disableEdition(HWND hWnd)
 {
     updateWindowTitle(hWnd, NULL);
     updateMenuItem(hWnd, -1);
+}
+
+static void appendToTable()
+{
+    const char* message = mainEditor.getLastSerialized();
+    if (message != NULL)
+    {
+        tableController.add(message);
+    }
 }

@@ -7,6 +7,8 @@ class TableController
 private:
 	HWND hWnd;
 	HWND hWndList;
+	int counter;
+	void updateCounter(int state);
 public:
 	TableController();
 	void init(HINSTANCE hInst, HWND hWndParent);

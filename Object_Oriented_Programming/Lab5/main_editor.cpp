@@ -112,6 +112,16 @@ void MainEditor::clearAll()
 	}
 }
 
+const char* MainEditor::getLastSerialized()
+{
+	if (this->shapeEditor && this->isEditorEnabled)
+	{
+		Shape* shape = this->shapeEditor->getShapes()[this->shapeEditor->getCounter() - 1];
+		return shape->serialize();
+	}
+	return NULL;
+}
+
 void MainEditor::setUpEditor(ShapeEditor* _shapeEditor)
 {
 	if (this->shapeEditor)

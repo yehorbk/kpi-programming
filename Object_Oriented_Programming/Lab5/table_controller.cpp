@@ -1,11 +1,16 @@
 #include "table_controller.h"
 #include "table.h"
 #include "table.rh"
+#include "counter_state.h"
+#include "common.h"
+
+#include <string>
 
 TableController::TableController()
 {
 	this->hWnd = NULL;
 	this->hWndList = NULL;
+	this->counter = 0;
 }
 
 void TableController::init(HINSTANCE hInst, HWND hWndParent)
@@ -21,15 +26,40 @@ void TableController::show()
 
 void TableController::add(const char* message)
 {
-	SendMessageA(this->hWndList, LB_ADDSTRING, 0, LPARAM(message));
+	SendMessageA(this->hWndList, LB_INSERTSTRING, WPARAM(this->counter), LPARAM(message));
+	this->updateCounter(CR_INCREASE);
 }
 
 void TableController::removeLast()
 {
-	SendMessageA(this->hWndList, LB_DELETESTRING, 0, 0);
+	this->updateCounter(CR_DECREASE);
+	SendMessageA(this->hWndList, LB_DELETESTRING, WPARAM(this->counter), 0);
 }
 
 void TableController::clearAll()
 {
 	SendMessageA(this->hWndList, LB_RESETCONTENT, 0, 0);
+	this->updateCounter(CR_CLEAR);
+}
+
+void TableController::updateCounter(int state)
+{
+	switch (state)
+	{
+	case CR_DECREASE:
+		if (this->counter != 0)
+		{
+			this->counter -= 1;
+		}
+		break;
+	case CR_CLEAR:
+		this->counter = 0;
+		break;
+	case CR_INCREASE:
+		this->counter += 1;
+		break;
+	default:
+		break;
+	}
+	SetDlgItemInt(this->hWnd, IDC_COUNTER, this->counter, TRUE);
 }
