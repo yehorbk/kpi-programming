@@ -141,9 +141,6 @@
     <ClInclude Include="shape_serialization_adapter.h">
       <Filter>Файлы заголовков\core</Filter>
     </ClInclude>
-    <ClInclude Include="counter_state.h">
-      <Filter>Файлы заголовков\table</Filter>
-    </ClInclude>
     <ClInclude Include="common.h">
       <Filter>Файлы заголовков\core</Filter>
     </ClInclude>

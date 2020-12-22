@@ -1,9 +1,9 @@
 #include "main_editor.h"
 #include "stdio.h"
 
-#define EXPORT_OK 1
-#define EXPORT_NO_FIGURES 0
-#define EXPORT_CANNOT_OPEN_FILE -1
+#define EXP_OK 1
+#define EXP_NO_FIGURES 0
+#define EXP_CANNOT_OPEN_FILE -1
 
 MainEditor::~MainEditor()
 {
@@ -83,7 +83,7 @@ void MainEditor::exportProject()
 		int count = this->shapeEditor->getCounter();
 		if (count == 0)
 		{
-			this->showExportMessage(EXPORT_NO_FIGURES);
+			this->showExportMessage(EXP_NO_FIGURES);
 			return;
 		}
 		FILE* fp;
@@ -95,14 +95,14 @@ void MainEditor::exportProject()
 				fprintf(fp, "%s\n", shapes[i]->serialize());
 			}
 			fclose(fp);
-			this->showExportMessage(EXPORT_OK);
+			this->showExportMessage(EXP_OK);
 			return;
 		}
-		this->showExportMessage(EXPORT_CANNOT_OPEN_FILE);
+		this->showExportMessage(EXP_CANNOT_OPEN_FILE);
 	}
 	else
 	{
-		this->showExportMessage(EXPORT_NO_FIGURES);
+		this->showExportMessage(EXP_NO_FIGURES);
 	}
 }
 
@@ -160,13 +160,13 @@ void MainEditor::showExportMessage(int status)
 	switch (status)
 	{
 	default:
-	case EXPORT_OK:
+	case EXP_OK:
 		message = "Данi успiшно експортованi в файл editor-objects.txt";
 		break;
-	case EXPORT_NO_FIGURES:
+	case EXP_NO_FIGURES:
 		message = "Помилка експортування: на полотнi не знайдено жодної фiгури!";
 		break;
-	case EXPORT_CANNOT_OPEN_FILE:
+	case EXP_CANNOT_OPEN_FILE:
 		message = "Помилка експортування: не вдається вiдкрити файл для запису даних!";
 		break;
 	}

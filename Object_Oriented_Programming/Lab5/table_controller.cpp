@@ -1,10 +1,14 @@
 #include "table_controller.h"
 #include "table.h"
 #include "table.rh"
-#include "counter_state.h"
 #include "common.h"
 
 #include <string>
+
+#define CR_INCREASE 1
+#define CR_DECREASE -1
+#define CR_CLEAR 0
+
 
 TableController::TableController()
 {
