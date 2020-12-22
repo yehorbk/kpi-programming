@@ -13,4 +13,3 @@ const char* OLineOShape::getName()
 {
 	return "Лiнiя з кружочками на кiнцях";
 }
-

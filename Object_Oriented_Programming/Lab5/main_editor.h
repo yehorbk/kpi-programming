@@ -22,6 +22,7 @@ private:
 	MainEditor(const MainEditor&);
 	MainEditor& operator=(MainEditor&);
 	void setUpEditor(ShapeEditor* _shapeEditor);
+	void showExportMessage(int status);
 
 public:
 	~MainEditor();

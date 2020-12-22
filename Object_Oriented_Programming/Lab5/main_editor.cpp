@@ -1,6 +1,10 @@
 #include "main_editor.h"
 #include "stdio.h"
 
+#define EXPORT_OK 1
+#define EXPORT_NO_FIGURES 0
+#define EXPORT_CANNOT_OPEN_FILE -1
+
 MainEditor::~MainEditor()
 {
 	if (this->shapeEditor)
@@ -75,14 +79,30 @@ void MainEditor::exportProject()
 {
 	if (this->shapeEditor)
 	{
-		Shape** shapes = this->shapeEditor->getShapes(); // TODO
+		Shape** shapes = this->shapeEditor->getShapes();
+		int count = this->shapeEditor->getCounter();
+		if (count == 0)
+		{
+			this->showExportMessage(EXPORT_NO_FIGURES);
+			return;
+		}
 		FILE* fp;
 		fopen_s(&fp, this->projectFileName, "w+");
 		if (fp != NULL)
 		{
-			fprintf(fp, "name=Коло, x1=10, x2=20, y1=30, y2=40");
+			for (int i = 0; i < count; i++)
+			{
+				fprintf(fp, "%s\n", shapes[i]->serialize());
+			}
 			fclose(fp);
+			this->showExportMessage(EXPORT_OK);
+			return;
 		}
+		this->showExportMessage(EXPORT_CANNOT_OPEN_FILE);
+	}
+	else
+	{
+		this->showExportMessage(EXPORT_NO_FIGURES);
 	}
 }
 
@@ -132,4 +152,23 @@ void MainEditor::setUpEditor(ShapeEditor* _shapeEditor)
 	}
 	this->shapeEditor = _shapeEditor;
 	this->enableEditor();
+}
+
+void MainEditor::showExportMessage(int status)
+{
+	const char* message;
+	switch (status)
+	{
+	default:
+	case EXPORT_OK:
+		message = "Данi успiшно експортованi в файл editor-objects.txt";
+		break;
+	case EXPORT_NO_FIGURES:
+		message = "Помилка експортування: на полотнi не знайдено жодної фiгури!";
+		break;
+	case EXPORT_CANNOT_OPEN_FILE:
+		message = "Помилка експортування: не вдається вiдкрити файл для запису даних!";
+		break;
+	}
+	MessageBoxA(this->hWnd, message, "Експорт", MB_OK);
 }

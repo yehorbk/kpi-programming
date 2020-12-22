@@ -15,4 +15,3 @@ const char* RectShape::getName()
 {
 	return "Прямокутник";
 }
-
