@@ -41,8 +41,9 @@ public:
 	void OnPaint();
 	void exportProject();
 	void importProject();
+	void selectObject(int index);
+	void deleteObject(int index);
 	void undo();
 	void clearAll();
-	void deleteObject(int index);
 	const char* getLastSerialized();
 };

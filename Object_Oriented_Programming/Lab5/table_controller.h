@@ -21,6 +21,7 @@ private:
 	TableController(const TableController&);
 	TableController& operator=(TableController&);
 	static BOOL CALLBACK tableCallback(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+	void selectEntry();
 	void deleteEntry();
 	void updateCounter(int state);
 public:
@@ -29,7 +30,7 @@ public:
 		static TableController instance;
 		return instance;
 	}
-	void init(HINSTANCE hInst, HWND hWndParent, TableCallback _deleteCallback);
+	void init(HINSTANCE hInst, HWND hWndParent, TableCallback _selectCallback, TableCallback _deleteCallback);
 	void show();
 	void add(const char* message);
 	void removeLast();

@@ -23,6 +23,9 @@ BOOL CALLBACK TableController::tableCallback(HWND hDlg, UINT message, WPARAM wPa
 		case IDCANCEL:
 			EndDialog(hDlg, LOWORD(wParam));
 			return TRUE;
+		case IDC_SELECT:
+			TableController::getInstance().selectEntry();
+			break;
 		case IDC_DELETE:
 			TableController::getInstance().deleteEntry();
 			break;
@@ -30,6 +33,15 @@ BOOL CALLBACK TableController::tableCallback(HWND hDlg, UINT message, WPARAM wPa
 		break;
 	}
 	return FALSE;
+}
+
+void TableController::selectEntry()
+{
+	int index = SendMessage(this->hWndList, LB_GETCURSEL, 0, 0);
+	if (index != LB_ERR)
+	{
+		TableController::selectCallback(index);
+	}
 }
 
 void TableController::deleteEntry()
@@ -43,7 +55,7 @@ void TableController::deleteEntry()
 	}
 }
 
-void TableController::init(HINSTANCE hInst, HWND hWndParent, TableCallback _deleteCallback)
+void TableController::init(HINSTANCE hInst, HWND hWndParent, TableCallback _selectCallback, TableCallback _deleteCallback)
 {
 	this->hWnd = CreateDialog(
 		hInst,
@@ -52,6 +64,7 @@ void TableController::init(HINSTANCE hInst, HWND hWndParent, TableCallback _dele
 		TableController::tableCallback
 	);
 	this->hWndList = GetDlgItem(this->hWnd, IDC_LIST);
+	TableController::selectCallback = _selectCallback;
 	TableController::deleteCallback = _deleteCallback;
 }
 

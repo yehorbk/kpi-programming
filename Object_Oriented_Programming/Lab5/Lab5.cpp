@@ -38,6 +38,7 @@ static void updateWindowTitle(HWND hWnd, LPCSTR title);
 static void updateMenuItem(HWND hWnd, int id);
 static void disableEdition(HWND hWnd);
 static void appendToTable();
+static void selectObject(int index);
 static void deleteObject(int index);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -107,7 +108,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
         toolbarController = new ToolbarController(hWnd);
-        tableController.init(hInst, hWnd, deleteObject);
+        tableController.init(hInst, hWnd, selectObject, deleteObject);
         mainEditor.setHwnd(hWnd);
         break;
     case WM_LBUTTONDOWN:
@@ -255,6 +256,11 @@ static void appendToTable()
     {
         tableController.add(message);
     }
+}
+
+static void selectObject(int index)
+{
+    mainEditor.selectObject(index);
 }
 
 static void deleteObject(int index)

@@ -62,17 +62,6 @@ bool ShapeEditor::appendShape(Shape* shape)
 	if (this->counter < this->getShapesSize())
 	{
 		this->pcshape[this->counter++] = shape;
-		return true;
-	}
-	return false;
-}
-
-bool ShapeEditor::removeLastShape()
-{
-	if (this->counter > 0)
-	{
-		delete this->pcshape[--this->counter];
-		this->pcshape[this->counter] = NULL;
 		this->redrawWindow();
 		return true;
 	}
@@ -90,6 +79,35 @@ bool ShapeEditor::removeByIndex(int index)
 		}
 		counter--;
 		this->redrawWindow();
+		return true;
+	}
+	return false;
+}
+
+bool ShapeEditor::removeLastShape()
+{
+	if (this->counter > 0)
+	{
+		delete this->pcshape[--this->counter];
+		this->pcshape[this->counter] = NULL;
+		this->redrawWindow();
+		return true;
+	}
+	return false;
+}
+
+bool ShapeEditor::selectShape(int index)
+{
+	if (this->counter > 0 && index >= 0)
+	{
+		this->OnPaint();
+		Shape* shape = pcshape[index];
+		HDC hdc = this->openDrawer();
+		HPEN newPen = CreatePen(PS_DASH, 1, RGB(55, 255, 55));
+		HPEN oldPen = this->updatePen(hdc, newPen);
+		shape->Show(hdc);
+		DeleteObject(this->updatePen(hdc, oldPen));
+		this->closeDrawer(hdc);
 		return true;
 	}
 	return false;

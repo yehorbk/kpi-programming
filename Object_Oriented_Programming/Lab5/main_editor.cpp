@@ -132,6 +132,14 @@ void MainEditor::clearAll()
 	}
 }
 
+void MainEditor::selectObject(int index)
+{
+	if (this->shapeEditor)
+	{
+		this->shapeEditor->selectShape(index);
+	}
+}
+
 void MainEditor::deleteObject(int index)
 {
 	if (this->shapeEditor)

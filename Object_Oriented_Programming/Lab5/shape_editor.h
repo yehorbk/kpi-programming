@@ -34,8 +34,9 @@ public:
 	void OnPaint();
 	void init(Shape** _pcshape, int _counter);
 	bool appendShape(Shape* shape);
-	bool removeLastShape();
 	bool removeByIndex(int index);
+	bool removeLastShape();
+	bool selectShape(int index);
 	Shape** getShapes();
 	int getCounter();
 };
