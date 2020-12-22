@@ -43,5 +43,6 @@ public:
 	void importProject();
 	void undo();
 	void clearAll();
+	void deleteObject(int index);
 	const char* getLastSerialized();
 };

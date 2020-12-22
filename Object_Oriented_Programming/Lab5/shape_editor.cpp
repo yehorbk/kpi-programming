@@ -79,6 +79,22 @@ bool ShapeEditor::removeLastShape()
 	return false;
 }
 
+bool ShapeEditor::removeByIndex(int index)
+{
+	if (this->counter > 0 && index >= 0)
+	{
+		delete this->pcshape[index];
+		for (int i = index; i < this->counter; i++)
+		{
+			pcshape[i] = pcshape[i + 1];
+		}
+		counter--;
+		this->redrawWindow();
+		return true;
+	}
+	return false;
+}
+
 Shape** ShapeEditor::getShapes()
 {
 	return this->pcshape;

@@ -132,6 +132,14 @@ void MainEditor::clearAll()
 	}
 }
 
+void MainEditor::deleteObject(int index)
+{
+	if (this->shapeEditor)
+	{
+		this->shapeEditor->removeByIndex(index);
+	}
+}
+
 const char* MainEditor::getLastSerialized()
 {
 	if (this->shapeEditor && this->isEditorEnabled)

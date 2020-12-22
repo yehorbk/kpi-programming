@@ -24,7 +24,7 @@ WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
 ToolbarController* toolbarController;
-TableController tableController;
+TableController& tableController = tableController.getInstance();
 MainEditor& mainEditor = mainEditor.getInstance();
 
 // Functions Declaration
@@ -38,6 +38,7 @@ static void updateWindowTitle(HWND hWnd, LPCSTR title);
 static void updateMenuItem(HWND hWnd, int id);
 static void disableEdition(HWND hWnd);
 static void appendToTable();
+static void deleteObject(int index);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -106,7 +107,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
         toolbarController = new ToolbarController(hWnd);
-        tableController.init(hInst, hWnd);
+        tableController.init(hInst, hWnd, deleteObject);
         mainEditor.setHwnd(hWnd);
         break;
     case WM_LBUTTONDOWN:
@@ -254,4 +255,9 @@ static void appendToTable()
     {
         tableController.add(message);
     }
+}
+
+static void deleteObject(int index)
+{
+    mainEditor.deleteObject(index);
 }

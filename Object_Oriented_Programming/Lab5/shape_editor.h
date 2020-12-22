@@ -35,6 +35,7 @@ public:
 	void init(Shape** _pcshape, int _counter);
 	bool appendShape(Shape* shape);
 	bool removeLastShape();
+	bool removeByIndex(int index);
 	Shape** getShapes();
 	int getCounter();
 };

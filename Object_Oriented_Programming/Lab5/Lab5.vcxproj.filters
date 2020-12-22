@@ -135,9 +135,6 @@
     <ClInclude Include="table_controller.h">
       <Filter>Файлы заголовков\table</Filter>
     </ClInclude>
-    <ClInclude Include="table.h">
-      <Filter>Файлы заголовков\table</Filter>
-    </ClInclude>
     <ClInclude Include="shape_serialization_adapter.h">
       <Filter>Файлы заголовков\core</Filter>
     </ClInclude>
@@ -205,9 +202,6 @@
     </ClCompile>
     <ClCompile Include="about.cpp">
       <Filter>Исходные файлы\about</Filter>
-    </ClCompile>
-    <ClCompile Include="table.cpp">
-      <Filter>Исходные файлы\table</Filter>
     </ClCompile>
     <ClCompile Include="shape_serialization_adapter.cpp">
       <Filter>Исходные файлы\core</Filter>

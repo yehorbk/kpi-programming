@@ -1,26 +1,58 @@
 #include "table_controller.h"
-#include "table.h"
 #include "table.rh"
 #include "common.h"
-
-#include <string>
 
 #define CR_INCREASE 1
 #define CR_DECREASE -1
 #define CR_CLEAR 0
 
+TableCallback TableController::deleteCallback;
+TableCallback TableController::selectCallback;
 
-TableController::TableController()
+BOOL CALLBACK TableController::tableCallback(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	this->hWnd = NULL;
-	this->hWndList = NULL;
-	this->counter = 0;
+	UNREFERENCED_PARAMETER(lParam);
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		return TRUE;
+	case WM_COMMAND:
+		int wmId = LOWORD(wParam);
+		switch (wmId)
+		{
+		case IDCANCEL:
+			EndDialog(hDlg, LOWORD(wParam));
+			return TRUE;
+		case IDC_DELETE:
+			TableController::getInstance().deleteEntry();
+			break;
+		}
+		break;
+	}
+	return FALSE;
 }
 
-void TableController::init(HINSTANCE hInst, HWND hWndParent)
+void TableController::deleteEntry()
 {
-	this->hWnd = tableInterface(hInst, hWndParent);
+	int index = SendMessage(this->hWndList, LB_GETCURSEL, 0, 0);
+	if (index != LB_ERR)
+	{
+		this->updateCounter(CR_DECREASE);
+		SendMessage(this->hWndList, LB_DELETESTRING, WPARAM(index), 0);
+		TableController::deleteCallback(index);
+	}
+}
+
+void TableController::init(HINSTANCE hInst, HWND hWndParent, TableCallback _deleteCallback)
+{
+	this->hWnd = CreateDialog(
+		hInst,
+		MAKEINTRESOURCE(IDD_TABLE),
+		hWndParent,
+		TableController::tableCallback
+	);
 	this->hWndList = GetDlgItem(this->hWnd, IDC_LIST);
+	TableController::deleteCallback = _deleteCallback;
 }
 
 void TableController::show()
