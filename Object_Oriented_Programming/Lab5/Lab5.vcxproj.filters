@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\editors">
+      <UniqueIdentifier>{3507a832-d4fb-4fe9-a944-00da10590001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\editors">
+      <UniqueIdentifier>{b96b23cc-c202-446d-959b-8a6b7304b6e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\shapes">
+      <UniqueIdentifier>{efad3fae-578b-4427-84a2-3c5a5d8058e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\shapes">
+      <UniqueIdentifier>{d9558aee-5f5e-444e-bf15-ef68ae387e63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\core">
+      <UniqueIdentifier>{3ad0b368-a05b-49fd-a531-ef3d4334fa42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\core">
+      <UniqueIdentifier>{a5483a5c-0c38-4552-bbdf-fdb536567e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\about">
+      <UniqueIdentifier>{e8406775-6cb5-4a04-a595-c8eb11b0efd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\about">
+      <UniqueIdentifier>{689c9e54-e2c0-4e56-aeb9-8be6f69a153c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\about">
+      <UniqueIdentifier>{26174a56-d96f-406d-919a-968a6a9fff38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\table">
+      <UniqueIdentifier>{888535a4-c12f-4c4a-a203-ed0bb5d95cc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\table">
+      <UniqueIdentifier>{0d603ce9-6a45-481e-8846-95cf264898a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\table">
+      <UniqueIdentifier>{be4414c7-ce1e-438d-b3a1-9d2c1fc7a15b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ellipse_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="line_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="point_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="rect_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="point_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="line_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="rect_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="ellipse_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="toolbar_controller.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="main_editor.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="olineo_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="cube_shape.h">
+      <Filter>Файлы заголовков\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="olineo_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="cube_editor.h">
+      <Filter>Файлы заголовков\editors</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab5.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="tool.h">
+      <Filter>Файлы заголовков\core</Filter>
+    </ClInclude>
+    <ClInclude Include="iserializable.h">
+      <Filter>Файлы заголовков\core</Filter>
+    </ClInclude>
+    <ClInclude Include="about.h">
+      <Filter>Файлы заголовков\about</Filter>
+    </ClInclude>
+    <ClInclude Include="resource3.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="table_controller.h">
+      <Filter>Файлы заголовков\table</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_serialization_adapter.h">
+      <Filter>Файлы заголовков\core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="point_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="line_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="rect_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="ellipse_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="point_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="line_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="rect_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="ellipse_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="toolbar_controller.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="main_editor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="olineo_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="cube_editor.cpp">
+      <Filter>Исходные файлы\editors</Filter>
+    </ClCompile>
+    <ClCompile Include="olineo_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="cube_shape.cpp">
+      <Filter>Исходные файлы\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab5.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="tool.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="table_controller.cpp">
+      <Filter>Исходные файлы\table</Filter>
+    </ClCompile>
+    <ClCompile Include="about.cpp">
+      <Filter>Исходные файлы\about</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_serialization_adapter.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="toolbar.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="Lab5.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="about.rc">
+      <Filter>Файлы ресурсов\about</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="table.rc">
+      <Filter>Файлы ресурсов\table</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="toolbar_icons.bmp">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="Lab5.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="toolbar.rh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="Lab5.rh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="about.rh">
+      <Filter>Файлы ресурсов\about</Filter>
+    </None>
+    <None Include="table.rh">
+      <Filter>Файлы ресурсов\table</Filter>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+#pragma once
+
+#define IDM_POINT 1001
+#define IDM_LINE 1002
+#define IDM_RECT 1003
+#define IDM_ELLIPSE 1004
+#define IDM_OLINEO 1005
+#define IDM_CUBE 1006
+
+#define IDM_UNDO 1011
+#define IDM_CLEAR 1012
+
+#define IDM_EXPORT 1022
+#define IDM_IMPORT 1023
+
+#define IDM_TABLE 1030
