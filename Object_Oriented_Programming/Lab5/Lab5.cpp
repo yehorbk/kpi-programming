@@ -36,11 +36,11 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 static void changeTool(HWND hWnd, Tool tool);
 static void updateWindowTitle(HWND hWnd, LPCSTR title);
 static void updateMenuItem(HWND hWnd, int id);
+static void importProject();
 static void disableEdition(HWND hWnd);
 static void appendToTable();
 static void selectObject(int index);
 static void deleteObject(int index);
-static void importProject();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -110,7 +110,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
         toolbarController = new ToolbarController(hWnd);
         tableController.init(hInst, hWnd, selectObject, deleteObject);
-        mainEditor.setHwnd(hWnd);
+        mainEditor.init(hWnd);
         importProject();
         break;
     case WM_LBUTTONDOWN:
@@ -129,7 +129,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case IDM_EXPORT:
-                mainEditor.exportProject();
+                mainEditor.exportProject(EXP_STATUS_MANUALLY);
                 break;
             case IDM_IMPORT:
                 importProject();
@@ -168,7 +168,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 changeTool(hWnd, Tool::CUBE);
                 break;
             case IDM_UNDO:
-                mainEditor.undo();
+                mainEditor.deleteLastObject();
                 tableController.removeLast();
                 break;
             case IDM_CLEAR:
@@ -176,7 +176,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 tableController.clearAll();
                 break;
             case IDM_TABLE:
-                tableController.show();
+                tableController.showWindow();
                 break;
             case IDM_ABOUT:
                 aboutInterface(hInst, hWnd);
@@ -251,9 +251,24 @@ static void disableEdition(HWND hWnd)
     updateMenuItem(hWnd, -1);
 }
 
+static void importProject()
+{
+    mainEditor.importProject();
+    const char** serializedShapes = mainEditor.getAllObjectsLocalized();
+    if (serializedShapes)
+    {
+        const char* line;
+        int counter = 0;
+        while ((line = serializedShapes[counter++]) != NULL)
+        {
+            tableController.add(line);
+        }
+    }
+}
+
 static void appendToTable()
 {
-    const char* message = mainEditor.getLastSerialized();
+    const char* message = mainEditor.getLastObjectLocalized();
     if (message != NULL)
     {
         tableController.add(message);
@@ -268,19 +283,4 @@ static void selectObject(int index)
 static void deleteObject(int index)
 {
     mainEditor.deleteObject(index);
-}
-
-static void importProject()
-{
-    mainEditor.importProject();
-    const char** serializedShapes = mainEditor.getAllSerialized();
-    if (serializedShapes)
-    {
-        const char* line;
-        int counter = 0;
-        while ((line = serializedShapes[counter++]) != NULL)
-        {
-            tableController.add(line);
-        }
-    }
 }

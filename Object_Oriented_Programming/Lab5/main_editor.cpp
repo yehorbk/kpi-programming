@@ -7,7 +7,7 @@
 #include "shape_serialization_adapter.h"
 
 #define EXP_OK 1
-#define EXP_NO_FIGURES 0
+#define EXP_NO_EDITOR 0
 #define EXP_CANNOT_OPEN_FILE -1
 
 MainEditor::~MainEditor()
@@ -24,7 +24,7 @@ MainEditor::~MainEditor()
 	delete this->shapeEditor;
 }
 
-void MainEditor::setHwnd(HWND _hWnd)
+void MainEditor::init(HWND _hWnd)
 {
 	this->hWnd = _hWnd;
 }
@@ -61,7 +61,7 @@ void MainEditor::OnLBup()
 	if (this->shapeEditor && this->isEditorEnabled)
 	{
 		this->shapeEditor->OnLBup();
-		this->exportOne();
+		this->exportProject(EXP_STATUS_AUTO);
 	}
 }
 
@@ -81,32 +81,12 @@ void MainEditor::OnPaint()
 	}
 }
 
-void MainEditor::exportOne()
-{
-	if (this->shapeEditor)
-	{
-		Shape* shape = this->shapeEditor->getShapes()[this->shapeEditor->getCounter() - 1];
-		FILE* fp;
-		fopen_s(&fp, this->projectFileName, "a+");
-		if (fp != NULL)
-		{
-			fprintf(fp, "%s\n", shape->serialize());
-			fclose(fp);
-		}
-	}
-}
-
-void MainEditor::exportProject()
+void MainEditor::exportProject(int status)
 {
 	if (this->shapeEditor)
 	{
 		Shape** shapes = this->shapeEditor->getShapes();
 		int count = this->shapeEditor->getCounter();
-		if (count == 0)
-		{
-			this->showExportMessage(EXP_NO_FIGURES);
-			return;
-		}
 		FILE* fp;
 		fopen_s(&fp, this->projectFileName, "w+");
 		if (fp != NULL)
@@ -116,14 +96,17 @@ void MainEditor::exportProject()
 				fprintf(fp, "%s\n", shapes[i]->serialize());
 			}
 			fclose(fp);
-			this->showExportMessage(EXP_OK);
+			if (status == EXP_STATUS_MANUALLY)
+			{
+				this->showExportMessage(EXP_OK);
+			}
 			return;
 		}
 		this->showExportMessage(EXP_CANNOT_OPEN_FILE);
 	}
 	else
 	{
-		this->showExportMessage(EXP_NO_FIGURES);
+		this->showExportMessage(EXP_NO_EDITOR);
 	}
 }
 
@@ -160,22 +143,6 @@ void MainEditor::importProject()
 	}
 }
 
-void MainEditor::undo()
-{
-	if (this->shapeEditor)
-	{
-		this->shapeEditor->removeLastShape();
-	}
-}
-
-void MainEditor::clearAll()
-{
-	if (this->shapeEditor)
-	{
-		this->shapeEditor->clearAllShapes();
-	}
-}
-
 void MainEditor::selectObject(int index)
 {
 	if (this->shapeEditor)
@@ -189,10 +156,29 @@ void MainEditor::deleteObject(int index)
 	if (this->shapeEditor)
 	{
 		this->shapeEditor->removeByIndex(index);
+		this->exportProject(EXP_STATUS_AUTO);
 	}
 }
 
-const char* MainEditor::getLastSerialized()
+void MainEditor::deleteLastObject()
+{
+	if (this->shapeEditor)
+	{
+		this->shapeEditor->removeLastShape();
+		this->exportProject(EXP_STATUS_AUTO);
+	}
+}
+
+void MainEditor::clearAll()
+{
+	if (this->shapeEditor)
+	{
+		this->shapeEditor->clearAllShapes();
+		this->exportProject(EXP_STATUS_AUTO);
+	}
+}
+
+const char* MainEditor::getLastObjectLocalized()
 {
 	if (this->shapeEditor && this->isEditorEnabled)
 	{
@@ -202,7 +188,7 @@ const char* MainEditor::getLastSerialized()
 	return NULL;
 }
 
-const char** MainEditor::getAllSerialized()
+const char** MainEditor::getAllObjectsLocalized()
 {
 	if (this->shapeEditor)
 	{
@@ -243,8 +229,8 @@ void MainEditor::showExportMessage(int status)
 	case EXP_OK:
 		message = "Данi успiшно експортованi в файл editor-objects.txt";
 		break;
-	case EXP_NO_FIGURES:
-		message = "Помилка експортування: на полотнi не знайдено жодної фiгури!";
+	case EXP_NO_EDITOR:
+		message = "Помилка експортування: з початку використання програми не було введено жодної фiгури!";
 		break;
 	case EXP_CANNOT_OPEN_FILE:
 		message = "Помилка експортування: не вдається вiдкрити файл для запису даних!";

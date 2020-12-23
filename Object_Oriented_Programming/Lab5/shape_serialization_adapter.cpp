@@ -1,16 +1,15 @@
 #include "shape_serialization_adapter.h"
 
-#include <string>
 #include <typeinfo>
 
 ShapeSerializationAdapter::ShapeSerializationAdapter()
 {
-	this->shapeTypes[typeid(CubeShape).name()] = []() -> Shape* { return dynamic_cast<RectShape*>(new CubeShape()); };
+	this->shapeTypes[typeid(PointShape).name()] = []() -> Shape* { return new PointShape(); };
+	this->shapeTypes[typeid(RectShape).name()] = []() -> Shape* { return new RectShape(); };
 	this->shapeTypes[typeid(EllipseShape).name()] = []() -> Shape* { return new EllipseShape(); };
 	this->shapeTypes[typeid(LineShape).name()] = []() -> Shape* { return new LineShape(); };
 	this->shapeTypes[typeid(OLineOShape).name()] = []() -> Shape* { return dynamic_cast<LineShape*>(new OLineOShape()); };
-	this->shapeTypes[typeid(PointShape).name()] = []() -> Shape* { return new PointShape(); };
-	this->shapeTypes[typeid(RectShape).name()] = []() -> Shape* { return new RectShape(); };
+	this->shapeTypes[typeid(CubeShape).name()] = []() -> Shape* { return dynamic_cast<RectShape*>(new CubeShape()); };
 }
 
 Shape* ShapeSerializationAdapter::deserialize(const char* data)

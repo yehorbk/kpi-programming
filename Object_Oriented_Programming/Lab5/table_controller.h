@@ -1,14 +1,14 @@
 #pragma once
 
-#include "framework.h"
+#include <windows.h>
 
 using TableCallback = void(*)(int);
 
 class TableController
 {
 private:
-	static TableCallback deleteCallback;
 	static TableCallback selectCallback;
+	static TableCallback deleteCallback;
 	HWND hWnd;
 	HWND hWndList;
 	int counter;
@@ -31,7 +31,7 @@ public:
 		return instance;
 	}
 	void init(HINSTANCE hInst, HWND hWndParent, TableCallback _selectCallback, TableCallback _deleteCallback);
-	void show();
+	void showWindow();
 	void add(const char* message);
 	void removeLast();
 	void clearAll();

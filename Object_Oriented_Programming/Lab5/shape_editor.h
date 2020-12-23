@@ -19,6 +19,7 @@ protected:
 	short y2;
 	bool isEdit;
 	POINT getMousePosition();
+	int getShapesSize();
 	HDC openDrawer();
 	void closeDrawer(HDC hdc);
 	HPEN updatePen(HDC hdc, COLORREF color);
@@ -32,12 +33,11 @@ public:
 	void OnMouseMove();
 	void OnPaint();
 	void init(Shape** _pcshape, int _counter);
+	bool selectShape(int index);
 	bool appendShape(Shape* shape);
 	bool removeByIndex(int index);
 	bool removeLastShape();
 	bool clearAllShapes();
-	bool selectShape(int index);
 	Shape** getShapes();
-	int getShapesSize();
 	int getCounter();
 };

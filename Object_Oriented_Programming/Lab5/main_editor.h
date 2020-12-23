@@ -1,9 +1,12 @@
 #pragma once
 
 #include "framework.h"
-#include "tool.h"
-#include "shape.h"
 #include "shape_editor.h"
+#include "shape.h"
+#include "tool.h"
+
+#define EXP_STATUS_MANUALLY 1
+#define EXP_STATUS_AUTO 0
 
 class MainEditor
 {
@@ -31,7 +34,7 @@ public:
 		static MainEditor instance;
 		return instance;
 	};
-	void setHwnd(HWND);
+	void init(HWND hWnd);
 	void Start(Tool tool);
 	void enableEditor();
 	void disableEditor();
@@ -39,13 +42,12 @@ public:
 	void OnLBup();
 	void OnMouseMove();
 	void OnPaint();
-	void exportOne();
-	void exportProject();
+	void exportProject(int status);
 	void importProject();
 	void selectObject(int index);
 	void deleteObject(int index);
-	void undo();
+	void deleteLastObject();
 	void clearAll();
-	const char* getLastSerialized();
-	const char** getAllSerialized();
+	const char* getLastObjectLocalized();
+	const char** getAllObjectsLocalized();
 };

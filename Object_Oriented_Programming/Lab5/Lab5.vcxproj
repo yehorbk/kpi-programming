@@ -141,7 +141,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="about.h" />
-    <ClInclude Include="common.h" />
     <ClInclude Include="cube_editor.h" />
     <ClInclude Include="cube_shape.h" />
     <ClInclude Include="editor.h" />
@@ -173,7 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="about.cpp" />
-    <ClCompile Include="common.cpp" />
     <ClCompile Include="cube_editor.cpp" />
     <ClCompile Include="cube_shape.cpp" />
     <ClCompile Include="ellipse_editor.cpp" />

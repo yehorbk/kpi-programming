@@ -8,7 +8,7 @@
 #include "olineo_editor.h"
 #include "cube_editor.h"
 
-Tool::Tool(LPCSTR _title, int _menuItemId, int _toolbarItemId, Factory _factory)
+Tool::Tool(LPCSTR _title, int _menuItemId, int _toolbarItemId, EditorFactory _factory)
 {
 	this->title = _title;
 	this->menuItemId = _menuItemId;

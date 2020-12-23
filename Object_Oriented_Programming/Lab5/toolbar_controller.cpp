@@ -4,7 +4,7 @@
 ToolbarController::ToolbarController(HWND hWnd)
 {
 	this->selectedToolId = -1;
-	this->parent = hWnd;
+	this->hWndParent = hWnd;
 	TBBUTTON tbb[6];
 	ZeroMemory(tbb, sizeof(tbb));
 	tbb[0].iBitmap = 0;
@@ -31,7 +31,7 @@ ToolbarController::ToolbarController(HWND hWnd)
 	tbb[5].fsState = TBSTATE_ENABLED;
 	tbb[5].fsStyle = TBSTYLE_BUTTON;
 	tbb[5].idCommand = ID_TOOL_CUBE;
-	this->instance = CreateToolbarEx(this->parent,
+	this->hWndToolbar = CreateToolbarEx(this->hWndParent,
 		WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
 		IDC_TOOLBAR, 6, GetModuleHandle(NULL), IDB_TOOLBAR,
 		tbb, 6, 24, 24, 24, 24, sizeof(TBBUTTON));
@@ -43,7 +43,7 @@ bool ToolbarController::OnButtonPress(Tool tool)
 	if (this->selectedToolId != tool.getToolbarItemId())
 	{
 		this->selectedToolId = tool.getToolbarItemId();
-		SendMessage(this->instance, TB_PRESSBUTTON, this->selectedToolId, TRUE);
+		SendMessage(this->hWndToolbar, TB_PRESSBUTTON, this->selectedToolId, TRUE);
 		return TRUE;
 	}
 	else {
@@ -91,17 +91,17 @@ void ToolbarController::OnNotify(WPARAM wParam, LPARAM lParam)
 void ToolbarController::OnSize()
 {
 	RECT rc, rw;
-	GetClientRect(this->parent, &rc);
-	GetWindowRect(this->instance, &rw);
-	MoveWindow(this->instance, 0, 0, rc.right - rc.left, rw.bottom - rw.top, FALSE);
+	GetClientRect(this->hWndParent, &rc);
+	GetWindowRect(this->hWndToolbar, &rw);
+	MoveWindow(this->hWndToolbar, 0, 0, rc.right - rc.left, rw.bottom - rw.top, FALSE);
 }
 
 void ToolbarController::resetAllButtons()
 {
-	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::POINT).getToolbarItemId(), FALSE);
-	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::LINE).getToolbarItemId(), FALSE);
-	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::RECT).getToolbarItemId(), FALSE);
-	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::ELLIPSE).getToolbarItemId(), FALSE);
-	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::OLINEO).getToolbarItemId(), FALSE);
-	SendMessage(this->instance, TB_PRESSBUTTON, Tool(Tool::CUBE).getToolbarItemId(), FALSE);
+	SendMessage(this->hWndToolbar, TB_PRESSBUTTON, Tool(Tool::POINT).getToolbarItemId(), FALSE);
+	SendMessage(this->hWndToolbar, TB_PRESSBUTTON, Tool(Tool::LINE).getToolbarItemId(), FALSE);
+	SendMessage(this->hWndToolbar, TB_PRESSBUTTON, Tool(Tool::RECT).getToolbarItemId(), FALSE);
+	SendMessage(this->hWndToolbar, TB_PRESSBUTTON, Tool(Tool::ELLIPSE).getToolbarItemId(), FALSE);
+	SendMessage(this->hWndToolbar, TB_PRESSBUTTON, Tool(Tool::OLINEO).getToolbarItemId(), FALSE);
+	SendMessage(this->hWndToolbar, TB_PRESSBUTTON, Tool(Tool::CUBE).getToolbarItemId(), FALSE);
 }

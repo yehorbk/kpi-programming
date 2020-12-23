@@ -10,8 +10,8 @@
 class ToolbarController
 {
 private:
-	HWND instance;
-	HWND parent;
+	HWND hWndToolbar;
+	HWND hWndParent;
 	int selectedToolId;
 	void resetAllButtons();
 

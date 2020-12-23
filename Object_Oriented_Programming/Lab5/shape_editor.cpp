@@ -57,6 +57,23 @@ void ShapeEditor::init(Shape** _pcshape, int _counter)
 	this->redrawWindow();
 }
 
+bool ShapeEditor::selectShape(int index)
+{
+	if (this->counter > 0 && index >= 0)
+	{
+		this->OnPaint();
+		Shape* shape = pcshape[index];
+		HDC hdc = this->openDrawer();
+		HPEN newPen = CreatePen(PS_DASH, 1, RGB(55, 255, 55));
+		HPEN oldPen = this->updatePen(hdc, newPen);
+		shape->Show(hdc);
+		DeleteObject(this->updatePen(hdc, oldPen));
+		this->closeDrawer(hdc);
+		return true;
+	}
+	return false;
+}
+
 bool ShapeEditor::appendShape(Shape* shape)
 {
 	if (this->counter < this->getShapesSize())
@@ -111,23 +128,6 @@ bool ShapeEditor::clearAllShapes()
 	return false;
 }
 
-bool ShapeEditor::selectShape(int index)
-{
-	if (this->counter > 0 && index >= 0)
-	{
-		this->OnPaint();
-		Shape* shape = pcshape[index];
-		HDC hdc = this->openDrawer();
-		HPEN newPen = CreatePen(PS_DASH, 1, RGB(55, 255, 55));
-		HPEN oldPen = this->updatePen(hdc, newPen);
-		shape->Show(hdc);
-		DeleteObject(this->updatePen(hdc, oldPen));
-		this->closeDrawer(hdc);
-		return true;
-	}
-	return false;
-}
-
 Shape** ShapeEditor::getShapes()
 {
 	return this->pcshape;
@@ -144,6 +144,11 @@ POINT ShapeEditor::getMousePosition()
 	GetCursorPos(&result);
 	ScreenToClient(this->hWnd, &result);
 	return result;
+}
+
+int ShapeEditor::getShapesSize()
+{
+	return 106;
 }
 
 HDC ShapeEditor::openDrawer()
@@ -170,9 +175,4 @@ HPEN ShapeEditor::updatePen(HDC hdc, HPEN hpen)
 void ShapeEditor::redrawWindow()
 {
 	InvalidateRect(this->hWnd, NULL, TRUE);
-}
-
-int ShapeEditor::getShapesSize()
-{
-	return 106;
 }

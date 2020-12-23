@@ -138,9 +138,6 @@
     <ClInclude Include="shape_serialization_adapter.h">
       <Filter>Файлы заголовков\core</Filter>
     </ClInclude>
-    <ClInclude Include="common.h">
-      <Filter>Файлы заголовков\core</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shape.cpp">
@@ -204,9 +201,6 @@
       <Filter>Исходные файлы\about</Filter>
     </ClCompile>
     <ClCompile Include="shape_serialization_adapter.cpp">
-      <Filter>Исходные файлы\core</Filter>
-    </ClCompile>
-    <ClCompile Include="common.cpp">
       <Filter>Исходные файлы\core</Filter>
     </ClCompile>
   </ItemGroup>

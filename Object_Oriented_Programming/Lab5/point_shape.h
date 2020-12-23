@@ -5,6 +5,6 @@
 class PointShape : public Shape
 {
 public:
-	const char* getName();
 	void Show(HDC hdc);
+	const char* getName();
 };
