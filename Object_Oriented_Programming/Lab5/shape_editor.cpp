@@ -96,6 +96,21 @@ bool ShapeEditor::removeLastShape()
 	return false;
 }
 
+bool ShapeEditor::clearAllShapes()
+{
+	if (this->counter > 0)
+	{
+		for (int i = 0; i < this->counter; i++)
+		{
+			delete this->pcshape[i];
+		}
+		this->counter = 0;
+		this->redrawWindow();
+		return true;
+	}
+	return false;
+}
+
 bool ShapeEditor::selectShape(int index)
 {
 	if (this->counter > 0 && index >= 0)

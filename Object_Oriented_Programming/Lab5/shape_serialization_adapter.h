@@ -1,6 +1,7 @@
 #pragma once
 
-#include "string.h"
+#include <map>
+#include <string>
 
 #include "cube_shape.h"
 #include "ellipse_shape.h"
@@ -9,9 +10,13 @@
 #include "point_shape.h"
 #include "rect_shape.h"
 
+using ShapeFactory = Shape* (*)();
+
 class ShapeSerializationAdapter
 {
+private:
+	std::map<std::string, ShapeFactory> shapeTypes;
 public:
-	const char* serialize(Shape* shape);
-	// Shape* deserialize(const char);
+	ShapeSerializationAdapter();
+	Shape* deserialize(const char* data);
 };

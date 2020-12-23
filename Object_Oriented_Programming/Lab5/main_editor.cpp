@@ -1,5 +1,10 @@
 #include "main_editor.h"
-#include "stdio.h"
+
+#include <fstream>
+#include <string>
+#include <stdio.h>
+
+#include "shape_serialization_adapter.h"
 
 #define EXP_OK 1
 #define EXP_NO_FIGURES 0
@@ -124,7 +129,35 @@ void MainEditor::exportProject()
 
 void MainEditor::importProject()
 {
-
+	std::ifstream file(this->projectFileName);
+	if (file.is_open())
+	{	
+		ShapeSerializationAdapter shapeSerializationAdapter = ShapeSerializationAdapter();
+		ShapeEditor* currentEditor;
+		if (this->shapeEditor)
+		{
+			currentEditor = this->shapeEditor;
+		}
+		else
+		{
+			Tool tool = Tool::POINT;
+			currentEditor = tool.getEditor(this->hWnd);
+		}
+		currentEditor->clearAllShapes();
+		Shape** shapes = currentEditor->getShapes();
+		int counter = currentEditor->getCounter();
+		std::string line;
+		while (std::getline(file, line))
+		{
+			if (line != "")
+			{
+				shapes[counter++] = shapeSerializationAdapter.deserialize(line.c_str());
+			}
+		}
+		currentEditor->init(shapes, counter);
+		this->shapeEditor = currentEditor;
+		this->OnPaint();
+	}
 }
 
 void MainEditor::undo()
@@ -139,12 +172,7 @@ void MainEditor::clearAll()
 {
 	if (this->shapeEditor)
 	{
-		Shape** shapes = this->shapeEditor->getShapes();
-		for (int i = 0; i < this->shapeEditor->getCounter(); i++)
-		{
-			delete shapes[i];
-		}
-		this->shapeEditor->init(shapes, 0);
+		this->shapeEditor->clearAllShapes();
 	}
 }
 
@@ -169,7 +197,27 @@ const char* MainEditor::getLastSerialized()
 	if (this->shapeEditor && this->isEditorEnabled)
 	{
 		Shape* shape = this->shapeEditor->getShapes()[this->shapeEditor->getCounter() - 1];
-		return shape->serialize();
+		return shape->getParamContent();
+	}
+	return NULL;
+}
+
+const char** MainEditor::getAllSerialized()
+{
+	if (this->shapeEditor)
+	{
+		Shape** shapes = this->shapeEditor->getShapes();
+		int counter = this->shapeEditor->getCounter();
+		if (counter > 0)
+		{
+			const char** serializedShapes = new const char* [counter];
+			for (int i = 0; i < counter; i++)
+			{
+				serializedShapes[i] = shapes[i]->getParamContent();
+			}
+			serializedShapes[counter] = NULL;
+			return serializedShapes;
+		}
 	}
 	return NULL;
 }

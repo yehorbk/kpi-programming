@@ -1,2 +1,8 @@
-Ελiορ	228	226	112	-12
-Κσα	624	438	403	194
+class CubeShape	248	542	148	365
+class CubeShape	92	80	115	220
+class CubeShape	208	102	221	129
+class OLineOShape	93	122	229	264
+class OLineOShape	884	433	884	433
+class OLineOShape	613	223	613	223
+class OLineOShape	356	210	356	210
+class CubeShape	181	81	201	228

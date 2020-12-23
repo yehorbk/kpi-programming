@@ -10,7 +10,6 @@ class ShapeEditor : public Editor
 private:
 	Shape** pcshape;
 	int counter;
-	int getShapesSize();
 
 protected:
 	HWND hWnd;
@@ -36,7 +35,9 @@ public:
 	bool appendShape(Shape* shape);
 	bool removeByIndex(int index);
 	bool removeLastShape();
+	bool clearAllShapes();
 	bool selectShape(int index);
 	Shape** getShapes();
+	int getShapesSize();
 	int getCounter();
 };

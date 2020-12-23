@@ -40,6 +40,7 @@ static void disableEdition(HWND hWnd);
 static void appendToTable();
 static void selectObject(int index);
 static void deleteObject(int index);
+static void importProject();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -110,6 +111,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         toolbarController = new ToolbarController(hWnd);
         tableController.init(hInst, hWnd, selectObject, deleteObject);
         mainEditor.setHwnd(hWnd);
+        importProject();
         break;
     case WM_LBUTTONDOWN:
         mainEditor.OnLBdown();
@@ -130,7 +132,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 mainEditor.exportProject();
                 break;
             case IDM_IMPORT:
-                mainEditor.importProject();
+                importProject();
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
@@ -266,4 +268,19 @@ static void selectObject(int index)
 static void deleteObject(int index)
 {
     mainEditor.deleteObject(index);
+}
+
+static void importProject()
+{
+    mainEditor.importProject();
+    const char** serializedShapes = mainEditor.getAllSerialized();
+    if (serializedShapes)
+    {
+        const char* line;
+        int counter = 0;
+        while ((line = serializedShapes[counter++]) != NULL)
+        {
+            tableController.add(line);
+        }
+    }
 }

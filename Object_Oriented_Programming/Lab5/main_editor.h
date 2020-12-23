@@ -47,4 +47,5 @@ public:
 	void undo();
 	void clearAll();
 	const char* getLastSerialized();
+	const char** getAllSerialized();
 };
