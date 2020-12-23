@@ -207,6 +207,7 @@
   <ItemGroup>
     <None Include="about.rh" />
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Lab5.rh" />
     <None Include="table.rh" />
     <None Include="toolbar.rh" />

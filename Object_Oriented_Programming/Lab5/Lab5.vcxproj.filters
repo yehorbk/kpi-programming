@@ -243,5 +243,6 @@
     <None Include="table.rh">
       <Filter>Файлы ресурсов\table</Filter>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>
