@@ -39,6 +39,7 @@ public:
 	void OnLBup();
 	void OnMouseMove();
 	void OnPaint();
+	void exportOne();
 	void exportProject();
 	void importProject();
 	void selectObject(int index);

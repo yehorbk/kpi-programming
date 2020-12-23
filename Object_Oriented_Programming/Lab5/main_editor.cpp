@@ -56,6 +56,7 @@ void MainEditor::OnLBup()
 	if (this->shapeEditor && this->isEditorEnabled)
 	{
 		this->shapeEditor->OnLBup();
+		this->exportOne();
 	}
 }
 
@@ -72,6 +73,21 @@ void MainEditor::OnPaint()
 	if (this->shapeEditor)
 	{
 		this->shapeEditor->OnPaint();
+	}
+}
+
+void MainEditor::exportOne()
+{
+	if (this->shapeEditor)
+	{
+		Shape* shape = this->shapeEditor->getShapes()[this->shapeEditor->getCounter() - 1];
+		FILE* fp;
+		fopen_s(&fp, this->projectFileName, "a+");
+		if (fp != NULL)
+		{
+			fprintf(fp, "%s\n", shape->serialize());
+			fclose(fp);
+		}
 	}
 }
 
