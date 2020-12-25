@@ -219,9 +219,10 @@ static void passDataToObject3()
         WinExec(programNameParam.c_str(), SW_SHOW);
         return;
     }
-    /*sendCopyData(
+    SendMessage(
         (HWND)childProcessData.hWndObject3,
-        matrixData,
-        sizeof(matrixData)
-    );*/
+        WM_COMMAND,
+        (WPARAM)OBJECT3_DATA,
+        (LPARAM)hWnd
+    );
 }

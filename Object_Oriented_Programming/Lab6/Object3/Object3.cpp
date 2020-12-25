@@ -1,17 +1,31 @@
 ﻿#include "Object3.h"
 
+#include "math.h"
+#include <string>
+
 #define MAX_LOADSTRING 100
 
 // Global Variables
 HINSTANCE hInst;
+HWND hWnd;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
+
+int hWndParent;
+int** matrix;
+int* determinant;
 
 // Function Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+static void getTextFromClipboard(char* dest, long maxsize);
+static void parseMatrix();
+static void prepareDeterminant();
+static void printDeterminant(HDC hdc);
+static void sendParentContinue();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -20,6 +34,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+
+    hWndParent = _wtoi(lpCmdLine);
 
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_OBJECT3, szWindowClass, MAX_LOADSTRING);
@@ -63,7 +79,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance;
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
    if (!hWnd)
    {
@@ -78,6 +94,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_CREATE:
+        if (hWndParent)
+        {
+            PostMessage((HWND)hWndParent, WM_COMMAND, PARENT_HWND, (LPARAM)hWnd);
+        }
+        break;
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -85,6 +107,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             case IDM_EXIT:
                 DestroyWindow(hWnd);
+                break;
+            case PARENT_DATA:
+                if (!hWndParent)
+                {
+                    hWndParent = (long)lParam;
+                }
+                prepareDeterminant();
                 break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
@@ -95,6 +124,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+            printDeterminant(hdc);
             EndPaint(hWnd, &ps);
         }
         break;
@@ -105,4 +135,64 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize) {
+    HGLOBAL hglb;
+    LPSTR lptstr;
+    long size, res;
+    res = 0;
+    if (!IsClipboardFormatAvailable(CF_TEXT)) return 0; if (!OpenClipboard(hWnd)) return 0;
+    hglb = GetClipboardData(CF_TEXT);
+    if (hglb != NULL)
+    {
+        lptstr = (char*)GlobalLock(hglb);
+        if (lptstr != NULL)
+        {
+            size = strlen(lptstr);
+            if (size > maxsize)
+            {
+                lptstr[maxsize] = 0;
+                size = strlen(lptstr);
+            }
+            strcpy_s(dest, size + 1, lptstr); // TODO: buffer is too small
+            res = size;
+            GlobalUnlock(hglb);
+        }
+    }
+    CloseClipboard();
+    return res;
+}
+
+static void parseMatrix()
+{
+    char data;
+    getTextFromClipboard(hWnd, &data, LONG_MAX);
+    // TODO: parse matrix
+}
+
+static void prepareDeterminant()
+{
+    // parseMatrix();
+    determinant = new int;
+    *determinant = 40;
+    // TODO: find determinant
+    InvalidateRect(hWnd, NULL, FALSE);
+    sendParentContinue();
+}
+
+static void printDeterminant(HDC hdc)
+{
+    if (!determinant)
+    {
+        return;
+    }
+    int value = *determinant;
+    int digits = log10(value) + 1;
+    TextOutA(hdc, 20, 20, std::to_string(value).c_str(), digits);
+}
+
+static void sendParentContinue()
+{
+    PostMessage((HWND)hWndParent, WM_COMMAND, PARENT_DATA, 0);
 }

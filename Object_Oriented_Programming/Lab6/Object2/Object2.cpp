@@ -1,6 +1,6 @@
 ﻿#include "Object2.h"
-#include "math.h"
 
+#include "math.h"
 #include <string>
 
 #define MAX_LOADSTRING 100
