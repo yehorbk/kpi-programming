@@ -14,18 +14,30 @@
 #include "Lab6.h"
 
 #include "about.h"
+#include "input.h"
 
 #define MAX_LOADSTRING 100
 
 // Global Variables
 HINSTANCE hInst;
+HWND hWnd;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
+
+long inputData[3];
+long* matrixData;
+ChildProcessData childProcessData;
 
 // Function Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+
+static int sendCopyData(HWND hWndSource, void* lp, long cb);
+static void onCopyData(WPARAM wParam, LPARAM lParam);
+static void saveMatrixInfo(int n, int Min, int Max);
+static void passDataToObject2();
+static void passDataToObject3();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -77,7 +89,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance;
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
    if (!hWnd)
    {
@@ -97,16 +109,30 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             int wmId = LOWORD(wParam);
             switch (wmId)
             {
+            case IDM_INPUT:
+                inputInterface(hInst, hWnd, saveMatrixInfo);
+                break;
             case IDM_ABOUT:
                 aboutInterface(hInst, hWnd);
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
+            case OBJECT2_HWND:
+                childProcessData.hWndObject2 = (long)lParam;
+                passDataToObject2();
+                break;
+            case OBJECT3_HWND:
+                childProcessData.hWndObject3 = (long)lParam;
+                passDataToObject3();
+                break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
+        break;
+    case WM_COPYDATA:
+        onCopyData(wParam, lParam);
         break;
     case WM_PAINT:
         {
@@ -122,4 +148,51 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+static int sendCopyData(HWND hWndSource, void* lp, long cb)
+{
+    COPYDATASTRUCT cds;
+    cds.dwData = 1;
+    cds.lpData = lp;
+    cds.cbData = cb;
+    return SendMessage(hWnd, WM_COPYDATA, (WPARAM)hWndSource, (LPARAM)&cds);
+}
+
+static void onCopyData(WPARAM wParam, LPARAM lParam)
+{
+    COPYDATASTRUCT* cds = (COPYDATASTRUCT*)lParam;
+    if ((long)wParam == childProcessData.hWndObject2)
+    {
+        matrixData = (long*)cds->lpData;
+        passDataToObject3();
+    }
+}
+
+static void saveMatrixInfo(int n, int Min, int Max)
+{
+    inputData[0] = n;
+    inputData[1] = Min;
+    inputData[2] = Max;
+    passDataToObject2();
+}
+
+static void passDataToObject2()
+{
+    if (!childProcessData.hWndObject2)
+    {
+        WinExec("object2.exe " + (long)hWnd, SW_SHOW);
+        return;
+    }
+    sendCopyData((HWND)childProcessData.hWndObject2, inputData, sizeof(inputData));
+}
+
+static void passDataToObject3()
+{
+    if (!childProcessData.hWndObject3)
+    {
+        WinExec("object3.exe " + (long)hWnd, SW_SHOW);
+        return;
+    }
+    sendCopyData((HWND)childProcessData.hWndObject3, matrixData, sizeof(matrixData));
 }

@@ -22,6 +22,15 @@
     <Filter Include="Файлы ресурсов\about">
       <UniqueIdentifier>{34519af5-e07c-4562-b687-710491d85b47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\input">
+      <UniqueIdentifier>{edc722ca-b009-4844-8377-ffe033a7e7f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\input">
+      <UniqueIdentifier>{399ddd29-dbbf-40ed-8dc7-8eebdd3b2add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\input">
+      <UniqueIdentifier>{9a6fcaa9-3f21-4cd9-b41d-d8fd070e6d4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -42,6 +51,12 @@
     <ClInclude Include="resource1.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Файлы заголовков\input</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab6.cpp">
@@ -50,6 +65,9 @@
     <ClCompile Include="about.cpp">
       <Filter>Исходные файлы\about</Filter>
     </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Исходные файлы\input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab6.rc">
@@ -57,6 +75,9 @@
     </ResourceCompile>
     <ResourceCompile Include="about.rc">
       <Filter>Файлы ресурсов\about</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="input.rc">
+      <Filter>Файлы ресурсов\input</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +94,9 @@
     </None>
     <None Include="Lab6.rh">
       <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="input.rh">
+      <Filter>Файлы ресурсов\input</Filter>
     </None>
   </ItemGroup>
 </Project>
