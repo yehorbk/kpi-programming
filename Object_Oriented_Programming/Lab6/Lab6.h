@@ -5,8 +5,10 @@
 
 #define OBJECT2_HWND 4000
 #define OBJECT2_DATA 4001
+#define OBJECT2_FINISH 4002
 #define OBJECT3_HWND 5000
 #define OBJECT3_DATA 5001
+#define OBJECT3_FINISH 5002
 
 struct ChildProcessData
 {

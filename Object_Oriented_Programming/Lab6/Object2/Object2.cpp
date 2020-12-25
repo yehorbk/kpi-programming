@@ -112,6 +112,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             int wmId = LOWORD(wParam);
             switch (wmId)
             {
+            case PARENT_FINISH:
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;

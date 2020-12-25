@@ -37,6 +37,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
+static void finishChildProcesses();
 static int sendCopyData(HWND hWndSource, void* lp, long cb);
 // static void onCopyData(WPARAM wParam, LPARAM lParam);
 static void saveMatrixInfo(int n, int Min, int Max);
@@ -157,12 +158,35 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_DESTROY:
+        finishChildProcesses();
         PostQuitMessage(0);
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+static void finishChildProcesses()
+{
+    if (childProcessData.hWndObject2)
+    {
+        PostMessage(
+            (HWND)childProcessData.hWndObject2,
+            WM_COMMAND,
+            (WPARAM)OBJECT2_FINISH,
+            (LPARAM)hWnd
+        );
+    }
+    if (childProcessData.hWndObject3)
+    {
+        PostMessage(
+            (HWND)childProcessData.hWndObject3,
+            WM_COMMAND,
+            (WPARAM)OBJECT3_FINISH,
+            (LPARAM)hWnd
+        );
+    }
 }
 
 static int sendCopyData(HWND hWndDest, void* lp, long cb)
@@ -221,7 +245,7 @@ static void passDataToObject3()
         WinExec(programNameParam.c_str(), SW_SHOW);
         return;
     }
-    SendMessage(
+    PostMessage(
         (HWND)childProcessData.hWndObject3,
         WM_COMMAND,
         (WPARAM)OBJECT3_DATA,
