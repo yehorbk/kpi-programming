@@ -172,7 +172,7 @@ static int sendCopyData(HWND hWndSource, void* lp, long cb)
 static void onCopyData(WPARAM wParam, LPARAM lParam)
 {
     COPYDATASTRUCT* cds = (COPYDATASTRUCT*)lParam;
-    if ((long)wParam == childProcessData.hWndObject2)
+    if ((long)wParam == OBJECT2_DATA)
     {
         matrixData = (long*)cds->lpData;
         passDataToObject3();
