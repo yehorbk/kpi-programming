@@ -5,6 +5,11 @@
 
 #define MAX_LOADSTRING 100
 
+#define WINDOW_POSX 200
+#define WINDOW_POSY 400
+#define WINDOW_WIDTH 300
+#define WINDOW_HEIGHT 300
+
 // Global Variables
 HINSTANCE hInst;
 HWND hWnd;
@@ -81,7 +86,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance;
    hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      WINDOW_POSX, WINDOW_POSY, WINDOW_WIDTH, WINDOW_HEIGHT,
+      nullptr, nullptr, hInstance, nullptr);
    if (!hWnd)
    {
       return FALSE;
