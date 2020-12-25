@@ -21,7 +21,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-static void getTextFromClipboard(char* dest, long maxsize);
+static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize);
 static void parseMatrix();
 static void prepareDeterminant();
 static void printDeterminant(HDC hdc);
@@ -155,7 +155,7 @@ static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize) {
                 lptstr[maxsize] = 0;
                 size = strlen(lptstr);
             }
-            strcpy_s(dest, size + 1, lptstr); // TODO: buffer is too small
+            strcpy_s(dest, size + 1, lptstr);
             res = size;
             GlobalUnlock(hglb);
         }
@@ -166,14 +166,14 @@ static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize) {
 
 static void parseMatrix()
 {
-    char data;
-    getTextFromClipboard(hWnd, &data, LONG_MAX);
+    char* data = new char;
+    getTextFromClipboard(hWnd, data, LONG_MAX);
     // TODO: parse matrix
 }
 
 static void prepareDeterminant()
 {
-    // parseMatrix();
+    parseMatrix();
     determinant = new int;
     *determinant = 40;
     // TODO: find determinant

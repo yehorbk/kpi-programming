@@ -139,6 +139,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 childProcessData.hWndObject3 = (long)lParam;
                 passDataToObject3();
                 break;
+            case OBJECT3_DATA:
+                break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
