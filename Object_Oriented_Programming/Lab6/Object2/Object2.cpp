@@ -219,11 +219,11 @@ static void putMatrixToClipboard()
     int n = matrixParams[0];
     for (int i = 0; i < n; i++)
     {
+        charMatrix += "\n";
         for (int j = 0; j < n; j++)
         {
             charMatrix += std::to_string(matrix[i][j]) + "\t";
         }
-        charMatrix += "\n";
     }
     putTextToClipboard(hWnd, charMatrix.c_str());
 }

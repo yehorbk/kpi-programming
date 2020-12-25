@@ -23,6 +23,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize);
 static void parseMatrix();
+static void findDeterminant();
 static void prepareDeterminant();
 static void printDeterminant(HDC hdc);
 static void sendParentContinue();
@@ -168,15 +169,44 @@ static void parseMatrix()
 {
     char* data = new char;
     getTextFromClipboard(hWnd, data, LONG_MAX);
-    // TODO: parse matrix
+    std::string stringData = std::string(data);
+    int n = 0;
+    int lineIndex = -1;
+    while ((lineIndex = stringData.find("\n", lineIndex + 1)) < stringData.size())
+    {
+        n++;
+    }
+    matrix = new int* [n];
+    for (int i = 0; i < n; i++)
+    {
+        matrix[i] = new int[n];
+        stringData = stringData.substr(
+            stringData.find("\n") + 1,
+            stringData.size()
+        );
+        for (int j = 0; j < n; j++)
+        {
+            std::string value = stringData.substr(0, stringData.find("\t"));
+            stringData = stringData.substr(
+                stringData.find("\t") + 1,
+                stringData.size()
+            );
+            matrix[i][j] = std::stoi(value);
+        }
+    }
+}
+
+static void findDeterminant()
+{
+    determinant = new int;
+    *determinant = 40;
+    // TODO: find determinant
 }
 
 static void prepareDeterminant()
 {
     parseMatrix();
-    determinant = new int;
-    *determinant = 40;
-    // TODO: find determinant
+    findDeterminant();
     InvalidateRect(hWnd, NULL, FALSE);
     sendParentContinue();
 }
