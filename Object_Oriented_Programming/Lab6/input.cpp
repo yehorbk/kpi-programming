@@ -27,9 +27,14 @@ static BOOL CALLBACK inputCallback(HWND hDlg, UINT message, WPARAM wParam, LPARA
         switch (wmId)
         {
         case IDOK:
-            // TODO
-            callback(1, 2, 3);
+        {
+            long n = GetDlgItemInt(hDlg, IDC_EDIT_N, FALSE, true);
+            long Min = GetDlgItemInt(hDlg, IDC_EDIT_MIN, FALSE, true);
+            long Max = GetDlgItemInt(hDlg, IDC_EDIT_MAX, FALSE, true);
+            callback(n, Min, Max);
+            EndDialog(hDlg, LOWORD(wParam));
             break;
+        }
         case IDCANCEL:
             EndDialog(hDlg, LOWORD(wParam));
             break;

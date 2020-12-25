@@ -4,4 +4,4 @@
 
 #define IDC_EDIT_N 3001
 #define IDC_EDIT_MIN 3002
-#define IDC_EDIT_MAX 3003;
+#define IDC_EDIT_MAX 3003

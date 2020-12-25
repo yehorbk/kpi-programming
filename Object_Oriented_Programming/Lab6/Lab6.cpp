@@ -5,13 +5,17 @@
     NUMBER: 5
     VARIABLES:
     - Користувач вводить значення n, Min, Max у дiалоговому вiкнi; виклик Object2 та Object3
-    - Object2 створює матрицю nxnц цiлих (int) чисел у дiапазонi Min - Max; показує числовi значення;
-      записує данi в Clipboard Windows у тектовому форматi
-    - Object3 зчитує данi з Clipboard Windows; вiдображає значення детермiнанту матрицi
+    - Object2 створює матрицю nxnц цiлих (int) чисел у дiапазонi Min - Max;
+      показує числовi значення;
+      записує данi в Clipboard Windows у тектовому форматi;
+    - Object3 зчитує данi з Clipboard Windows;
+      вiдображає значення детермiнанту матрицi;
 */
 
 #include "Lab6.rh"
 #include "Lab6.h"
+
+#include <string>
 
 #include "about.h"
 #include "input.h"
@@ -104,6 +108,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_CREATE:
+        childProcessData.hWndObject2 =
+            (long)FindWindowA(childProcessData.identifierObject2, NULL);
+        childProcessData.hWndObject3 =
+            (long)FindWindowA(childProcessData.identifierObject3, NULL);
+        break;
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -181,18 +191,34 @@ static void passDataToObject2()
 {
     if (!childProcessData.hWndObject2)
     {
-        WinExec("object2.exe " + (long)hWnd, SW_SHOW);
+        long hWndIdentifier = (long)hWnd;
+        std::string programNameParam =
+            std::string(childProcessData.executableObject2) +
+            " " + std::to_string(hWndIdentifier);
+        WinExec(programNameParam.c_str(), SW_SHOW);
         return;
     }
-    sendCopyData((HWND)childProcessData.hWndObject2, inputData, sizeof(inputData));
+    sendCopyData(
+        (HWND)childProcessData.hWndObject2,
+        inputData,
+        sizeof(inputData)
+    );
 }
 
 static void passDataToObject3()
 {
     if (!childProcessData.hWndObject3)
     {
-        WinExec("object3.exe " + (long)hWnd, SW_SHOW);
+        long hWndIdentifier = (long)hWnd;
+        std::string programNameParam =
+            std::string(childProcessData.executableObject3) +
+            " " + std::to_string(hWndIdentifier);
+        WinExec(programNameParam.c_str(), SW_SHOW);
         return;
     }
-    sendCopyData((HWND)childProcessData.hWndObject3, matrixData, sizeof(matrixData));
+    sendCopyData(
+        (HWND)childProcessData.hWndObject3,
+        matrixData,
+        sizeof(matrixData)
+    );
 }
