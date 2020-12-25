@@ -1,19 +1,32 @@
 ﻿#include "Object2.h"
+#include "math.h"
+
+#include <string>
 
 #define MAX_LOADSTRING 100
 
 // Global Variables
 HINSTANCE hInst;
+HWND hWnd;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
 int hWndParent;
+int* matrixParams;
+int** matrix;
 
 // Function Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+static int putTextToClipboard(HWND hWnd, const char* src);
+static void onCopyData(WPARAM wParam, LPARAM lParam);
+static void prepareMatrix();
+static void printMatrix(HDC hdc);
+static void putMatrixToClipboard();
+static void sendParentContinue();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -67,7 +80,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance;
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
    if (!hWnd)
    {
@@ -101,10 +114,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+    case WM_COPYDATA:
+        onCopyData(wParam, lParam);
+        break;
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+            printMatrix(hdc);
             EndPaint(hWnd, &ps);
         }
         break;
@@ -115,4 +132,103 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+static int putTextToClipboard(HWND hWnd, const char* src) {
+    HGLOBAL hglbCopy;
+    BYTE* pTmp;
+    long len;
+    if (src == NULL) return 0;
+    if (src[0] == 0) return 0;
+    len = strlen(src);
+    hglbCopy = GlobalAlloc(GHND, len + 1);
+    if (hglbCopy == NULL) return FALSE;
+    pTmp = (BYTE*)GlobalLock(hglbCopy);
+    memcpy(pTmp, src, len + 1);
+    GlobalUnlock(hglbCopy);
+    if (!OpenClipboard(hWnd))
+    {
+        GlobalFree(hglbCopy);
+        return 0;
+    }
+    EmptyClipboard(); SetClipboardData(CF_TEXT, hglbCopy); CloseClipboard();
+    return 1;
+}
+
+static void onCopyData(WPARAM wParam, LPARAM lParam)
+{
+    COPYDATASTRUCT* cds = (COPYDATASTRUCT*)lParam;
+    if (!hWndParent)
+    {    
+        hWndParent = (long)wParam;
+    }
+    int* inputData = (int*)cds->lpData;
+    matrixParams = new int[3];
+    matrixParams[0] = inputData[0];
+    matrixParams[1] = inputData[1];
+    matrixParams[2] = inputData[2];
+    prepareMatrix();
+}
+
+static void prepareMatrix()
+{
+    int n = matrixParams[0];
+    int Min = matrixParams[1];
+    int Max = matrixParams[2];
+    matrix = new int*[n];
+    for (int i = 0; i < n; i++)
+    {
+        matrix[i] = new int[n];
+        for (int j = 0; j < n; j++)
+        {
+            matrix[i][j] = 2; // TODO: range
+        }
+    }
+    InvalidateRect(hWnd, NULL, FALSE);
+    putMatrixToClipboard();
+    sendParentContinue();
+}
+
+static void printMatrix(HDC hdc)
+{
+    if (!matrixParams)
+    {
+        return;
+    }
+    int n = matrixParams[0];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            int value = matrix[i][j];
+            int digits = log10(value) + 1;
+            TextOutA(
+                hdc,
+                20 + 20 * j,
+                20 + 20 * i,
+                std::to_string(value).c_str(),
+                digits
+            );
+        }
+    }
+}
+
+static void putMatrixToClipboard()
+{
+    std::string charMatrix = "";
+    int n = matrixParams[0];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            charMatrix += std::to_string(matrix[i][j]) + "\t";
+        }
+        charMatrix += "\n";
+    }
+    putTextToClipboard(hWnd, charMatrix.c_str());
+}
+
+static void sendParentContinue()
+{
+    PostMessage((HWND)hWndParent, WM_COMMAND, PARENT_DATA, 0);
 }

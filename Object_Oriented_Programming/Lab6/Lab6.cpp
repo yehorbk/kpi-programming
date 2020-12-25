@@ -29,7 +29,7 @@ WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
 long inputData[3];
-long* matrixData;
+// int* matrixData;
 ChildProcessData childProcessData;
 
 // Function Declaration
@@ -38,7 +38,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
 static int sendCopyData(HWND hWndSource, void* lp, long cb);
-static void onCopyData(WPARAM wParam, LPARAM lParam);
+// static void onCopyData(WPARAM wParam, LPARAM lParam);
 static void saveMatrixInfo(int n, int Min, int Max);
 static void passDataToObject2();
 static void passDataToObject3();
@@ -132,6 +132,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 childProcessData.hWndObject2 = (long)lParam;
                 passDataToObject2();
                 break;
+            case OBJECT2_DATA:
+                passDataToObject3();
+                break;
             case OBJECT3_HWND:
                 childProcessData.hWndObject3 = (long)lParam;
                 passDataToObject3();
@@ -141,9 +144,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-    case WM_COPYDATA:
+    /*case WM_COPYDATA:
         onCopyData(wParam, lParam);
-        break;
+        break;*/
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
@@ -160,24 +163,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-static int sendCopyData(HWND hWndSource, void* lp, long cb)
+static int sendCopyData(HWND hWndDest, void* lp, long cb)
 {
     COPYDATASTRUCT cds;
     cds.dwData = 1;
     cds.lpData = lp;
     cds.cbData = cb;
-    return SendMessage(hWnd, WM_COPYDATA, (WPARAM)hWndSource, (LPARAM)&cds);
+    return SendMessage(hWndDest, WM_COPYDATA, (WPARAM)hWnd, (LPARAM)&cds);
 }
 
-static void onCopyData(WPARAM wParam, LPARAM lParam)
+/*static void onCopyData(WPARAM wParam, LPARAM lParam)
 {
     COPYDATASTRUCT* cds = (COPYDATASTRUCT*)lParam;
-    if ((long)wParam == OBJECT2_DATA)
+    if ((long)wParam == childProcessData.hWndObject2)
     {
-        matrixData = (long*)cds->lpData;
+        matrixData = (int*)cds->lpData;
         passDataToObject3();
     }
-}
+}*/
 
 static void saveMatrixInfo(int n, int Min, int Max)
 {
@@ -216,9 +219,9 @@ static void passDataToObject3()
         WinExec(programNameParam.c_str(), SW_SHOW);
         return;
     }
-    sendCopyData(
+    /*sendCopyData(
         (HWND)childProcessData.hWndObject3,
         matrixData,
         sizeof(matrixData)
-    );
+    );*/
 }
