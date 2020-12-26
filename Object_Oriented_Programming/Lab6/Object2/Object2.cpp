@@ -26,6 +26,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+static void cleanAllMemory();
 static int putTextToClipboard(HWND hWnd, const char* src);
 static void onCopyData(WPARAM wParam, LPARAM lParam);
 static void prepareMatrix();
@@ -123,6 +124,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_COPYDATA:
+        cleanAllMemory();
         onCopyData(wParam, lParam);
         break;
     case WM_PAINT:
@@ -134,6 +136,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_DESTROY:
+        cleanAllMemory();
         sendParentFinish();
         PostQuitMessage(0);
         break;
@@ -141,6 +144,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+static void cleanAllMemory()
+{
+    if (matrixParams)
+    {
+        int n = matrixParams[0];
+        for (int i = 0; i < n; i++)
+        {
+            delete matrix[i];
+        }
+        delete matrix;
+        delete matrixParams;
+    }
 }
 
 static int putTextToClipboard(HWND hWnd, const char* src) {

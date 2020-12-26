@@ -28,9 +28,8 @@ HWND hWnd;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
-long inputData[3];
-// int* matrixData;
 ChildProcessData childProcessData;
+int inputData[3];
 
 // Function Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -39,7 +38,6 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
 static void finishChildProcesses();
 static int sendCopyData(HWND hWndSource, void* lp, long cb);
-// static void onCopyData(WPARAM wParam, LPARAM lParam);
 static void saveMatrixInfo(int n, int Min, int Max);
 static void passDataToObject2();
 static void passDataToObject3();
@@ -109,7 +107,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    case WM_CREATE: // TODO: make loading in other places
+    case WM_CREATE:
         childProcessData.hWndObject2 =
             (long)FindWindowA(childProcessData.identifierObject2, NULL);
         childProcessData.hWndObject3 =
@@ -153,9 +151,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-    /*case WM_COPYDATA:
-        onCopyData(wParam, lParam);
-        break;*/
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
@@ -203,16 +198,6 @@ static int sendCopyData(HWND hWndDest, void* lp, long cb)
     cds.cbData = cb;
     return SendMessage(hWndDest, WM_COPYDATA, (WPARAM)hWnd, (LPARAM)&cds);
 }
-
-/*static void onCopyData(WPARAM wParam, LPARAM lParam)
-{
-    COPYDATASTRUCT* cds = (COPYDATASTRUCT*)lParam;
-    if ((long)wParam == childProcessData.hWndObject2)
-    {
-        matrixData = (int*)cds->lpData;
-        passDataToObject3();
-    }
-}*/
 
 static void saveMatrixInfo(int n, int Min, int Max)
 {

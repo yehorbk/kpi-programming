@@ -27,10 +27,11 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+static void cleanAllMemory();
 static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize);
+static void prepareDeterminant();
 static void parseMatrix();
 static int findDeterminant(int** _matrix, int n);
-static void prepareDeterminant();
 static void printDeterminant(HDC hdc);
 static void sendParentContinue();
 static void sendParentFinish();
@@ -119,6 +120,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 DestroyWindow(hWnd);
                 break;
             case PARENT_DATA:
+                cleanAllMemory();
                 if (!hWndParent)
                 {
                     hWndParent = (long)lParam;
@@ -139,6 +141,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_DESTROY:
+        cleanAllMemory();
         sendParentFinish();
         PostQuitMessage(0);
         break;
@@ -146,6 +149,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
+}
+
+static void cleanAllMemory()
+{
+    if (matrixSize)
+    {
+        int n = *matrixSize;
+        for (int i = 0; i < n; i++)
+        {
+            delete matrix[i];
+        }
+        delete matrix;
+        delete matrixSize;
+        delete determinant;
+    }
 }
 
 static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize) {
@@ -173,6 +191,15 @@ static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize) {
     }
     CloseClipboard();
     return res;
+}
+
+static void prepareDeterminant()
+{
+    parseMatrix();
+    determinant = new int;
+    *determinant = findDeterminant(matrix, *matrixSize);
+    InvalidateRect(hWnd, NULL, TRUE);
+    sendParentContinue();
 }
 
 static void parseMatrix()
@@ -243,15 +270,6 @@ static int findDeterminant(int** _matrix, int n) {
         }
         return _determinant;
     }
-}
-
-static void prepareDeterminant()
-{
-    parseMatrix();
-    determinant = new int;
-    *determinant = findDeterminant(matrix, *matrixSize);
-    InvalidateRect(hWnd, NULL, TRUE);
-    sendParentContinue();
 }
 
 static void printDeterminant(HDC hdc)
