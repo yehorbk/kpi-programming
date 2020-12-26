@@ -18,6 +18,7 @@ WCHAR szWindowClass[MAX_LOADSTRING];
 
 int hWndParent;
 int** matrix;
+int* matrixSize;
 int* determinant;
 
 // Function Declaration
@@ -28,7 +29,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize);
 static void parseMatrix();
-static void findDeterminant();
+static int findDeterminant(int** _matrix, int n);
 static void prepareDeterminant();
 static void printDeterminant(HDC hdc);
 static void sendParentContinue();
@@ -183,6 +184,8 @@ static void parseMatrix()
     {
         n++;
     }
+    matrixSize = new int;
+    *matrixSize = n;
     matrix = new int* [n];
     for (int i = 0; i < n; i++)
     {
@@ -203,17 +206,57 @@ static void parseMatrix()
     }
 }
 
-static void findDeterminant()
-{
-    determinant = new int;
-    *determinant = 40;
-    // TODO: find determinant
+static int findDeterminant(int** _matrix, int n) {
+    int num1, num2, det = 1, index,
+        total = 1;
+    int* temp = new int[n + 1];
+    for (int i = 0; i < n; i++)
+    {
+        index = i;
+        while (_matrix[index][i] == 0 && index < n)
+        {
+            index++;
+        }
+        if (index == n)
+        {
+            continue;
+        }
+        if (index != i)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                std::swap(_matrix[index][j], _matrix[i][j]);
+            }
+            det = det * pow(-1, index - i);
+        }
+        for (int j = 0; j < n; j++)
+        {
+            temp[j] = _matrix[i][j];
+        }
+        for (int j = i + 1; j < n; j++)
+        {
+            num1 = temp[i];
+            num2 = _matrix[j][i];
+            for (int k = 0; k < n; k++)
+            {
+                _matrix[j][k]
+                    = (num1 * _matrix[j][k]) - (num2 * temp[k]);
+            }
+            total = total * num1;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        det = det * _matrix[i][i];
+    }
+    return (det / total);
 }
 
 static void prepareDeterminant()
 {
     parseMatrix();
-    findDeterminant();
+    determinant = new int;
+    *determinant = findDeterminant(matrix, *matrixSize);
     InvalidateRect(hWnd, NULL, FALSE);
     sendParentContinue();
 }
@@ -225,7 +268,7 @@ static void printDeterminant(HDC hdc)
         return;
     }
     int value = *determinant;
-    int digits = log10(value) + 1;
+    int digits = log10(abs(value)) + (value > 0 ? 1 : 2);
     TextOutA(hdc, 20, 20, std::to_string(value).c_str(), digits);
 }
 

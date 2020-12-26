@@ -109,7 +109,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    case WM_CREATE:
+    case WM_CREATE: // TODO: make loading in other places
         childProcessData.hWndObject2 =
             (long)FindWindowA(childProcessData.identifierObject2, NULL);
         childProcessData.hWndObject3 =

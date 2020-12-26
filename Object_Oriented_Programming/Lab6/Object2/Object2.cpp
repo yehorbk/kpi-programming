@@ -188,7 +188,7 @@ static void prepareMatrix()
         matrix[i] = new int[n];
         for (int j = 0; j < n; j++)
         {
-            matrix[i][j] = 2; // TODO: range
+            matrix[i][j] = Min + (std::rand() % (Max - Min + 1));
         }
     }
     InvalidateRect(hWnd, NULL, FALSE);
