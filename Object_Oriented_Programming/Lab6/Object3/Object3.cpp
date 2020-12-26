@@ -18,8 +18,8 @@ WCHAR szWindowClass[MAX_LOADSTRING];
 
 int hWndParent;
 int** matrix;
-int* matrixSize;
-int* determinant;
+int matrixSize;
+int determinant;
 
 // Function Declaration
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -155,14 +155,12 @@ static void cleanAllMemory()
 {
     if (matrixSize)
     {
-        int n = *matrixSize;
+        int n = matrixSize;
         for (int i = 0; i < n; i++)
         {
             delete matrix[i];
         }
-        delete matrix;
-        delete matrixSize;
-        delete determinant;
+        delete[] matrix;
     }
 }
 
@@ -196,16 +194,18 @@ static long getTextFromClipboard(HWND hWnd, char* dest, long maxsize) {
 static void prepareDeterminant()
 {
     parseMatrix();
-    determinant = new int;
-    *determinant = findDeterminant(matrix, *matrixSize);
+    determinant = findDeterminant(matrix, matrixSize);
     InvalidateRect(hWnd, NULL, TRUE);
     sendParentContinue();
 }
 
 static void parseMatrix()
 {
-    char* data = new char;
-    getTextFromClipboard(hWnd, data, LONG_MAX);
+    char* buffer = new char[1024];
+    int size = getTextFromClipboard(hWnd, buffer, 1024);
+    char* data = new char[size + 1];
+    strcpy_s(data, size + 1, buffer);
+    delete[] buffer;
     std::string stringData = std::string(data);
     int n = 0;
     int lineIndex = -1;
@@ -213,8 +213,7 @@ static void parseMatrix()
     {
         n++;
     }
-    matrixSize = new int;
-    *matrixSize = n;
+    matrixSize = n;
     matrix = new int* [n];
     for (int i = 0; i < n; i++)
     {
@@ -274,11 +273,11 @@ static int findDeterminant(int** _matrix, int n) {
 
 static void printDeterminant(HDC hdc)
 {
-    if (!determinant)
+    if (!matrix)
     {
         return;
     }
-    int value = *determinant;
+    int value = determinant;
     int digits = value == 0 ? 1 : log10(abs(value)) + (value > 0 ? 1 : 2);
     TextOutA(hdc, 20, 20, std::to_string(value).c_str(), digits);
 }
