@@ -33,6 +33,7 @@ static int findDeterminant(int** _matrix, int n);
 static void prepareDeterminant();
 static void printDeterminant(HDC hdc);
 static void sendParentContinue();
+static void sendParentFinish();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -138,6 +139,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_DESTROY:
+        sendParentFinish();
         PostQuitMessage(0);
         break;
     default:
@@ -207,49 +209,40 @@ static void parseMatrix()
 }
 
 static int findDeterminant(int** _matrix, int n) {
-    int num1, num2, det = 1, index,
-        total = 1;
-    int* temp = new int[n + 1];
+    int _determinant = 0;
+    int** temp = new int*[n];
     for (int i = 0; i < n; i++)
     {
-        index = i;
-        while (_matrix[index][i] == 0 && index < n)
-        {
-            index++;
-        }
-        if (index == n)
-        {
-            continue;
-        }
-        if (index != i)
-        {
-            for (int j = 0; j < n; j++)
-            {
-                std::swap(_matrix[index][j], _matrix[i][j]);
-            }
-            det = det * pow(-1, index - i);
-        }
-        for (int j = 0; j < n; j++)
-        {
-            temp[j] = _matrix[i][j];
-        }
-        for (int j = i + 1; j < n; j++)
-        {
-            num1 = temp[i];
-            num2 = _matrix[j][i];
-            for (int k = 0; k < n; k++)
-            {
-                _matrix[j][k]
-                    = (num1 * _matrix[j][k]) - (num2 * temp[k]);
-            }
-            total = total * num1;
-        }
+        temp[i] = new int[n];
     }
-    for (int i = 0; i < n; i++)
-    {
-        det = det * _matrix[i][i];
+    if (n == 1) {
+        return _matrix[0][0];
     }
-    return (det / total);
+    else if (n == 2) {
+        _determinant = (_matrix[0][0] * _matrix[1][1] - _matrix[0][1] * _matrix[1][0]);
+        return _determinant;
+    }
+    else {
+        for (int p = 0; p < n; p++) {
+            int h = 0;
+            int k = 0;
+            for (int i = 1; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (j == p) {
+                        continue;
+                    }
+                    temp[h][k] = _matrix[i][j];
+                    k++;
+                    if (k == n - 1) {
+                        h++;
+                        k = 0;
+                    }
+                }
+            }
+            _determinant = _determinant + _matrix[0][p] * pow(-1, p) * findDeterminant(temp, n - 1);
+        }
+        return _determinant;
+    }
 }
 
 static void prepareDeterminant()
@@ -257,7 +250,7 @@ static void prepareDeterminant()
     parseMatrix();
     determinant = new int;
     *determinant = findDeterminant(matrix, *matrixSize);
-    InvalidateRect(hWnd, NULL, FALSE);
+    InvalidateRect(hWnd, NULL, TRUE);
     sendParentContinue();
 }
 
@@ -268,11 +261,16 @@ static void printDeterminant(HDC hdc)
         return;
     }
     int value = *determinant;
-    int digits = log10(abs(value)) + (value > 0 ? 1 : 2);
+    int digits = value == 0 ? 1 : log10(abs(value)) + (value > 0 ? 1 : 2);
     TextOutA(hdc, 20, 20, std::to_string(value).c_str(), digits);
 }
 
 static void sendParentContinue()
 {
     PostMessage((HWND)hWndParent, WM_COMMAND, PARENT_DATA, 0);
+}
+
+static void sendParentFinish()
+{
+    PostMessage((HWND)hWndParent, WM_COMMAND, PARENT_FINISH, 0);
 }

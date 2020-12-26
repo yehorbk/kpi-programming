@@ -32,6 +32,7 @@ static void prepareMatrix();
 static void printMatrix(HDC hdc);
 static void putMatrixToClipboard();
 static void sendParentContinue();
+static void sendParentFinish();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -133,6 +134,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_DESTROY:
+        sendParentFinish();
         PostQuitMessage(0);
         break;
     default:
@@ -191,7 +193,7 @@ static void prepareMatrix()
             matrix[i][j] = Min + (std::rand() % (Max - Min + 1));
         }
     }
-    InvalidateRect(hWnd, NULL, FALSE);
+    InvalidateRect(hWnd, NULL, TRUE);
     putMatrixToClipboard();
     sendParentContinue();
 }
@@ -238,4 +240,9 @@ static void putMatrixToClipboard()
 static void sendParentContinue()
 {
     PostMessage((HWND)hWndParent, WM_COMMAND, PARENT_DATA, 0);
+}
+
+static void sendParentFinish()
+{
+    PostMessage((HWND)hWndParent, WM_COMMAND, PARENT_FINISH, 0);
 }
