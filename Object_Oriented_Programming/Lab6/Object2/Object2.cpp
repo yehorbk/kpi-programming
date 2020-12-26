@@ -227,7 +227,7 @@ static void printMatrix(HDC hdc)
         for (int j = 0; j < n; j++)
         {
             int value = matrix[i][j];
-            int digits = log10(value) + 1;
+            int digits = value == 0 ? 1 : log10(abs(value)) + (value > 0 ? 1 : 2);
             TextOutA(
                 hdc,
                 20 + 20 * j,
