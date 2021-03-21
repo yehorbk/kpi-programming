@@ -30,6 +30,7 @@ public class WebsocketMessageDispatcher {
 
     public <T> WebsocketMessageDispatcher addHandler(Class<T> type, WebsocketMessageHandler<T> handler) {
         handlers.put(type, handler);
+        converter.addMessageType(type);
         return this;
     }
 }
