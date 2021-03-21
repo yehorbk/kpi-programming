@@ -15,8 +15,8 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "users")
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(exclude = { "password" })
