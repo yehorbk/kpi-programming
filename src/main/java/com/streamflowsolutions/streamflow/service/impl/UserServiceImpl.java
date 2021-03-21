@@ -1,5 +1,6 @@
 package com.streamflowsolutions.streamflow.service.impl;
 
+import com.streamflowsolutions.streamflow.dto.UserDto;
 import com.streamflowsolutions.streamflow.entity.User;
 import com.streamflowsolutions.streamflow.repository.UserRepository;
 import com.streamflowsolutions.streamflow.service.UserService;
@@ -19,8 +20,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User create(User user) {
+    public User create(UserDto userDto) {
         try {
+            User user = new User(
+                    userDto.getId(),
+                    userDto.getEmail(),
+                    userDto.getPassword()
+            );
             return this.userRepository.save(user);
         } catch (IllegalStateException e) {
             throw new NullPointerException("User cannot be 'null'"); // TODO: implement special exception for it (NullEntityReferenceException)
@@ -37,11 +43,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User user) {
-        if (user != null) {
-            User oldUser = this.readById(user.getId());
+    public User update(UserDto userDto) {
+        if (userDto != null) {
+            User oldUser = this.readById(userDto.getId());
+            oldUser.setEmail(userDto.getEmail());
+            oldUser.setPassword(userDto.getPassword());
             if (oldUser != null) {
-                return this.userRepository.save(user);
+                return this.userRepository.save(oldUser);
             }
         }
         throw new NullPointerException("User cannot be 'null'"); // TODO: implement special exception for it (NullEntityReferenceException)
