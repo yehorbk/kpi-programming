@@ -5,9 +5,9 @@ services:
         ports:
           - 5432:5432
         environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: root
-            POSTGRES_DB: todolist
+            POSTGRES_USER: streamflow_user
+            POSTGRES_PASSWORD: streamflow_password
+            POSTGRES_DB: streamflow
     kurento:
         image: kurento/kurento-media-server
         ports:
