@@ -1,12 +1,8 @@
 package com.streamflowsolutions.streamflow.media.lib;
 
-import com.streamflowsolutions.streamflow.media.kurento.Signaling;
 import com.streamflowsolutions.streamflow.media.lib.exception.WebsocketSessionAlreadyExists;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 

@@ -1,7 +1,5 @@
 package com.streamflowsolutions.streamflow.media.lib;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.streamflowsolutions.streamflow.media.kurento.Signaling;
 import com.streamflowsolutions.streamflow.media.lib.exception.WebsocketSessionAlreadyExists;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
@@ -12,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class MessagingService implements Signaling {
+public class MessagingService  {
 
     private final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
     private final MessageConverter converter;
@@ -32,7 +30,6 @@ public class MessagingService implements Signaling {
         sessions.put(session.getId(), session);
     }
 
-    @Override
     public void sendMessage(String sessionId, Object message) throws IOException {
         WebSocketSession session = sessions.get(sessionId);
         String json = converter.serialize(message);
