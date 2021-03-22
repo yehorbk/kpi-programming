@@ -5,6 +5,7 @@ import com.streamflowsolutions.streamflow.media.kurento.messages.bi.StopCommunic
 import com.streamflowsolutions.streamflow.media.kurento.messages.in.StartStreamMessage;
 import com.streamflowsolutions.streamflow.media.kurento.messages.in.StartWatchMessage;
 import com.streamflowsolutions.streamflow.media.kurento.messages.out.RejectionMessage;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.kurento.client.KurentoClient;
 import org.kurento.client.MediaPipeline;
@@ -75,6 +76,7 @@ public class OneToManyKurento {
         }
     }
 
+    @SneakyThrows
     private void sendStreamerAlreadyExistsMessage(String sessionId) {
         RejectionMessage response = new RejectionMessage("Another user is currently acting as sender. Try again later ...");
         messagingService.sendMessage(sessionId, response);
@@ -87,11 +89,13 @@ public class OneToManyKurento {
         streamerSession.processOffer(sdpOffer);
     }
 
+    @SneakyThrows
     private void sendNoSenderMessage(String sessionId) {
         RejectionMessage response = new RejectionMessage("No active sender now. Become sender or . Try again later ...");
         messagingService.sendMessage(sessionId, response);
     }
 
+    @SneakyThrows
     private void sendAlreadyViewerMessage(String sessionId) {
         RejectionMessage response = new RejectionMessage("You are already viewing in this session. "
                 + "Use a different browser to add additional viewers.");

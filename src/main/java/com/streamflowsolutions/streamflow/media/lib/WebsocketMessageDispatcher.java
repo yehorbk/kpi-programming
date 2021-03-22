@@ -1,5 +1,6 @@
 package com.streamflowsolutions.streamflow.media.lib;
 
+import com.streamflowsolutions.streamflow.media.lib.exception.WebsocketMessageHandlerAlreadyExists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
@@ -29,8 +30,10 @@ public class WebsocketMessageDispatcher {
     }
 
     public <T> WebsocketMessageDispatcher addHandler(Class<T> type, WebsocketMessageHandler<T> handler) {
+        if (handlers.containsKey(type)) {
+            throw new WebsocketMessageHandlerAlreadyExists(type);
+        }
         handlers.put(type, handler);
-        converter.addMessageType(type);
         return this;
     }
 }

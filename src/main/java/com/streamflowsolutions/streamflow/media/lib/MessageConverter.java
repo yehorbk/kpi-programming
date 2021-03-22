@@ -1,9 +1,10 @@
 package com.streamflowsolutions.streamflow.media.lib;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.streamflowsolutions.streamflow.media.lib.exception.NoSuchSerializedMessageType;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * type: [String],
  * content: [Object]
  * }
- *
+ * <p>
  * To be converted object must has empty constructor and getters/setters
  * for all fields that supposed to be serialized/deserialized
  */
@@ -30,19 +31,22 @@ public class MessageConverter {
     private final ObjectMapper mapper = new ObjectMapper()
             .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 
-    public MessageConverter addMessageType(Class<?> type) {
+    public void addMessageType(Class<?> type) {
         types.putIfAbsent(type.getSimpleName(), type);
-        return this;
     }
 
-    public String serialize(Object obj) throws JsonProcessingException {
+    @SneakyThrows
+    public String serialize(Object obj) {
+        Class<?> type = obj.getClass();
+        addMessageType(type);
         JsonNode serializedContent = serializeMessageContent(obj);
-        String serializedType = serializeMessageType(obj.getClass());
+        String serializedType = serializeMessageType(type);
         JsonMessage jsonMessage = new JsonMessage(serializedType, serializedContent);
         return mapper.writeValueAsString(jsonMessage);
     }
 
-    public Object deserialize(String msg) throws IOException {
+    @SneakyThrows
+    public Object deserialize(String msg) {
         JsonMessage jsonMessage = mapper.readValue(msg, JsonMessage.class);
         Class<?> type = deserializeMessageType(jsonMessage);
         return deserializeMessageContent(jsonMessage, type);
@@ -54,7 +58,10 @@ public class MessageConverter {
         return serializedType;
     }
 
-    private Class<?> deserializeMessageType(JsonMessage message) {
+    private Class<?> deserializeMessageType(JsonMessage message) throws NoSuchSerializedMessageType {
+        if (!types.containsKey(message.getType())) {
+            throw new NoSuchSerializedMessageType(message);
+        }
         return types.get(message.getType());
     }
 
