@@ -39,7 +39,7 @@ public class Video {
     @Column(name = "preview_src", nullable = false)
     private String preview_src;
 
-    //@Column(name = "preview_src", nullable = false, unique = true)
+    //@Column(name = "video_src", nullable = false, unique = true)
     //private String video_src;
 
     //@Column(name = "votes")

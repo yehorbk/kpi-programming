@@ -71,7 +71,7 @@ public class VideoController {
     @RequestMapping(value = "/videos", method = RequestMethod.GET)
     public ResponseEntity<List<VideoDto>> readAll() {
         List<VideoDto> result = this.videoService.getAll().stream()
-                .map(user -> this.modelMapper.map(video, VideoDto.class))
+                .map(video -> this.modelMapper.map(video, VideoDto.class))
                 .collect(Collectors.toList());
         return ResponseEntity
                 .status(HttpStatus.OK)
