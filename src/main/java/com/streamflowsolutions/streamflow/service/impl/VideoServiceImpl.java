@@ -22,14 +22,12 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public Video create(VideoDto videoDto) {
         try {
-            Video video = new Video(
-                    videoDto.getId(),
-                    videoDto.getTitle(),
-                    videoDto.getDescription(),
-                    videoDto.getDate_of_publication(),
-                    videoDto.getAuthor(),
-                    videoDto.getVideo_src()
-            );
+            Video video = new Video();
+            video.setTitle(video.getTitle());
+            video.setDescription(video.getDescription());
+            video.setDate_of_publication(video.getDate_of_publication());
+            video.setAuthor(video.getAuthor());
+            video.setPreview_src(video.getPreview_src());
             return this.videoRepository.save(video);
         } catch (IllegalStateException e) {
             throw new NullPointerException("Video cannot be 'null'");
