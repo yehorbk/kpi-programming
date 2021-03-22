@@ -2,6 +2,7 @@ package com.streamflowsolutions.streamflow.media.kurento;
 
 import com.streamflowsolutions.streamflow.media.kurento.messages.bi.IceCandidateMessage;
 import com.streamflowsolutions.streamflow.media.kurento.messages.out.SdpAnswerMessage;
+import lombok.SneakyThrows;
 import org.kurento.client.IceCandidate;
 import org.kurento.client.IceCandidateFoundEvent;
 import org.kurento.client.MediaPipeline;
@@ -24,6 +25,7 @@ public class KurentoUserSession {
         endpoint.addIceCandidate(candidate);
     }
 
+    @SneakyThrows
     public void sendMessage(Object message) {
         signaling.sendMessage(sessionId, message);
     }

@@ -2,6 +2,7 @@ package com.streamflowsolutions.streamflow.media.lib;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.streamflowsolutions.streamflow.media.kurento.Signaling;
+import com.streamflowsolutions.streamflow.media.lib.exception.WebsocketSessionAlreadyExists;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -21,6 +22,9 @@ public class MessagingService implements Signaling {
     }
 
     public void addWebSocketSession(WebSocketSession session) {
+        if (sessions.containsKey(session.getId())) {
+            throw new WebsocketSessionAlreadyExists(session);
+        }
         sessions.put(session.getId(), session);
     }
 
@@ -29,22 +33,13 @@ public class MessagingService implements Signaling {
     }
 
     @Override
-    public void sendMessage(String sessionId, Object message) {
+    public void sendMessage(String sessionId, Object message) throws IOException {
         WebSocketSession session = sessions.get(sessionId);
-        String json = null;
-        try {
-            json = converter.serialize(message);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        String json = converter.serialize(message);
         sendMessage(session, json);
     }
 
-    private synchronized void sendMessage(WebSocketSession session, String json) {
-        try {
-            session.sendMessage(new TextMessage(json));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private synchronized void sendMessage(WebSocketSession session, String json) throws IOException {
+        session.sendMessage(new TextMessage(json));
     }
 }
