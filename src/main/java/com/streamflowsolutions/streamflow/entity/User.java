@@ -1,5 +1,6 @@
 package com.streamflowsolutions.streamflow.entity;
 
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,9 +33,37 @@ public class User {
             
     @Column(name = "password", nullable = false)
     private String password;
+   
+    @Column(name = "tag", nullable = false, unique = true)
+    private String tag;
+    
+    @Column(name = "name")
+    private String name;
+    
+    @Column(name = "bio")
+    private String bio;
+    
+    @Column(name = "gender")
+    private String gender;
+    
+    @Column(name = "nationality")
+    private String nationality;
+    
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
+    
+    @Column(name = "date_of_creation")
+    private LocalDate dateOfCreation;
+    
+    @Column(name = "avatar_src")
+    private String avatarSrc;
     
     /*
-        TODO: implement more fields
+        - subscriptions: [User] // OneToMany
+        - subscribers: [User] // ManyToOne
+        - history: [Video] // OneToMany
+        - videos: [Video] // OneToMany
+        - playlists: [Playlist] // OneToMany
     */
     
 }

@@ -32,9 +32,7 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
         UserDto result = this.modelMapper.map(
-                this.userService.create(userDto),
-                UserDto.class
-        );
+                this.userService.create(userDto), UserDto.class);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(result);
@@ -43,9 +41,7 @@ public class UserController {
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public ResponseEntity<UserDto> readUser(@NotBlank @PathVariable long id) {
         UserDto result = this.modelMapper.map(
-                this.userService.readById(id),
-                UserDto.class
-        );
+                this.userService.readById(id), UserDto.class);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(result);
@@ -54,9 +50,7 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.PUT)
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto) {
         UserDto result = this.modelMapper.map(
-                this.userService.update(userDto),
-                UserDto.class
-        );
+                this.userService.update(userDto), UserDto.class);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(result);
