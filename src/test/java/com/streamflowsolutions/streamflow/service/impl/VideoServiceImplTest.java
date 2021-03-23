@@ -93,7 +93,7 @@ public class VideoServiceImplTest {
     
     @Test
     public void testGetAllVideos() {
-        List<User> videos = new ArrayList<>();
+        List<Video> videos = new ArrayList<>();
         videos.add(VIDEO);
         Mockito.when(this.videoRepository.findAll()).thenReturn(videos);
         Assertions.assertEquals(1, this.videoService.getAll().size());
