@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(UserDto userDto) {
-        try {
+        if (userDto != null) {
             User user = new User();
             user.setEmail(userDto.getEmail());
             user.setPassword(userDto.getPassword());
@@ -33,9 +33,8 @@ public class UserServiceImpl implements UserService {
             user.setNationality(userDto.getNationality());
             user.setDateOfBirth(userDto.getDateOfBirth());
             return this.userRepository.save(user);
-        } catch (IllegalStateException e) {
-            throw new NullEntityReferenceException("User");
         }
+        throw new NullEntityReferenceException("User");
     }
 
     @Override
