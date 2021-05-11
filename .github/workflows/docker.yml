@@ -1,0 +1,18 @@
+name: Docker Build
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: mvn install
+      run: ./mvnw install -DskipTests=true
+    - name: mvn build
+      run: ./mvnw package
+    - name: docker build
+      run: docker build -t streamflow ./
