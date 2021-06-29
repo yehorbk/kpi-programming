@@ -1,0 +1,44 @@
+@startuml
+left header
+<font color=000 size=18><b>Package:</b> Guest
+
+<font color=000 size=16><b>ID:</b> UC-5
+<font color=000 size=16><b>Назва:</b> Авторизація користувача за допомогою облікового запису Google чи Facebook
+<font color=000 size=16><b>Учасники:</b> Гість, Система
+<font color=000 size=16><b>Передумови:</b> Гість має створений обліковий запис Google або Facebook
+<font color=000 size=16><b>Результат:</b>  Гість авторизований у Системі
+<font color=000 size=16><b>Виключні ситуації:</b>
+<font color=000 size=16> EX_00: Google або Facebook авторизація завершилась із помилкою
+<font color=000 size=16> EX_01: Доступ до бази даних відсутній
+
+<font color=000 size=16><b>Основний сценарій:</b>
+
+end header
+
+|Гість|
+start
+: Натискає на кнопку "Обліковий запис" у головному меню;
+: Натискає на кнопку "Авторизація";
+: Обирає авторизацію за допомогою Google або Facebook;
+: Авторизується на сторінці авторизації Google або Facebook;
+
+|Система|
+: Записує дані до бази;
+note right #aaffaa
+<font color=red><b> Можливо EX_01
+end note
+note right #aaffaa
+<font color=red><b> Можливо EX_00
+end note
+
+|Гість|
+: Має можливості користувача Системи;
+stop;
+
+right footer
+
+Четверта підгрупа. Модель прецендентів
+НТУУ КПІ ім.І.Сікорського
+Киів-2020
+end footer
+@enduml
