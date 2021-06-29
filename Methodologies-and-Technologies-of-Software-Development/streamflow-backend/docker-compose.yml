@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+    postgres:
+        hostname: streamflow-database
+        image: postgres
+        ports:
+          - 5432:5432
+        environment:
+            POSTGRES_USER: streamflow_user
+            POSTGRES_PASSWORD: streamflow_password
+            POSTGRES_DB: streamflow
+    kurento:
+        hostname: streamflow-kurento
+        image: kurento/kurento-media-server
+        ports:
+          - 8888:8888
+    tomcat:
+        depends_on:
+          - postgres
+          - kurento
+        image: tomcat
+        ports:
+          - 8080:8080
+        environment:
+            spring.datasource.url: jdbc:postgresql://streamflow-database:5432/streamflow
+        volumes:
+          - ./target/streamflow-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/streamflow.war
