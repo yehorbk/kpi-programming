@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/wave.css">
+  <title>Streamflow - Sign up</title>
+</head>
+<body>
+
+  <div class="wrapper-out">
+    <svg class="wave-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#292F37" fill-opacity="1" d="M0,64L30,85.3C60,107,120,149,180,170.7C240,192,300,192,360,170.7C420,149,480,107,540,96C600,85,660,107,720,138.7C780,171,840,213,900,197.3C960,181,1020,107,1080,101.3C1140,96,1200,160,1260,186.7C1320,213,1380,203,1410,197.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+    </svg>
+  </div>
+  
+  <div class="container">
+
+    <div class="wrapper">
+      <div class="wave"></div>
+    </div>
+
+    <div class="header">
+  
+      <h2>
+        Become a Streamflower 🏄‍♂️
+      </h2>
+    </div>
+
+    <form class="form" id="form">
+      
+      <div class="form-control">
+        <label>Username</label>
+        <input type="text" placeholder="username" id="username">
+          <i class="fas fa-check-circle success-circle form-i"></i>
+          <i class="fas fa-exclamation-circle error-circle form-i"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label>Email</label>
+        <input type="text" placeholder="surfer@streamflow.com" id="email">
+          <i class="fas fa-check-circle success-circle form-i"></i>
+          <i class="fas fa-exclamation-circle error-circle form-i"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label>Password</label>
+        <input type="password" placeholder="password" id="password">
+          <i class="fas fa-check-circle success-circle form-i"></i>
+          <i class="fas fa-exclamation-circle error-circle form-i"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label>Repeat password</label>
+        <input type="password" placeholder="password" id="password2">
+          <i class="fas fa-check-circle success-circle form-i"></i>
+          <i class="fas fa-exclamation-circle error-circle form-i"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <button>Submit</button>
+      </div>
+
+    </form>
+  </div>
+  
+  <script src="JS/validators.js"></script>
+  <script src="JS/form.js"></script>
+  <!-- <script src="JS/tests.js"></script> -->
+  <script 
+    defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" 
+    integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous">
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+.wrapper {
+  width: 450px;
+  height: 500px;
+  position: absolute;
+  bottom: 0;
+  border-radius: 5px;
+  background-image: linear-gradient(to top, #d5e9ff 0%, #e7f0fd 100%);
+  overflow: hidden;
+}
+
+.wave {
+  width: 1000px;
+  height: 1025px;
+  position: absolute;
+  top: -25%;
+  left: 50%;
+  margin-left: -500px;
+  margin-top: -500px;
+  border-radius: 35%;
+  background: white;
+  animation: wave 15s infinite linear;
+}
+
+@keyframes wave {
+  from { transform: rotate(0deg);}
+  from { transform: rotate(360deg);}
+}
+
+.wrapper-out {
+  width:100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.wave-out {
+  margin-bottom: -5px;
+}
