@@ -23,3 +23,8 @@ This repository contains all my works from university lectures and laboratory wo
 - Lecturer: Anastasia Serhienko
 - Course: Discrete Mathematics, Discrete Structures
 - Languages: ```JavaScript, Java```
+
+### Methodologies and Technologies of Software Development
+- Lecturer: Oleksandr Kovalchuk
+- Course: Methodologies and Technologies of Software Development
+- Languages: ```Java, Node.js```
