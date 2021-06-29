@@ -24,6 +24,11 @@ This repository contains all my works from university lectures and laboratory wo
 - Course: Discrete Mathematics, Discrete Structures
 - Languages: ```JavaScript, Java```
 
+### Components of Programming Engineering 1
+- Lecturer: [Timur Shemsedinov](https://github.com/tshemsedinov)
+- Course: Components of Programming Engineering 1
+- Languages: ```Node.js```
+
 ### Methodologies and Technologies of Software Development
 - Lecturer: Oleksandr Kovalchuk
 - Course: Methodologies and Technologies of Software Development
