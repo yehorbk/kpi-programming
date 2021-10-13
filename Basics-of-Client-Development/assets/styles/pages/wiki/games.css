@@ -1,0 +1,102 @@
+body {
+  background-color: #bbbbbb;
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+a {
+  color: yellow; /* for test purposes */
+}
+
+h2 {
+  font-family: monospace;
+  font-size: 26px;
+}
+
+dd {
+  margin-top: 10px;
+}
+
+a:active {
+  color: #0000aa !important;
+}
+
+a:visited {
+  color: #0088ff;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.ml-15 {
+  margin-left: 15%;
+}
+
+.mr-15 {
+  margin-right: 15%;
+}
+
+.bg-dark {
+  background-color: #333333;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-light {
+  color: #ffffff;
+}
+
+.text-muted {
+  color: #404040;
+}
+
+.date-list {
+  list-style-type: square;
+}
+
+.game-list {
+  list-style-type: lower-roman;
+}
+
+#console-table caption {
+  font-family: "Courier New", Courier, monospace;
+  text-align: right;
+}
+
+#console-table,
+#console-table th,
+#console-table td {
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+#console-table td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#console-table img {
+  max-width: 300px;
+}
+
+#console-table ul,
+#console-table ol {
+  margin: 10px;
+  padding: 0;
+  list-style-position: inside;
+  text-align: left;
+}
