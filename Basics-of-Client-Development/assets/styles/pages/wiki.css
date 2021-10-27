@@ -1,0 +1,7 @@
+.wiki-articles-list {
+  padding: 0;
+}
+
+.wiki-articles-list > li {
+  margin-top: 10px;
+}

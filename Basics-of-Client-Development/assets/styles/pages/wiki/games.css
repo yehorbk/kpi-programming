@@ -72,6 +72,13 @@ a:visited {
   list-style-type: lower-roman;
 }
 
+.bestseller-game + .copies-count {
+  font-size: x-small;
+  margin-left: 1px;
+  vertical-align: top;
+  color: green;
+}
+
 #console-table caption {
   font-family: "Courier New", Courier, monospace;
   text-align: right;
