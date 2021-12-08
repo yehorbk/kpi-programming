@@ -1,0 +1,23 @@
+#editor-menu {
+  margin-left: 65px;
+  width: 15%;
+  height: 500px;
+  border: 1px solid gray;
+  float: left;
+}
+
+#editor-menu ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+#editor-menu ul li {
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+#editor-field {
+  width: auto;
+  height: 500px;
+  border: 1px solid gray;
+}

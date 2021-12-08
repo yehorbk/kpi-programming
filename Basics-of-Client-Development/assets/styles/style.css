@@ -63,6 +63,10 @@ a:visited {
   text-align: center;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 .text-italic {
   font-style: italic;
 }
