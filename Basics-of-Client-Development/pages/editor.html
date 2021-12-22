@@ -25,10 +25,10 @@
       <p class="text-bold">Props</p>
       <ul onmousedown="PropsController.highlight(event)" onmouseup="PropsController.reset(event)"
         onclick="PropsController.add(event)">
-        <li>Table</li>
-        <li>Computer</li>
-        <li>Window</li>
-        <li>Cabinet</li>
+        <li data-prop="table">Table</li>
+        <li data-prop="computer">Computer</li>
+        <li data-prop="window">Window</li>
+        <li data-prop="cabinet">Cabinet</li>
       </ul>
       <hr>
       <div onclick="ActionsController.onClick(event)">
@@ -39,7 +39,7 @@
         <button data-action="clean">Clean All</button>
       </div>
     </div>
-    <canvas id="editor-field"></canvas>
+    <canvas id="editor-field" width="1000" height="500"></canvas>
   </div>
   <hr>
   <footer class="text-center">
