@@ -1,0 +1,15 @@
+.wiki-articles-list {
+  padding: 0;
+}
+
+.wiki-articles-list > li {
+  margin-top: 10px;
+}
+
+.wiki-articles-list > li::before {
+  content: "--> ";
+}
+
+.wiki-articles-list > li::after {
+  content: " <--";
+}

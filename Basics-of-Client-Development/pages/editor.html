@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Editor | Retropedia</title>
+  <link rel="stylesheet" href="../assets/styles/style.css">
+  <link rel="stylesheet" href="../assets/styles/editor.css">
+</head>
+
+<body>
+  <header id="top" class="text-center">
+    <a href="../index.html">Home</a>
+    <a href="wiki.html">Wiki</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="order.html">Order</a>
+    <a href="team.html">Team</a>
+    <a href="#"><b>Editor</b></a>
+    <h1>Editor</h1>
+  </header>
+  <hr>
+  <div class="text-center">
+    <div id="editor-menu">
+      <p class="text-bold">Props</p>
+      <ul onmousedown="PropsController.highlight(event)" onmouseup="PropsController.reset(event)"
+        onclick="PropsController.add(event)">
+        <li data-prop="table">Table</li>
+        <li data-prop="computer">Computer</li>
+        <li data-prop="window">Window</li>
+        <li data-prop="cabinet">Cabinet</li>
+      </ul>
+      <hr>
+      <div onclick="ActionsController.onClick(event)">
+        <p class="text-bold">Actions</p>
+        <button data-action="undo">Undo</button>
+        <button data-action="redo">Redo</button>
+        <br>
+        <button data-action="clean">Clean All</button>
+      </div>
+    </div>
+    <canvas id="editor-field" width="1000" height="500"></canvas>
+  </div>
+  <hr>
+  <footer class="text-center">
+    <br>
+    <p>
+      Copyright (c) 2021
+      <a href="https://github.com/yehorbk" target="_blank">Yehor Bublyk</a>.
+      All rights reserved.
+    </p>
+    <p>Like this page? <button data-like>+</button></p>
+  </footer>
+  <script src="../assets/js/index.js"></script>
+  <script src="../assets/js/pages/editor.js"></script>
+</body>
+
+</html>

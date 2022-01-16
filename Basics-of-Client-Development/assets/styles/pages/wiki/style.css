@@ -1,0 +1,9 @@
+#retro-style-poster {
+  width: 180px;
+  float: left;
+  margin-right: 30px;
+}
+
+img + p:nth-child(2) {
+  padding-top: 5px;
+}

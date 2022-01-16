@@ -1,0 +1,84 @@
+body {
+  background-color: #bbbbbb;
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.up-button {
+  position: fixed;
+  top: auto;
+  bottom: 20px;
+  left: auto;
+  right: 20px;
+}
+
+.up-button a::after {
+  content: "\2191";
+}
+
+.up-button a:hover {
+  color: aqua;
+}
+
+a:link {
+  color: #0088ff;
+}
+
+a:active {
+  color: #0000aa !important;
+}
+
+a:visited {
+  color: #0088ff;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.ml-15 {
+  margin-left: 15%;
+}
+
+.mr-15 {
+  margin-right: 15%;
+}
+
+.mt-15px {
+  margin-top: 15px;
+}
+
+.mb-15px {
+  margin-bottom: 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-light {
+  color: #ffffff;
+}
+
+.text-muted {
+  color: #404040;
+}
+
+.clear-both {
+  clear: both;
+}

@@ -1,0 +1,60 @@
+a {
+  color: yellow; /* for test purposes */
+}
+
+h2 {
+  font-family: monospace;
+  font-size: 26px;
+}
+
+dd {
+  margin-top: 10px;
+}
+
+.bg-dark {
+  background-color: #333333;
+}
+
+.date-list {
+  list-style-type: square;
+}
+
+.game-list {
+  list-style-type: lower-roman;
+}
+
+.bestseller-game + .copies-count {
+  font-size: x-small;
+  margin-left: 1px;
+  vertical-align: top;
+  color: green;
+}
+
+#console-table caption {
+  font-family: "Courier New", Courier, monospace;
+  text-align: right;
+}
+
+#console-table,
+#console-table th,
+#console-table td {
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+#console-table td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#console-table img {
+  max-width: 300px;
+}
+
+#console-table ul,
+#console-table ol {
+  margin: 10px;
+  padding: 0;
+  list-style-position: inside;
+  text-align: left;
+}
