@@ -34,6 +34,10 @@ This repository contains all my works from university lectures and laboratory wo
 - Course: Methodologies and Technologies of Software Development
 - Languages: ```Java, Node.js```
 
+### Basics of Client Development
+- Course: Basics of Client Development
+- Languages: ```HTML, CSS, JavaScript```
+
 ### Software Architecture
 - Lecturer: [Roman Mazur](https://github.com/roman-mazur)
 - Course: Components of Programming Engineering 3: Software Architecture
