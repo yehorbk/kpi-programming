@@ -42,3 +42,8 @@ This repository contains all my works from university lectures and laboratory wo
 - Lecturer: [Roman Mazur](https://github.com/roman-mazur)
 - Course: Components of Programming Engineering 3: Software Architecture
 - Languages: ```Go, JavaScript```
+
+### Game Development
+- Lecturer: [Artem Korotenko](https://github.com/artem-korotenko?tab=overview&from=2021-12-01&to=2021-12-31)
+- Course: [Introduction to GameDev](https://github.com/introduction-to-gamedev)
+- Languages: ```C#, JavaScript, Go, Java```
