@@ -33,3 +33,8 @@ This repository contains all my works from university lectures and laboratory wo
 - Lecturer: Oleksandr Kovalchuk
 - Course: Methodologies and Technologies of Software Development
 - Languages: ```Java, Node.js```
+
+### Software Architecture
+- Lecturer: [Roman Mazur](https://github.com/roman-mazur)
+- Course: Components of Programming Engineering 3: Software Architecture
+- Languages: ```Go, JavaScript```
