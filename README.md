@@ -30,7 +30,7 @@ This repository contains all my works from university lectures and laboratory wo
 - Languages: ```Node.js```
 
 ### Methodologies and Technologies of Software Development
-- Lecturer: Oleksandr Kovalchuk
+- Lecturer: [Oleksandr Kovalchuk](https://github.com/anxolerd)
 - Course: Methodologies and Technologies of Software Development
 - Languages: ```Java, Node.js```
 
