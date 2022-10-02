@@ -1,0 +1,16 @@
+[Unit]
+Description=Sample Service for /opt/sample/service.jar
+Requires=network.target
+After=network.target network-online.target
+
+[Service]
+ExecStart=java -jar /opt/sample/service.jar
+User=sample-user
+Restart=on-failure
+RestartSec=5
+
+# Environment Variables
+Environment=PORT=8888
+
+[Install]
+WantedBy=multi-user.target
