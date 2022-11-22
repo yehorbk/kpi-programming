@@ -1,0 +1,9 @@
+---
+# these are the variables which apply to every host in this playbook
+packages:
+  - nginx
+  - openjdk-11-jre
+aptcachetime: 3600
+app_dir: /opt/sample
+app_file: service.jar
+app_port: 8080

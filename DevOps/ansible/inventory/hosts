@@ -1,0 +1,9 @@
+[vagrant]
+vagrant-vm ansible_host=192.168.56.222 ansible_user=vagrant ansible_ssh_private_key_file='.vagrant/machines/ubuntu2004/virtualbox/private_key'
+
+[remote]
+# TODO: if you are doing a remote config - change the values here
+remote-server ansible_host=<YOUR_SERVER_IP> ansible_user=<YOUR_USER>
+
+[local]
+localhost ansible_connection=local
