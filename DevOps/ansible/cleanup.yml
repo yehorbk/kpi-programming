@@ -1,5 +1,4 @@
 - name: Cleanup
-  # TODO: change to remote if you have one
   hosts: local
   become: true
   tasks:
