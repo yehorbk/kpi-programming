@@ -1,0 +1,9 @@
+---
+exclude_paths:
+  - .cache/
+  - .devcontainer
+  - .github/
+  - ./collections/
+
+warn_list:
+  - role-name

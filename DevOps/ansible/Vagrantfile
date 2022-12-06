@@ -1,0 +1,32 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # NOTE: I use M1 Mac and it still has virtualization issues.
+  # VirtualBox is not yet ported and VMWare (Fusion) is paid (with free 30-days plan).
+  # I use QEMU, it's free and open-source, but there is no official qemu provider
+  # for vagrant, so I use the open-source one. And... it has problems as well :(
+  # It doesn't want to work with ubuntu or requires a lot of "bubon-dance",
+  # so I just took the default configuration from the docs (for CentOS) and happy :)
+  config.vm.box = "centos/7"
+  config.vm.hostname = "vagrant-centos7"
+  config.vm.define "centos7"
+
+  config.vm.network "forwarded_port", guest: 80, host: 3012
+
+  config.vm.provider "qemu" do |qemu|
+    qemu.arch = "x86_64"
+    qemu.machine = "q35"
+    qemu.cpu = "max"
+    qemu.net_device = "virtio-net-pci"
+    qemu.extra_qemu_args = %w(-accel tcg,thread=multi,tb-size=512)
+    qemu.ssh_port = 3024
+  end
+
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "site.yml"
+    ansible.inventory_path = "inventory/"
+    ansible.limit = "localhost"
+  end
+
+end

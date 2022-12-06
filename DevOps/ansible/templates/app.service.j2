@@ -1,0 +1,16 @@
+[Unit]
+Description=Sample Service for {{app_dir}}/{{app_file}}
+Requires=network.target
+After=network.target network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/java -jar {{app_dir}}/{{app_file}}
+User={{app_user}}
+Restart=on-failure
+RestartSec={{app_restart_sec}}
+
+# Environment Variables
+Environment=PORT={{app_port}}

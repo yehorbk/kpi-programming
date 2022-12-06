@@ -1,0 +1,65 @@
+---
+- name: Ansible lab
+  hosts: local
+  gather_facts: true
+  become: true
+  tasks:
+    # NOTE: ansible.builtin.yum has no option to set
+    # the cache-time, so I removed this variable :(
+    - name: Install some basic packages defined in variable "packages"
+      ansible.builtin.yum:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"
+    # NOTE: Nginx can't proxy if this flag set to false
+    - name: Set httpd_can_network_connect flag on
+      ansible.builtin.command:
+        cmd: setsebool -P httpd_can_network_connect 1
+    - name: Enable Nginx service, ensure it is not masked and start it
+      ansible.builtin.systemd:
+        name: nginx
+        enabled: yes
+        masked: no
+        state: started
+    - name: Create {{ app_dir }} directory if it does not exist
+      ansible.builtin.file:
+        path: "{{ app_dir }}"
+        state: directory
+        owner: "{{ ansible_user_id }}"
+        mode: 0755
+    - name: Download Java app to {{ app_dir }}/{{ app_file }}
+      ansible.builtin.get_url:
+        url: https://storage.googleapis.com/devops-practice-files/systemd/ServicesLab-0.0.1.jar
+        dest: "{{ app_dir }}/{{ app_file }}"
+        owner: "{{ ansible_user_id }}"
+        mode: 0644
+    - name: Create a Java App Unit
+      notify:
+      - Reload Systemd
+      ansible.builtin.template:
+        src: app.service.j2
+        dest: "/etc/systemd/system/{{ service_name }}.service"
+        owner: root
+        group: root
+        mode: 0644
+    - name: Enable {{ service_name }}.service, ensure it is not masked and start it
+      ansible.builtin.systemd:
+        name: "{{ service_name }}"
+        enabled: yes
+        masked: no
+        state: started
+    - name: Create a Nginx config
+      ansible.builtin.template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/nginx.conf
+        owner: root
+        group: root
+        mode: 0644
+    - name: Restart Nginx
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted
+  handlers:
+    - name: Reload Systemd
+      ansible.builtin.systemd:
+        daemon_reload: yes
