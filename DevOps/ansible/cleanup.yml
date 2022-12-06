@@ -3,18 +3,21 @@
   become: true
   tasks:
     - name: Remove packages
-      apt:
+      ansible.builtin.yum:
         name: "{{ item }}"
         state: absent
       loop: "{{ packages }}"
-    - name: Stop sample.service
+    - name: Set httpd_can_network_connect flag off
+      ansible.builtin.command:
+        cmd: setsebool -P httpd_can_network_connect 0
+    - name: Stop {{ service_name }}.service
       ansible.builtin.systemd:
-        name: sample.service
+        name: "{{ service_name }}.service"
         state: stopped
         enabled: no
-    - name: Remove sample.service
+    - name: Remove {{ service_name }}.service
       ansible.builtin.file:
-        path: /etc/systemd/system/sample.service
+        path: "/etc/systemd/system/{{ service_name }}.service"
         state: absent
     - name: Reload Systemd
       ansible.builtin.systemd:

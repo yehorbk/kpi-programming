@@ -1,8 +1,13 @@
 ---
 packages:
   - nginx
-  - openjdk-11-jre
-aptcachetime: 3600
+  - java-11-openjdk
+
+service_name: sample
+
 app_dir: /opt/sample
 app_file: service.jar
+app_user: vagrant
+app_restart_sec: 5
+app_host: 127.0.0.1
 app_port: 8080
