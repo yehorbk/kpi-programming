@@ -1,0 +1,16 @@
+{
+  "name": "basic_auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "curl -H \"Authorization: Base64 $(node ../utils/base64.js DateArt:2408)\" localhost:3000"
+  },
+  "author": "",
+  "license": "MIT"
+}
