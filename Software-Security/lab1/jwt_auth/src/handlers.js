@@ -6,8 +6,10 @@ const users = require('./users');
 const { sign, verify } = require('./auth');
 
 module.exports = (sessionManager => {
-  const findUser = ({ login, password }) => users
+  const verifyUser = ({ login, password }) => users
     .find(user => user.login === login && user.password === password);
+
+  const findUser = ({ username }) => users.find(user => user.username === username);
 
   const parsePayload = bearer => {
     if (!bearer) return;
@@ -20,8 +22,8 @@ module.exports = (sessionManager => {
     const bearer = req.headers['authorization'];
     const payload = parsePayload(bearer);
     if (payload) {
-      const { login, password, sessionId } = payload;
-      const user = findUser({ login, password });
+      const { username, sessionId } = payload;
+      const user = findUser({ username });
       const session = sessionManager.get(sessionId);
       if (!user || !session) {
         res.status(403).send();
@@ -36,14 +38,14 @@ module.exports = (sessionManager => {
 
   const login = (req, res) => {
     const { login, password } = req.body;
-    const user = findUser({ login, password });
+    const user = verifyUser({ login, password });
     if (!user) {
       res.status(401).send();
       return;
     }
     const { username } = user;
     const sessionId = sessionManager.init(username);
-    const token = sign({ login, password, sessionId });
+    const token = sign({ username, sessionId });
     res.json({ token });
   };
 
