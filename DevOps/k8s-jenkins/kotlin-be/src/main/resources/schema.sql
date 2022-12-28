@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS books
+(
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    finished BOOLEAN NOT NULL,
+    created_at DATE DEFAULT (CURRENT_DATE),
+    PRIMARY KEY (`id`)
+);

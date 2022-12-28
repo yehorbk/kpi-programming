@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  serviceName: "jenkins"
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      serviceAccountName: jenkins
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 2000
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts
+        env:
+        - name: JAVA_OPTS
+          value: -Xmx1024m -Djenkins.install.runSetupWizard=false
+        - name: CASC_JENKINS_CONFIG
+          value: /jenkins.yaml
+        ports:
+          - containerPort: 8080
+          - containerPort: 50000
+        volumeMounts:
+          - name: jenkins-pv
+            mountPath: /var/jenkins_home
+          - name: jenkins-config
+            mountPath: /jenkins.yaml
+            subPath: jenkins.yaml
+          - name: plugin-dir
+            mountPath: /var/jenkins_plugins
+          - name: plugins
+            mountPath: /usr/share/jenkins/ref/plugins
+        livenessProbe:
+          httpGet:
+            path: /login
+            port: 8080
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: 8080
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+      initContainers:
+      - name: init-jenkins
+        image: jenkins/jenkins:lts
+        command: ['sh', '-c', "/bin/jenkins-plugin-cli -f /plugins.txt"]
+        volumeMounts:
+          - name: jenkins-config
+            mountPath: /plugins.txt
+            subPath: plugins.txt
+          - name: plugin-dir
+            mountPath: /var/jenkins_plugins
+          - name: plugins
+            mountPath: /usr/share/jenkins/ref/plugins
+          - name: jenkins-pv
+            mountPath: /var/jenkins_home
+      volumes:
+        - name: jenkins-config
+          configMap:
+            name: jenkins-config
+        - name: plugins
+          emptyDir: {}
+        - name: plugin-dir
+          emptyDir: {}
+        - name: jenkins-pv
+          emptyDir: {}

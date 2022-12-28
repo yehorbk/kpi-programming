@@ -1,0 +1,10 @@
+configuration-as-code:latest
+kubernetes:latest
+credentials:latest
+ssh-credentials:latest
+git:latest
+maven-plugin:latest
+github:latest
+workflow-aggregator:latest
+job-dsl:latest
+pipeline-stage-view:latest

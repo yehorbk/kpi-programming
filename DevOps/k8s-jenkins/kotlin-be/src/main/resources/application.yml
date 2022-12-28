@@ -1,0 +1,38 @@
+spring:
+  data:
+    rest:
+      base-path: /api
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bookstore?autoReconnect=true
+    username: root
+    password: muchsecurity
+    test-on-borrow: true
+    validation-query: SELECT 1
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 60000
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      generate-ddl: true
+      ddl-auto: validate
+      globally_quoted_identifiers: true
+      defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+management:
+  server:
+    port: 9000
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+---
+spring:
+  config:
+    activate:
+      on-profile: k8s
+  datasource:
+    url: jdbc:mysql://mysql-0.mysql:3306/bookstore?autoReconnect=true

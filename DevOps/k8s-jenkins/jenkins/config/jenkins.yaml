@@ -1,0 +1,52 @@
+jenkins:
+  systemMessage: "Playing with Jenkins Configuration as Code Deployed to K8S"
+  agentProtocols:
+    - "JNLP4-connect"
+    - "Ping"
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: admin
+        name: "Jenkins Admin"
+        password: verysecret
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  mode: NORMAL
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  quietPeriod: 5
+  scmCheckoutRetryCount: 0
+
+  clouds:
+    - kubernetes:
+        name: kubernetes
+        serverUrl: "https://kubernetes.default:443"
+        skipTlsVerify: true
+        namespace: "jenkins"
+        jenkinsUrl: "http://jenkins/"
+        connectTimeout: 0
+        readTimeout: 0
+        containerCapStr: 100
+        maxRequestsPerHostStr: 64
+        retentionTimeout: 5
+        templates:
+          - name: kubectl
+            label: jenkins-kubectl
+            containers:
+              - name: kubectl
+                image: bitnami/kubectl
+                ttyEnabled: true
+                command: cat
+                args: ""
+
+tool:
+  git:
+    installations:
+      - name: Default
+        home: "git"
