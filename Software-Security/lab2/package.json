@@ -1,0 +1,11 @@
+{
+  "name": "lab2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "start": "deno run --allow-read --allow-env --allow-net main.ts"
+  },
+  "author": "Yehor Bublyk",
+  "license": "MIT"
+}
