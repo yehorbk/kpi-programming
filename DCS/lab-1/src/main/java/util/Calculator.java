@@ -13,7 +13,7 @@ public class Calculator {
         double[][] m2i = m2.getInstance();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                result[i][j] = m1i[i][j] + m2i[i][j];
+                result[i][j] = kahanSum(m1i[i][j], m2i[i][j]);
             }
         }
         return new Matrix(result, size);
@@ -25,7 +25,7 @@ public class Calculator {
         double[] v1i = v1.getInstance();
         double[] v2i = v2.getInstance();
         for (int i = 0; i < size; i++) {
-            result[i] = v1i[i] + v2i[i];
+            result[i] = kahanSum(v1i[i], v2i[i]);
         }
         return new Vector(result, size);
     }
@@ -54,7 +54,7 @@ public class Calculator {
         for (int i = 0; i < size; i++) {
             result[i] = 0;
             for (int j = 0; j < size; j++) {
-                result[i] += mi[i][j] * vi[j];
+                result[i] = kahanSum(result[i], mi[i][j] * vi[j]);
             }
         }
         return new Vector(result, size);
@@ -80,13 +80,25 @@ public class Calculator {
     public static Scalar max(Vector vector) {
         double max = Double.MIN_VALUE;
         int size = vector.getSize();
-        double [] vi = vector.getInstance();
+        double[] vi = vector.getInstance();
         for (int i = 0; i < size; i++) {
             if (vi[i] > max) {
                 max = vi[i];
             }
         }
         return new Scalar(max);
+    }
+
+    public static double kahanSum(double... items) {
+        double sum = 0.0;
+        double error = 0.0;
+        for (double item : items) {
+            double y = item - error;
+            double z = sum + y;
+            error = (z - sum) - y;
+            sum = z;
+        }
+        return sum;
     }
 
 }

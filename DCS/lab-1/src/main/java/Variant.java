@@ -15,7 +15,6 @@ public class Variant {
 
     public Variant(Data data) {
         this.data = data;
-        data.print();
     }
 
     public Vector calculateA() {
