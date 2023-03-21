@@ -10,7 +10,7 @@ public class Timer {
 
     public double end() {
         long endTime = System.nanoTime();
-        return (endTime - startTime) / 100000.0;
+        return (endTime - startTime) / 1000000.0;
     }
 
 }
