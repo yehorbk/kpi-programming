@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36c01ca-2668-4991-9e32-02e2728500c7" name="Changes" comment="variant changed">
+    <list default="true" id="d36c01ca-2668-4991-9e32-02e2728500c7" name="Changes" comment="second lab functionality implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LockElision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LockElision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -120,7 +121,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679387849732</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="bug with timer fixed">
+      <created>1679388243804</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679388243804</updated>
+    </task>
+    <task id="LOCAL-00005" summary="second lab functionality implemented">
+      <created>1679409988896</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679409988896</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,6 +153,8 @@
     <MESSAGE value="kahan algorithm added, print improved" />
     <MESSAGE value="max double changed" />
     <MESSAGE value="variant changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="variant changed" />
+    <MESSAGE value="bug with timer fixed" />
+    <MESSAGE value="second lab functionality implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="second lab functionality implemented" />
   </component>
 </project>

@@ -37,7 +37,7 @@ public class LockElision {
         double ms = timer.end();
         String result = String.format("Lock Elision finished in %s ms", ms);
         System.out.println(result);
-        FileManager.write(TIME_FILENAME, result);
+        FileManager.writeAppend(TIME_FILENAME, result);
     }
 
     private static class FirstCallable implements Callable<Vector> {
