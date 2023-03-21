@@ -73,20 +73,16 @@ public class Calculator {
         return new Matrix(result, size);
     }
 
-    public static Matrix subtract(Matrix m1, Matrix m2) {
-        return add(m1, multiply(m2, new Scalar(-1)));
-    }
-
-    public static Scalar max(Vector vector) {
-        double max = Double.MIN_VALUE;
+    public static Scalar min(Vector vector) {
+        double min = Double.MAX_VALUE;
         int size = vector.getSize();
         double[] vi = vector.getInstance();
         for (int i = 0; i < size; i++) {
-            if (vi[i] > max) {
-                max = vi[i];
+            if (vi[i] < min) {
+                min = vi[i];
             }
         }
-        return new Scalar(max);
+        return new Scalar(min);
     }
 
     public static double kahanSum(double... items) {

@@ -6,10 +6,10 @@ import util.Calculator;
 
 public class Variant {
 
-    // VARIANT: 4
+    // VARIANT: 5
     // FORMULA:
-    //  А=В*МС+D*MZ+E*MM;
-    //  MА=max(D+B)*MZ*MM-ML*MC*a
+    //  А=В*МС+D*MT;
+    //  MА= min(D)*MC*ME+MZ*MT
 
     private Data data;
 
@@ -19,19 +19,15 @@ public class Variant {
 
     public Vector calculateA() {
         Vector BMC = Calculator.multiply(data.getMC(), data.getB()); // B*MC
-        Vector DMZ = Calculator.multiply(data.getMZ(), data.getD()); // D*MZ
-        Vector EMM = Calculator.multiply(data.getMM(), data.getE()); // E*MM
-        return Calculator.add(BMC, Calculator.add(DMZ, EMM)); // A
+        Vector DMT = Calculator.multiply(data.getMT(), data.getD()); // D*MT
+        return Calculator.add(BMC, DMT); // A
     }
 
     public Matrix calculateMA() {
-        Vector DB = Calculator.add(data.getD(), data.getB()); // D+B
-        Scalar maxDB = Calculator.max(DB); // max(D+B)
-        Matrix MZMM = Calculator.multiply(data.getMZ(), data.getMM()); // MZ*MM
-        Matrix maxDBMZMM = Calculator.multiply(MZMM, maxDB); // max(D+B)*MZ*MM
-        Matrix MLMC = Calculator.multiply(data.getML(), data.getMC()); // ML*MC
-        Matrix MLMCa = Calculator.multiply(MLMC, data.getA()); // ML*MC*a
-        return Calculator.subtract(maxDBMZMM, MLMCa); // MA
+        Scalar minD = Calculator.min(data.getD()); // min(D)
+        Matrix minDMCME = Calculator.multiply(Calculator.multiply(data.getMC(), data.getME()), minD); // min(D)*MC*ME
+        Matrix MZMT = Calculator.multiply(data.getMZ(), data.getMT()); // MZ*MT
+        return Calculator.add(minDMCME, MZMT); // MA
     }
 
 }
