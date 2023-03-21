@@ -5,5 +5,6 @@ public class Program {
         Data data = Data.getData();
         Local.run(data);
         Global.run(data);
+        LockElision.run(data);
     }
 }
